@@ -1,0 +1,9 @@
+*.ncb
+*.sdf
+*.suo
+*.user
+*.opensdf
+Release/*
+Debug/*
+*/Release/*
+*/Debug/*

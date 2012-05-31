@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "player", "player\player.vcxproj", "{2231D454-5714-453F-8842-95B28C23FC89}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "developer", "developer\developer.vcxproj", "{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2231D454-5714-453F-8842-95B28C23FC89}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2231D454-5714-453F-8842-95B28C23FC89}.Debug|Win32.Build.0 = Debug|Win32
+		{2231D454-5714-453F-8842-95B28C23FC89}.Release|Win32.ActiveCfg = Release|Win32
+		{2231D454-5714-453F-8842-95B28C23FC89}.Release|Win32.Build.0 = Release|Win32
+		{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}.Debug|Win32.Build.0 = Debug|Win32
+		{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}.Release|Win32.ActiveCfg = Release|Win32
+		{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
