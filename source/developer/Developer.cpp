@@ -1350,10 +1350,10 @@ Developer::onCloseFile(wxCommandEvent& event)
             if (result == wxID_CANCEL) {
                 return;
             }
-
-            // close file
-            _editorContainer->DeletePage(_editorContainer->GetSelection());
         }
+
+        // close file
+        _editorContainer->DeletePage(_editorContainer->GetSelection());
     }
 }
 
