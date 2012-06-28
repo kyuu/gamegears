@@ -1,39 +1,52 @@
+/*
+    This file is part of GameGears.
+
+    GameGears is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GameGears is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GameGears.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <wx/dir.h>
 #include <wx/filename.h>
 #include <wx/treebase.h>
 #include <wx/msgdlg.h>
 #include <wx/textdlg.h>
-#include "Developer.hpp"
 #include "FileExplorer.hpp"
-
-#include <iostream>
-#include <fstream>
-extern std::ofstream Log;
+#include "Developer.hpp"
+#include "NewDirectoryDialog.hpp"
+#include "commands.hpp"
 
 
 //-------------------------------------------------------------------
 struct TreeItemData : public wxTreeItemData {
-    TreeItemData(const wxString& path, int type) : Path(path), Type(type) { }
-    TreeItemData(const TreeItemData& that) : Path(that.Path), Type(that.Type) { }
+    TreeItemData(int type) : Type(type) { }
+    TreeItemData(const TreeItemData& that) : Type(that.Type) { }
     ~TreeItemData() { }
 
     TreeItemData& operator=(const TreeItemData& that) {
-        Path = that.Path;
         Type = that.Type;
         return *this;
     }
 
     int Type;
-    wxString Path;
 };
 
 //-------------------------------------------------------------------
-FileExplorer::FileExplorer(Developer* developer, const std::string& rootName, const std::string& rootPath)
+FileExplorer::FileExplorer(Developer* developer, const wxString& rootPath)
     : wxTreeCtrl(developer, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTR_DEFAULT_STYLE | wxTR_EDIT_LABELS)
     , _developer(developer)
     , _rootPath(rootPath)
-    , _draggedItem(0)
-    , _imageList(0)
+    , _iconList(0)
+    , _iconIndices(_ICON_COUNT)
 {
     // connect events
     Connect(wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT, wxTreeEventHandler(FileExplorer::onItemBeginLabelEdit));
@@ -43,40 +56,208 @@ FileExplorer::FileExplorer(Developer* developer, const std::string& rootName, co
     Connect(wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK, wxTreeEventHandler(FileExplorer::onItemRightClick));
     Connect(wxEVT_COMMAND_TREE_ITEM_ACTIVATED ,  wxTreeEventHandler(FileExplorer::onItemActivated));
 
-    Connect(ID_REFRESH_TREE,        wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onRefreshTree);
-    Connect(ID_EXPAND_TREE,         wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onExpandTree);
-    Connect(ID_COLLAPSE_TREE,       wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onCollapseTree);
-    Connect(ID_ADD_DIRECTORY,       wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onAddDirectory);
-    Connect(ID_OPEN_FILE,           wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onOpenFile);
-    Connect(ID_OPEN_FILE_AS_SCRIPT, wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onOpenFileAsScript);
-    Connect(ID_OPEN_FILE_AS_TEXT,   wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onOpenFileAsText);
-    Connect(ID_EDIT_ITEM,           wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onEditItem);
-    Connect(ID_DELETE_ITEM,         wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&FileExplorer::onDeleteItem);
+    Connect(CMD_FILE_EXPLORER_REFRESH,              wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onRefreshTree));
+    Connect(CMD_FILE_EXPLORER_EXPAND,               wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onExpandTree));
+    Connect(CMD_FILE_EXPLORER_COLLAPSE,             wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onCollapseTree));
+    Connect(CMD_FILE_EXPLORER_CREATE_NEW_DIRECTORY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onAddNewDirectory));
+    Connect(CMD_FILE_EXPLORER_CREATE_NEW_FILE,      wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onAddNewFile));
+    Connect(CMD_FILE_EXPLORER_OPEN_FILE,            wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onOpenFile));
+    Connect(CMD_FILE_EXPLORER_OPEN_FILE_AS_SCRIPT,  wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onOpenFileAsScript));
+    Connect(CMD_FILE_EXPLORER_OPEN_FILE_AS_TEXT,    wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onOpenFileAsText));
+    Connect(CMD_FILE_EXPLORER_RENAME_FILE,          wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onRenameFile));
+    Connect(CMD_FILE_EXPLORER_DELETE_FILE,          wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FileExplorer::onDeleteFile));
 
     // create image list
-    _imageList = new wxImageList(16, 16);
-        idProjectRoot  = _imageList->Add(wxBitmap(wxT("system/project-root.png"),  wxBITMAP_TYPE_PNG));
-        idProjectFile  = _imageList->Add(wxBitmap(wxT("system/project-file.png"),  wxBITMAP_TYPE_PNG));
-        idFolderClosed = _imageList->Add(wxBitmap(wxT("system/folder-closed.png"), wxBITMAP_TYPE_PNG));
-        idFolderOpen   = _imageList->Add(wxBitmap(wxT("system/folder-open.png"),   wxBITMAP_TYPE_PNG));
-        idScriptFile   = _imageList->Add(wxBitmap(wxT("system/script-file.png"),   wxBITMAP_TYPE_PNG));
-        idTextFile     = _imageList->Add(wxBitmap(wxT("system/text-file.png"),     wxBITMAP_TYPE_PNG));
-        idImageFile    = _imageList->Add(wxBitmap(wxT("system/image-file.png"),    wxBITMAP_TYPE_PNG));
-        idAudioFile    = _imageList->Add(wxBitmap(wxT("system/audio-file.png"),    wxBITMAP_TYPE_PNG));
-        idUnknownFile  = _imageList->Add(wxBitmap(wxT("system/unknown-file.png"),  wxBITMAP_TYPE_PNG));
-    SetImageList(_imageList);
+    _iconList = new wxImageList(16, 16);
+    _iconIndices[ICON_REFRESH]           = _iconList->Add(wxBitmap(wxT("system/developer/icons/refresh.png"),           wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_NEW_DIRECTORY]     = _iconList->Add(wxBitmap(wxT("system/developer/icons/directory-new.png"),     wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_NEW_FILE]          = _iconList->Add(wxBitmap(wxT("system/developer/icons/file-new.png"),          wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_DELETE]            = _iconList->Add(wxBitmap(wxT("system/developer/icons/delete.png"),            wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_DIRECTORY_CLOSED]  = _iconList->Add(wxBitmap(wxT("system/developer/icons/directory-closed.png"),  wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_DIRECTORY_OPEN]    = _iconList->Add(wxBitmap(wxT("system/developer/icons/directory-open.png"),    wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_FILE_TYPE_UNKNOWN] = _iconList->Add(wxBitmap(wxT("system/developer/icons/file-type-unknown.png"), wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_FILE_TYPE_PROJECT] = _iconList->Add(wxBitmap(wxT("system/developer/icons/file-type-project.png"), wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_FILE_TYPE_SCRIPT]  = _iconList->Add(wxBitmap(wxT("system/developer/icons/file-type-script.png"),  wxBITMAP_TYPE_PNG));
+    _iconIndices[ICON_FILE_TYPE_TEXT]    = _iconList->Add(wxBitmap(wxT("system/developer/icons/file-type-text.png"),    wxBITMAP_TYPE_PNG));
+    SetImageList(_iconList);
 
-    wxTreeItemId root = AddRoot(rootName, idProjectRoot, -1, new TreeItemData(rootPath, true));
-    buildItemTree(root);
-    Expand(root);
+    if (_rootPath != wxEmptyString) {
+        initFileTree(rootPath);
+    }
 }
 
 //-------------------------------------------------------------------
 FileExplorer::~FileExplorer()
 {
-    if (_imageList) {
-        delete _imageList;
+    if (_iconList) {
+        delete _iconList;
     }
+}
+
+//-------------------------------------------------------------------
+const wxString&
+FileExplorer::getRootPath() const
+{
+    return _rootPath;
+}
+
+//-------------------------------------------------------------------
+void
+FileExplorer::clearFileTree()
+{
+    DeleteAllItems();
+}
+
+//-------------------------------------------------------------------
+void
+FileExplorer::initFileTree(const wxString& rootPath)
+{
+    if (!wxDir::Exists(rootPath)) {
+        return;
+    }
+
+    // set root path
+    _rootPath = rootPath;
+
+    // clear tree
+    DeleteAllItems();
+
+    // initialize tree
+    wxTreeItemId root = AddRoot(wxFileName(rootPath).GetFullName(), -1, -1, new TreeItemData(FT_DIRECTORY));
+    setItemIcons(root);
+    buildItemTree(root);
+
+    // expand root
+    Expand(root);
+}
+
+//-------------------------------------------------------------------
+void
+FileExplorer::fileSaved(const wxString& fileName)
+{
+    if (fileName.Find(_rootPath) == 0) {
+        wxFileName    path = fileName.Mid(_rootPath.Length());
+        wxString      name = path.GetFullName();
+        wxArrayString dirs = path.GetDirs();
+
+        // find the last subdirectory
+        wxTreeItemId lastSubDirItem = GetRootItem();
+        for (size_t i = 0; i < dirs.GetCount(); i++) {
+            bool nextSubDirFound = false;
+            wxString nextSubDirName = dirs.Item(i);
+
+            wxTreeItemIdValue cookie;
+            wxTreeItemId child = GetFirstChild(lastSubDirItem, cookie);
+
+            while (!nextSubDirFound && child.IsOk()) {
+                wxString childName = GetItemText(child);
+
+                if (childName == nextSubDirName) {
+                    TreeItemData* childData = (TreeItemData*)GetItemData(child);
+
+                    if (childData->Type == FT_DIRECTORY) { // found next directory
+                        nextSubDirFound = true;
+                        lastSubDirItem = child;
+                    }
+                }
+
+                if (!nextSubDirFound) { // continue iterating over the children
+                    child = GetNextChild(lastSubDirItem, cookie);
+                }
+            }
+
+            if (!nextSubDirFound) { // next directory doesn't exist, just use buildItemTree() and return
+                buildItemTree(child);
+                return;
+            }
+        }
+
+        // at this point all subdirectories exist and lastSubDirItem points to the last subdirectory
+        // see if the file already has an item
+        bool fileFound = false;
+
+        wxTreeItemIdValue cookie;
+        wxTreeItemId child = GetFirstChild(lastSubDirItem, cookie);
+
+        while (!fileFound && child.IsOk()) {
+            wxString childName = GetItemText(child);
+
+            if (childName == name) {
+                TreeItemData* childData = (TreeItemData*)GetItemData(child);
+
+                if (childData->Type != FT_DIRECTORY) { // found file
+                    fileFound = true;
+                }
+            }
+
+            if (!fileFound) { // continue iterating over the children
+                child = GetNextChild(lastSubDirItem, cookie);
+            }
+        }
+
+        if (!fileFound) {
+            // add the file
+            int fileType = _developer->getFileType(fileName);
+            wxTreeItemId fileItem = AppendItem(lastSubDirItem, name, -1, -1, new TreeItemData(fileType));
+            setItemIcons(fileItem);
+        }
+    }
+}
+
+//-------------------------------------------------------------------
+bool
+FileExplorer::removeAll(const wxString& dirName)
+{
+    { // this block is needed, so that the directory is closed before removing it
+        wxDir dir(dirName);
+        if (dir.IsOpened()) {
+            wxString entryName;
+            bool entryFound = dir.GetFirst(&entryName);
+
+            // walk through the directory contents and remove them
+            while (entryFound) {
+                wxFileName entryFileName(dir.GetName() + wxFileName::GetPathSeparator() + entryName);
+
+                if (wxDir::Exists(entryFileName.GetFullPath())) {
+                    // entry is a subdirectory
+                    if (!removeAll(entryFileName.GetFullPath())) {
+                        return false;
+                    }
+                } else {
+                    // entry is a regular file
+                    if (!wxRemoveFile(entryFileName.GetFullPath())) {
+                        return false;
+                    }
+                }
+
+                entryFound = dir.GetNext(&entryName);
+            }
+        }
+    }
+
+    // directory is now empty, time to remove it
+    return wxDir::Remove(dirName);
+}
+
+//-------------------------------------------------------------------
+wxString
+FileExplorer::constructPathFromItem(wxTreeItemId item)
+{
+    if (item == GetRootItem()) {
+        return _rootPath;
+    }
+
+    wxString     path   = GetItemText(item);
+    wxTreeItemId parent = GetItemParent(item);
+
+    while (parent != GetRootItem()) {
+        path   = GetItemText(parent) + wxFileName::GetPathSeparator() + path;
+        parent = GetItemParent(parent);
+    }
+
+    path = _rootPath + wxFileName::GetPathSeparator() + path;
+
+    return path;
 }
 
 //-------------------------------------------------------------------
@@ -96,19 +277,19 @@ FileExplorer::buildItemTree(wxTreeItemId item)
     }
 
     // enumerate all files in the directory and add them as children
-    wxDir dir(itemData->Path);
+    wxDir dir(constructPathFromItem(item));
     if (dir.IsOpened()) {
         wxString entryName;
         bool entryFound = dir.GetFirst(&entryName);
 
         while (entryFound) {
             wxString entryFileName = dir.GetName() + wxFileName::GetPathSeparator() + entryName;
-            int entryFileType = getFileType(entryFileName);
-            wxTreeItemId entryItem = AppendItem(item, entryName, -1, -1, new TreeItemData(entryFileName, entryFileType));
+            int entryFileType = _developer->getFileType(entryFileName);
+            wxTreeItemId entryItem = AppendItem(item, entryName, -1, -1, new TreeItemData(entryFileType));
             setItemIcons(entryItem);
 
             if (entryFileType == FT_DIRECTORY) {
-                buildItemTree(entryItem); // recursively update all sub-directories
+                buildItemTree(entryItem); // recursively build all sub-directories
             }
 
             entryFound = dir.GetNext(&entryName);
@@ -117,103 +298,27 @@ FileExplorer::buildItemTree(wxTreeItemId item)
 }
 
 //-------------------------------------------------------------------
-void
-FileExplorer::onItemBeginLabelEdit(wxTreeEvent& e)
+bool
+FileExplorer::isItemChildOf(wxTreeItemId item1, wxTreeItemId item2)
 {
-    if (e.GetItem() == GetRootItem()) { // root item can't be edited
-        e.Veto();
-    }
-}
+    wxTreeItemIdValue cookie;
+    wxTreeItemId item = GetFirstChild(item2, cookie);
 
-//-------------------------------------------------------------------
-void
-FileExplorer::onItemEndLabelEdit(wxTreeEvent& e)
-{
-    wxString newName = e.GetLabel();
-    wxFileName oldPath(((TreeItemData*)GetItemData(e.GetItem()))->Path);
+    while (item.IsOk()) {
+        if (item == item1) {
+            return true;
+        }
 
-    if (!newName.IsEmpty() && newName != oldPath.GetFullName()) {
-        // see if the new name contains any path separator, we don't want them here
-        if (newName.Find(':')  != wxNOT_FOUND ||
-            newName.Find('\\') != wxNOT_FOUND ||
-            newName.Find('/')  != wxNOT_FOUND)
-        {
-            wxMessageDialog errorDialog(this, wxEmptyString, wxT("Error"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
-            errorDialog.SetMessage(wxT("Can not rename '") + oldPath.GetFullName() + wxT("' to '") + newName + wxT("'. The new name contains invalid characters."));
-            errorDialog.ShowModal();
-        } else {
-            if (wxRenameFile(oldPath.GetFullPath(), oldPath.GetPathWithSep() + newName)) {
-                buildItemTree(GetItemParent(e.GetItem()));
-                return;
+        if (ItemHasChildren(item)) {
+            if (isItemChildOf(item1, item)) {
+                return true;
             }
         }
-    }
-    e.Veto();
-}
 
-//-------------------------------------------------------------------
-void
-FileExplorer::onItemBeginDrag(wxTreeEvent& e)
-{
-    if (e.GetItem() != GetRootItem()) { // root item can't be dragged
-        e.Allow();
-        _draggedItem = e.GetItem();
-    }
-}
-
-//-------------------------------------------------------------------
-int
-FileExplorer::getFileType(const wxString& filename)
-{
-    // first see if it's a directory
-    if (wxDir::Exists(filename)) {
-        return FT_DIRECTORY;
+        item = GetNextChild(item2, cookie);
     }
 
-    // now look at the file extension
-    std::string ext = wxFileName(filename).GetExt().ToStdString();
-
-    // see if it's a project file
-    std::vector<std::string>& projectFileTypes = _developer->getPreferences().FileExplorer.FileTypes.Project;
-    for (size_t i = 0; i < projectFileTypes.size(); i++) {
-        if (ext == projectFileTypes[i]) {
-            return FT_PROJECT;
-        }
-    }
-
-    // see if it's a script file
-    std::vector<std::string>& scriptFileTypes = _developer->getPreferences().FileExplorer.FileTypes.Script;
-    for (size_t i = 0; i < scriptFileTypes.size(); i++) {
-        if (ext == scriptFileTypes[i]) {
-            return FT_SCRIPT;
-        }
-    }
-
-    // see if it's a text file
-    std::vector<std::string>& textFileTypes = _developer->getPreferences().FileExplorer.FileTypes.Text;
-    for (size_t i = 0; i < textFileTypes.size(); i++) {
-        if (ext == textFileTypes[i]) {
-            return FT_TEXT;
-        }
-    }
-
-    // see if it's a image file
-    std::vector<std::string>& imageFileTypes = _developer->getPreferences().FileExplorer.FileTypes.Image;
-    for (size_t i = 0; i < imageFileTypes.size(); i++) {
-        if (ext == imageFileTypes[i]) {
-            return FT_IMAGE;
-        }
-    }
-
-    // see if it's a audio file
-    std::vector<std::string>& audioFileTypes = _developer->getPreferences().FileExplorer.FileTypes.Audio;
-    for (size_t i = 0; i < audioFileTypes.size(); i++) {
-        if (ext == audioFileTypes[i]) {
-            return FT_AUDIO;
-        }
-    }
-
-    return FT_UNKNOWN;
+    return false;
 }
 
 //-------------------------------------------------------------------
@@ -223,85 +328,214 @@ FileExplorer::setItemIcons(wxTreeItemId item)
     TreeItemData* itemData = (TreeItemData*)GetItemData(item);
     switch (itemData->Type) {
     case FT_DIRECTORY:
-        SetItemImage(item, idFolderClosed, wxTreeItemIcon_Normal);
-        SetItemImage(item, idFolderOpen,   wxTreeItemIcon_Expanded);
+        SetItemImage(item, ICON_DIRECTORY_CLOSED, wxTreeItemIcon_Normal);
+        SetItemImage(item, ICON_DIRECTORY_OPEN,   wxTreeItemIcon_Expanded);
         break;
     case FT_PROJECT:
-        SetItemImage(item, idProjectFile, wxTreeItemIcon_Normal);
+        SetItemImage(item, ICON_FILE_TYPE_PROJECT, wxTreeItemIcon_Normal);
         break;
     case FT_SCRIPT:
-        SetItemImage(item, idScriptFile, wxTreeItemIcon_Normal);
+        SetItemImage(item, ICON_FILE_TYPE_SCRIPT, wxTreeItemIcon_Normal);
         break;
     case FT_TEXT:
-        SetItemImage(item, idTextFile, wxTreeItemIcon_Normal);
-        break;
-    case FT_IMAGE:
-        SetItemImage(item, idImageFile, wxTreeItemIcon_Normal);
-        break;
-    case FT_AUDIO:
-        SetItemImage(item, idAudioFile, wxTreeItemIcon_Normal);
+        SetItemImage(item, ICON_FILE_TYPE_TEXT, wxTreeItemIcon_Normal);
         break;
     default:
-        SetItemImage(item, idUnknownFile, wxTreeItemIcon_Normal);
+        SetItemImage(item, ICON_FILE_TYPE_UNKNOWN, wxTreeItemIcon_Normal);
     }
 }
 
 //-------------------------------------------------------------------
-bool
-FileExplorer::isItemChildOf(wxTreeItemId possibleChild, wxTreeItemId possibleParent)
+wxMenu*
+FileExplorer::createItemContextMenu(wxTreeItemId item)
 {
-    wxTreeItemIdValue cookie;
-    wxTreeItemId search;
-    wxTreeItemId item = GetFirstChild(possibleParent, cookie);
-    wxTreeItemId child;
+    TreeItemData* itemData = (TreeItemData*)GetItemData(item);
 
-    while (item.IsOk()) {
-        if (item == possibleChild) {
-            return true;
-        }
+    wxMenu*     menu     = 0;
+    wxMenu*     subMenu  = 0;
+    wxMenuItem* menuItem = 0;
 
-        if (ItemHasChildren(item)) {
-            bool result = isItemChildOf(possibleChild, item);
-            if (result) {
-                return true;
-            }
-        }
+    menu = new wxMenu();
 
-        item = GetNextChild(possibleParent, cookie);
+    if (item == GetRootItem()) {
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_REFRESH, _("Refresh"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/refresh.png"), wxBITMAP_TYPE_PNG));
+        menu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_EXPAND, _("Expand"));
+        menu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_COLLAPSE, _("Collapse"));
+        menu->Append(menuItem);
+
+        menu->AppendSeparator();
+
+        subMenu = new wxMenu();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_CREATE_NEW_DIRECTORY, _("New Directory"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/directory-new.png"), wxBITMAP_TYPE_PNG));
+        subMenu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_CREATE_NEW_FILE, _("New File"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/file-add-new.png"), wxBITMAP_TYPE_PNG));
+        subMenu->Append(menuItem);
+
+        menu->AppendSubMenu(subMenu, _("Add"));
+
+    } else if (itemData->Type == FT_DIRECTORY) {
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_REFRESH, _("Refresh"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/refresh.png"), wxBITMAP_TYPE_PNG));
+        menu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_EXPAND, _("Expand"));
+        menu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_COLLAPSE, _("Collapse"));
+        menu->Append(menuItem);
+
+        menu->AppendSeparator();
+
+        subMenu = new wxMenu();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_CREATE_NEW_DIRECTORY, _("New Directory"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/directory-new.png"), wxBITMAP_TYPE_PNG));
+        subMenu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_CREATE_NEW_FILE, _("New File"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/file-add-new.png"), wxBITMAP_TYPE_PNG));
+        subMenu->Append(menuItem);
+
+        menu->AppendSubMenu(subMenu, _("Add"));
+
+        menu->AppendSeparator();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_RENAME_FILE, _("Rename"));
+        menu->Append(menuItem);
+
+        menu->AppendSeparator();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_DELETE_FILE, _("Delete"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/delete.png"), wxBITMAP_TYPE_PNG));
+        menu->Append(menuItem);
+
+    } else {
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_OPEN_FILE, _("Open"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/file-open.png"), wxBITMAP_TYPE_PNG));
+        menu->Append(menuItem);
+
+        subMenu = new wxMenu();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_OPEN_FILE_AS_SCRIPT, _("Script"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/file-type-script.png"), wxBITMAP_TYPE_PNG));
+        subMenu->Append(menuItem);
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_OPEN_FILE_AS_TEXT, _("Text"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/file-type-text.png"), wxBITMAP_TYPE_PNG));
+        subMenu->Append(menuItem);
+
+        menu->AppendSubMenu(subMenu, _("Open As"));
+
+        menu->AppendSeparator();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_RENAME_FILE, _("Rename"));
+        menu->Append(menuItem);
+
+        menu->AppendSeparator();
+
+        menuItem = new wxMenuItem(0, CMD_FILE_EXPLORER_DELETE_FILE, _("Delete"));
+        menuItem->SetBitmap(wxBitmap(wxT("system/developer/icons/delete.png"), wxBITMAP_TYPE_PNG));
+        menu->Append(menuItem);
     }
 
-    return false;
+    return menu;
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onItemEndDrag(wxTreeEvent& e)
+FileExplorer::onItemBeginLabelEdit(wxTreeEvent& event)
 {
-    wxTreeItemId draggedItem = _draggedItem;
-    _draggedItem = 0;
-    TreeItemData* draggedItemData = (TreeItemData*)GetItemData(draggedItem);
-    wxFileName draggedItemPath(draggedItemData->Path);
-    wxString draggedItemName = draggedItemPath.GetFullName();
-    int draggedItemType = draggedItemData->Type;
+    if (event.GetItem() == GetRootItem()) { // root item can't be edited
+        event.Veto();
+    }
+}
 
-    wxTreeItemId parentItem = e.GetItem();
-    TreeItemData* parentItemData = (TreeItemData*)GetItemData(parentItem);
-    if (parentItemData->Type != FT_DIRECTORY) {
-        parentItem = GetItemParent(parentItem);
-        parentItemData = (TreeItemData*)GetItemData(parentItem);
+//-------------------------------------------------------------------
+void
+FileExplorer::onItemEndLabelEdit(wxTreeEvent& event)
+{
+    wxTreeItemId  item        = event.GetItem();
+    TreeItemData* itemData    = (TreeItemData*)GetItemData(item);
+    wxString      newItemName = event.GetLabel();
+
+    wxFileName oldItemPath(constructPathFromItem(item));
+    wxFileName newItemPath(oldItemPath.GetPathWithSep() + newItemName);
+
+    if (!newItemName.IsEmpty() && newItemName != oldItemPath.GetFullName()) {
+        wxString forbiddenChars = wxFileName::GetForbiddenChars();
+        for (size_t i = 0; i < forbiddenChars.Length(); i++) {
+            if (newItemName.Find(forbiddenChars.GetChar(i)) != wxNOT_FOUND) {
+                wxMessageDialog ed(this, wxEmptyString, wxT("Developer"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
+                ed.SetMessage(wxT("File name cannot contain any of the following characters: ") + forbiddenChars);
+                ed.ShowModal();
+
+                event.Veto();
+                return;
+            }
+        }
+
+        if (wxRenameFile(oldItemPath.GetFullPath(), newItemPath.GetFullPath())) {
+            itemData->Type = _developer->getFileType(newItemPath.GetFullPath());
+            setItemIcons(item); // update item icons, since the rename could have resulted in a diferent file type
+            return;
+        }
     }
 
-    // make sure the parent item is not really a child item of the dragged item
+    event.Veto();
+}
+
+//-------------------------------------------------------------------
+void
+FileExplorer::onItemBeginDrag(wxTreeEvent& event)
+{
+    if (event.GetItem() != GetRootItem()) { // root item can't be dragged
+        event.Allow();
+        _draggedItem = event.GetItem();
+    }
+}
+
+//-------------------------------------------------------------------
+void
+FileExplorer::onItemEndDrag(wxTreeEvent& event)
+{
+    wxTreeItemId  draggedItem     = _draggedItem;
+    int           draggedItemType = ((TreeItemData*)GetItemData(draggedItem))->Type;
+    wxString      draggedItemPath = constructPathFromItem(draggedItem);
+    wxString      draggedItemName = GetItemText(draggedItem);
+
+    wxTreeItemId parentItem = event.GetItem();
+    if (((TreeItemData*)GetItemData(parentItem))->Type != FT_DIRECTORY) {
+        parentItem = GetItemParent(parentItem);
+    }
+
+    // make sure the parent item is not a child item of the dragged item
     if (isItemChildOf(parentItem, draggedItem)) {
-        wxMessageDialog errorDialog(this, wxEmptyString, wxT("Error"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
-        errorDialog.SetMessage(wxT("Can not move '") + draggedItemName + wxT("'. Invalid destination directory."));
-        errorDialog.ShowModal();
+        wxMessageDialog ed(this, wxEmptyString, wxT("Developer"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
+        ed.SetMessage(wxT("Could not move file '") + draggedItemName + wxT("'. Invalid destination directory."));
+        ed.ShowModal();
         return;
     }
 
-    wxString draggedItemNewPath = parentItemData->Path + wxFileName::GetPathSeparator() + draggedItemName;
-    if (wxRenameFile(draggedItemPath.GetFullPath(), draggedItemNewPath)) {
-        wxTreeItemId newItem = AppendItem(parentItem, draggedItemName, -1, -1, new TreeItemData(draggedItemNewPath, draggedItemType));
+    // construct the new file path
+    wxString draggedItemNewPath = constructPathFromItem(parentItem) + wxFileName::GetPathSeparator() + draggedItemName;
+
+    // make sure that moving the file will have an effect
+    if (draggedItemPath == draggedItemNewPath) {
+        return;
+    }
+
+    // move file
+    if (wxRenameFile(draggedItemPath, draggedItemNewPath)) {
+        wxTreeItemId newItem = AppendItem(parentItem, draggedItemName, -1, -1, new TreeItemData(draggedItemType));
         setItemIcons(newItem);
         Delete(draggedItem);
 
@@ -315,107 +549,74 @@ FileExplorer::onItemEndDrag(wxTreeEvent& e)
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onItemRightClick(wxTreeEvent& e)
+FileExplorer::onItemRightClick(wxTreeEvent& event)
 {
-    wxTreeItemId item = e.GetItem();
-    SelectItem(item); // always select on right click
-    TreeItemData* itemData = (TreeItemData*)GetItemData(item);
+    wxTreeItemId item = event.GetItem();
 
-    wxMenu menu;
-    if (item == GetRootItem()) {
-        menu.Append(ID_REFRESH_TREE,  wxT("Refresh Tree"));
-        menu.Append(ID_EXPAND_TREE,   wxT("Expand Tree"));
-        menu.Append(ID_COLLAPSE_TREE, wxT("Collapse Tree"));
-        menu.AppendSeparator();
-        menu.Append(ID_ADD_DIRECTORY, wxT("Add Directory"));
-    } else if (itemData->Type == FT_DIRECTORY) {
-        menu.Append(ID_REFRESH_TREE,  wxT("Refresh Tree"));
-        menu.Append(ID_EXPAND_TREE,   wxT("Expand Tree"));
-        menu.Append(ID_COLLAPSE_TREE, wxT("Collapse Tree"));
-        menu.AppendSeparator();
-        menu.Append(ID_ADD_DIRECTORY, wxT("Add Directory"));
-        menu.AppendSeparator();
-        menu.Append(ID_EDIT_ITEM,     wxT("Rename"));
-        menu.AppendSeparator();
-        menu.Append(ID_DELETE_ITEM,   wxT("Delete"));
-    } else {
-        menu.Append(ID_OPEN_FILE,     wxT("Open"));
-        wxMenu* openAsSubMenu = new wxMenu();
-            openAsSubMenu->Append(ID_OPEN_FILE_AS_SCRIPT, _("&Script"));
-            openAsSubMenu->Append(ID_OPEN_FILE_AS_TEXT, _("&Text"));
-        menu.AppendSubMenu(openAsSubMenu, _("Open &As..."));
-        menu.AppendSeparator();
-        menu.Append(ID_EDIT_ITEM,   wxT("Rename"));
-        menu.AppendSeparator();
-        menu.Append(ID_DELETE_ITEM, wxT("Delete"));
-    }
-    PopupMenu(&menu);
+    SelectItem(item); // always select on right click
+
+    // show context menu
+    wxMenu* contextMenu = createItemContextMenu(item);
+    PopupMenu(contextMenu);
+    delete contextMenu;
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onItemActivated(wxTreeEvent& e)
+FileExplorer::onItemActivated(wxTreeEvent& event)
 {
-    wxTreeItemId item = e.GetItem();
+    wxTreeItemId item = event.GetItem();
     TreeItemData* itemData = (TreeItemData*)GetItemData(item);
     if (itemData->Type == FT_DIRECTORY) {
-        e.Skip();
+        event.Skip(); // skip this event, so that the directory will be collapsed/expanded
+        return;
     }
-    // TODO
+
+    _developer->openFile(constructPathFromItem(event.GetItem()));
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onRefreshTree(wxCommandEvent& e)
+FileExplorer::onRefreshTree(wxCommandEvent& event)
 {
     buildItemTree(GetFocusedItem());
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onExpandTree(wxCommandEvent& e)
+FileExplorer::onExpandTree(wxCommandEvent& event)
 {
     ExpandAllChildren(GetFocusedItem());
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onCollapseTree(wxCommandEvent& e)
+FileExplorer::onCollapseTree(wxCommandEvent& event)
 {
     CollapseAllChildren(GetFocusedItem());
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onAddDirectory(wxCommandEvent& e)
+FileExplorer::onAddNewDirectory(wxCommandEvent& event)
 {
-    wxTreeItemId parentItem = GetFocusedItem();
-    TreeItemData* parentItemData = (TreeItemData*)GetItemData(parentItem);
+    wxTreeItemId  parentItem     = GetFocusedItem();
+    wxString      parentItemPath = constructPathFromItem(parentItem);
 
-    wxTextEntryDialog enterDirNameDialog(this, wxT("Enter the name of the new directory."));
-    int confirmed = enterDirNameDialog.ShowModal() == wxID_OK;
-    if (confirmed) {
-        wxString newDirName = enterDirNameDialog.GetValue();
+    NewDirectoryDialog ndd;
+    if (ndd.ShowModal() == wxID_OK) {
+        wxString newDirName = ndd.getDirectoryName();
+        wxString newDirPath = parentItemPath + wxFileName::GetPathSeparator() + newDirName;
 
-        if (newDirName.IsEmpty()) {
-            wxMessageDialog errorDialog(this, wxEmptyString, wxT("Error"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
-            errorDialog.SetMessage(wxT("Can not add directory. The directory name is empty."));
-            errorDialog.ShowModal();
+        if (wxDir::Exists(newDirPath)) {
+            wxMessageDialog ed(this, wxEmptyString, wxT("New Directory"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
+            ed.SetMessage(wxT("A directory named '") + newDirName + wxT("' already exists."));
+            ed.ShowModal();
             return;
         }
 
-        wxFileName parentPath(parentItemData->Path);
-        wxFileName newDirPath(parentPath.GetFullPath() + wxFileName::GetPathSeparator() + newDirName);
-
-        if (wxDir::Exists(newDirPath.GetFullPath())) {
-            wxMessageDialog errorDialog(this, wxEmptyString, wxT("Error"), wxOK | wxCENTRE | wxOK_DEFAULT | wxICON_ERROR);
-            errorDialog.SetMessage(wxT("Can not add directory. A directory named '") + newDirName + wxT("' already exists."));
-            errorDialog.ShowModal();
-            return;
-        }
-
-        if (wxDir::Make(newDirPath.GetFullPath())) {
-            wxTreeItemId newDirItem = AppendItem(parentItem, newDirName, -1, -1, new TreeItemData(newDirPath.GetFullPath(), FT_DIRECTORY));
+        if (wxDir::Make(newDirPath)) {
+            wxTreeItemId newDirItem = AppendItem(parentItem, newDirName, -1, -1, new TreeItemData(FT_DIRECTORY));
             setItemIcons(newDirItem);
             Expand(newDirItem);
         }
@@ -424,52 +625,63 @@ FileExplorer::onAddDirectory(wxCommandEvent& e)
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onOpenFile(wxCommandEvent& e)
+FileExplorer::onAddNewFile(wxCommandEvent& event)
 {
-    // TODO
+    wxTreeItemId  parentItem     = GetFocusedItem();
+    wxString      parentItemPath = constructPathFromItem(parentItem);
+
+    _developer->addNewFile(parentItemPath);
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onOpenFileAsScript(wxCommandEvent& e)
+FileExplorer::onOpenFile(wxCommandEvent& event)
 {
-    // TODO
+    _developer->openFile(constructPathFromItem(GetFocusedItem()));
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onOpenFileAsText(wxCommandEvent& e)
+FileExplorer::onOpenFileAsScript(wxCommandEvent& event)
 {
-    // TODO
+    _developer->openFileAs(constructPathFromItem(GetFocusedItem()), FT_SCRIPT);
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onEditItem(wxCommandEvent& e)
+FileExplorer::onOpenFileAsText(wxCommandEvent& event)
+{
+    _developer->openFileAs(constructPathFromItem(GetFocusedItem()), FT_TEXT);
+}
+
+//-------------------------------------------------------------------
+void
+FileExplorer::onRenameFile(wxCommandEvent& event)
 {
     EditLabel(GetFocusedItem());
 }
 
 //-------------------------------------------------------------------
 void
-FileExplorer::onDeleteItem(wxCommandEvent& e)
+FileExplorer::onDeleteFile(wxCommandEvent& event)
 {
-    wxTreeItemId item = GetFocusedItem();
-    TreeItemData* itemData = (TreeItemData*)GetItemData(item);
     bool deleteSucceeded = false;
 
-    wxMessageDialog confirmDialog(this, wxEmptyString, wxT("Confirmation Required"), wxOK | wxCANCEL | wxCENTRE | wxCANCEL_DEFAULT | wxICON_QUESTION);
+    wxTreeItemId  item     = GetFocusedItem();
+    int           itemType = ((TreeItemData*)GetItemData(item))->Type;
+    wxString      itemPath = constructPathFromItem(item);
 
-    if (itemData->Type == FT_DIRECTORY) {
-        confirmDialog.SetMessage(wxT("Are you sure you want to delete '") + GetItemText(item) + wxT("' and all its content?"));
-        int confirmed = confirmDialog.ShowModal() == wxID_OK;
-        if (confirmed && removeDirRecursive(itemData->Path)) {
+
+    wxMessageDialog confirmDialog(this, wxEmptyString, wxT("Developer"), wxOK | wxCANCEL | wxCENTRE | wxCANCEL_DEFAULT | wxICON_QUESTION);
+
+    if (itemType == FT_DIRECTORY) {
+        confirmDialog.SetMessage(wxT("Do you want to delete the directory '") + GetItemText(item) + wxT("' and all its content?"));
+        if (confirmDialog.ShowModal() == wxID_OK && removeAll(itemPath)) {
             deleteSucceeded = true;
         }
     } else {
-        confirmDialog.SetMessage(wxT("Are you sure you want to delete '") + GetItemText(item) + wxT("'?"));
-        int confirmed = confirmDialog.ShowModal() == wxID_OK;
-        if (confirmed && wxRemoveFile(itemData->Path)) {
+        confirmDialog.SetMessage(wxT("Do you want to delete the file '") + GetItemText(item) + wxT("'?"));
+        if (confirmDialog.ShowModal() == wxID_OK && wxRemoveFile(itemPath)) {
             deleteSucceeded = true;
         }
     }
@@ -477,39 +689,4 @@ FileExplorer::onDeleteItem(wxCommandEvent& e)
     if (deleteSucceeded) {
         Delete(item);
     }
-}
-
-//-------------------------------------------------------------------
-bool
-FileExplorer::removeDirRecursive(const wxString& dirName)
-{
-    { // this block is needed, because wxDir can only be closed in it's destructor
-        wxDir dir(dirName);
-        if (dir.IsOpened()) {
-            wxString entryName;
-            bool entryFound = dir.GetFirst(&entryName);
-
-            // walk through the directory contents and delete them
-            while (entryFound) {
-                wxFileName entryFileName(dir.GetName() + wxFileName::GetPathSeparator() + entryName);
-
-                if (wxDir::Exists(entryFileName.GetFullPath())) {
-                    // entry is a subdirectory
-                    if (!removeDirRecursive(entryFileName.GetFullPath())) {
-                        return false;
-                    }
-                } else {
-                    // entry is a regular file
-                    if (!wxRemoveFile(entryFileName.GetFullPath())) {
-                        return false;
-                    }
-                }
-
-                entryFound = dir.GetNext(&entryName);
-            }
-        }
-    }
-
-    // directory is now empty, time to delete it
-    return wxDir::Remove(dirName);
 }

@@ -1,36 +1,52 @@
+/*
+    This file is part of GameGears.
+
+    GameGears is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GameGears is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GameGears.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #ifndef PREFERENCES_HPP
 #define PREFERENCES_HPP
 
 #include <string>
 #include <vector>
+#include <wx/wx.h>
 
 
-struct RgbColor {
-    RgbColor() : Red(0), Green(0), Blue(0) { }
-    RgbColor(int r, int g, int b) : Red(r), Green(g), Blue(b) { }
-    RgbColor(const RgbColor& that) : Red(that.Red), Green(that.Green), Blue(that.Blue) { }
-    ~RgbColor() { }
-    RgbColor& operator=(const RgbColor& that) {
-        Red   = that.Red;
-        Green = that.Green;
-        Blue  = that.Blue;
-        return *this;
-    }
+enum {
+    TE_FOLDER_HEADER_STYLE_ARROW = 0,
+    TE_FOLDER_HEADER_STYLE_PLUS_MINUS,
+    TE_FOLDER_HEADER_STYLE_PLUS_MINUS_BOX,
+    TE_FOLDER_HEADER_STYLE_PLUS_MINUS_CIRCLE,
+};
 
-    int Red;
-    int Green;
-    int Blue;
+enum {
+    TE_FOLDER_BODY_STYLE_EMPTY = 0,
+    TE_FOLDER_BODY_STYLE_LINE,
+    TE_FOLDER_BODY_STYLE_CURVED_LINE,
 };
 
 
 class Preferences {
 public:
     Preferences();
+    Preferences(const Preferences& that);
     ~Preferences();
+    Preferences& operator=(const Preferences& that);
 
     void loadDefaults();
-    bool load(const std::string& filename);
-    bool save(const std::string& filename);
+    bool loadFromFile(const std::string& fileName);
+    bool saveToFile(const std::string& fileName);
 
     struct {
         struct {
@@ -42,130 +58,207 @@ public:
 
         } Window;
 
-        std::string PathToData;
-        std::string PathToCommonData;
+        struct {
+            wxArrayString Project;
+            wxArrayString Script;
+            wxArrayString Text;
 
-        std::vector<std::string> RecentFiles;
-        std::vector<std::string> RecentProjects;
+        } FileTypeAssociation;
 
-        std::string PaneInfo;
+        wxString DataLocation;
+        wxString CommonDataLocation;
 
-    } System;
+        bool OpenLastProjectOnStartup;
+
+        wxArrayString RecentFiles;
+        wxArrayString RecentProjects;
+
+        wxString DockManagerState;
+
+    } General;
 
     struct {
-        int ZoomLevel;
-
-        // indentation
         struct {
+            struct {
+                wxString FaceName;
+                int PointSize;
+
+            } Font;
+
+            int InitialZoomLevel;
+
+            bool EnableAutoComplete;
+            bool EnableCallTips;
+
+        } General;
+
+        struct {
+            bool DisplayLineNumbers;
+
+            struct {
+                bool Bold;
+                bool Italic;
+                wxColour Foreground;
+                wxColour Background;
+
+            } LineNumberStyle;
+
+            bool DisplayFolders;
+            bool FoldAllOnStartup;
+
+            struct {
+                int      Shape;
+                wxColour Foreground;
+                wxColour Background;
+
+            } FolderHeaderStyle;
+
+            struct {
+                int      Shape;
+                wxColour Foreground;
+                wxColour Background;
+
+            } FolderMidHeaderStyle;
+
+            struct {
+                int      Shape;
+                wxColour Foreground;
+                wxColour Background;
+
+            } FolderBodyStyle;
+
+        } Margin;
+
+        struct {
+            int  TabSize;
+            bool ConvertTabsToSpaces;
+
             int  IndentSize;
             bool EnableAutoIndent;
             bool BackspaceUnindents;
             bool ShowIndentationGuides;
 
-        } Indentation;
-
-        // end of line
-        bool ShowLineEndings;
-
-        // whitespace
-        bool ShowWhitespace;
-
-        // line numbers
-        struct {
-            bool Enabled;
-            int  MarginWidth;
-            RgbColor Color;
-
-        } LineNumbers;
-
-        // folding
-        struct {
-            bool Enabled;
-            int  MarginWidth;
-
-        } Folding;
-
-        // brace matching
-        struct {
-            bool Enabled;
-            RgbColor  HighlightColor;
-            RgbColor  BadlightColor;
-
-        } BraceMatching;
-
-        // auto-complete
-        struct {
-            bool Enabled;
-
-        } AutoComplete;
-
-        // calltips
-        struct {
-            bool Enabled;
-
-        } CallTips;
+        } Indent;
 
         struct {
+            bool EnableBraceMatching;
+
             struct {
-                RgbColor Color;
                 bool Bold;
+                bool Italic;
+                wxColour Foreground;
+                wxColour Background;
+
+            } HighlightStyle;
+
+            struct {
+                bool Bold;
+                bool Italic;
+                wxColour Foreground;
+                wxColour Background;
+
+            } BadlightStyle;
+
+        } Braces;
+
+        struct {
+            bool EnableSyntaxHighlighting;
+
+            struct {
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
+
+                } Style;
+
+            } Operator;
+
+            struct {
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
+
+                } Style;
 
             } String;
 
             struct {
-                RgbColor Color;
-                bool Bold;
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
 
+                } Style;
 
             } Identifier;
 
             struct {
-                RgbColor Color;
-                bool Bold;
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
+
+                } Style;
 
             } Number;
 
             struct {
-                RgbColor Color;
-                bool Bold;
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
+
+                } Style;
 
             } Character;
 
             struct {
-                RgbColor Color;
-                bool Bold;
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
+
+                } Style;
 
             } Comment;
 
             struct {
-                RgbColor Color;
-                bool Bold;
-                std::vector<std::string> List;
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
 
-            } PrimaryKeyword;
+                } Style;
+
+                wxArrayString List;
+
+            } Keyword1;
 
             struct {
-                RgbColor Color;
-                bool Bold;
-                std::vector<std::string> List;
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
 
-            } SecondaryKeyword;
+                } Style;
 
-        } SyntaxHighlighting;
+                wxArrayString List;
 
-    } ScriptEditor;
+            } Keyword2;
 
-    struct {
-        struct {
-            std::vector<std::string> Project;
-            std::vector<std::string> Script;
-            std::vector<std::string> Text;
-            std::vector<std::string> Image;
-            std::vector<std::string> Audio;
+        } Syntax;
 
-        } FileTypes;
-
-    } FileExplorer;
+    } TextEditor;
 
 };
 

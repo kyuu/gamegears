@@ -11,15 +11,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="developer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\developer\AddNewFileDialog.cpp" />
     <ClCompile Include="..\..\..\source\developer\App.cpp" />
     <ClCompile Include="..\..\..\source\developer\Developer.cpp" />
     <ClCompile Include="..\..\..\source\developer\FileExplorer.cpp" />
     <ClCompile Include="..\..\..\source\developer\jsoncpp.cpp" />
+    <ClCompile Include="..\..\..\source\developer\MenuBar.cpp" />
+    <ClCompile Include="..\..\..\source\developer\NewDirectoryDialog.cpp" />
+    <ClCompile Include="..\..\..\source\developer\NewFileDialog.cpp" />
+    <ClCompile Include="..\..\..\source\developer\NewProjectDialog.cpp" />
+    <ClCompile Include="..\..\..\source\developer\Output.cpp" />
+    <ClCompile Include="..\..\..\source\developer\PaneToolBar.cpp" />
     <ClCompile Include="..\..\..\source\developer\Preferences.cpp" />
-    <ClCompile Include="..\..\..\source\developer\ScriptEditor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="developer.rc" />
+    <ClCompile Include="..\..\..\source\developer\PreferencesDialog.cpp" />
+    <ClCompile Include="..\..\..\source\developer\ProjectProperties.cpp" />
+    <ClCompile Include="..\..\..\source\developer\ProjectPropertiesDialog.cpp" />
+    <ClCompile Include="..\..\..\source\developer\ProjectToolBar.cpp" />
+    <ClCompile Include="..\..\..\source\developer\SaveChangesDialog.cpp" />
+    <ClCompile Include="..\..\..\source\developer\StandardToolBar.cpp" />
+    <ClCompile Include="..\..\..\source\developer\StatusBar.cpp" />
+    <ClCompile Include="..\..\..\source\developer\TextEditor.cpp" />
+    <ClCompile Include="..\..\..\source\developer\TextToolBar.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}</ProjectGuid>
