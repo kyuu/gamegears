@@ -281,8 +281,8 @@ Preferences::loadDefaults()
     TextEditor.Margin.LineNumberStyle.Foreground = wxColour( 75,  75,  75);
     TextEditor.Margin.LineNumberStyle.Background = wxColour(220, 220, 220);
 
-    TextEditor.Margin.DisplayFolders             = true;
-    TextEditor.Margin.FoldAllOnStartup           = true;
+    TextEditor.Margin.DisplayFolders                  = true;
+    TextEditor.Margin.FoldAllOnStartup                = false;
     TextEditor.Margin.FolderHeaderStyle.Shape         = TE_FOLDER_HEADER_STYLE_ARROW;
     TextEditor.Margin.FolderHeaderStyle.Foreground    = wxColour(100, 100, 100);
     TextEditor.Margin.FolderHeaderStyle.Background    = wxColour(100, 100, 100);
