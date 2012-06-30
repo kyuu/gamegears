@@ -1,0 +1,123 @@
+developer_src_files = Split("""
+    ../../source/developer/AddNewFileDialog.cpp
+    ../../source/developer/App.cpp
+    ../../source/developer/Developer.cpp
+    ../../source/developer/FileExplorer.cpp
+    ../../source/developer/jsoncpp.cpp
+    ../../source/developer/MenuBar.cpp
+    ../../source/developer/NewDirectoryDialog.cpp
+    ../../source/developer/NewProjectDialog.cpp
+    ../../source/developer/NewFileDialog.cpp
+    ../../source/developer/Output.cpp
+    ../../source/developer/PaneToolBar.cpp
+    ../../source/developer/Preferences.cpp
+    ../../source/developer/PreferencesDialog.cpp
+    ../../source/developer/ProjectProperties.cpp
+    ../../source/developer/ProjectPropertiesDialog.cpp
+    ../../source/developer/ProjectToolBar.cpp
+    ../../source/developer/SaveChangesDialog.cpp
+    ../../source/developer/StandardToolBar.cpp
+    ../../source/developer/StatusBar.cpp
+    ../../source/developer/TextEditor.cpp
+    ../../source/developer/TextToolBar.cpp
+""")
+
+OPTIONS_TEMPLATE = {
+  'tools': {
+    'allowed': ['gcc', 'mingw'],
+    'default': 'gcc',
+    'help':    'the compiler tools to use'
+  },
+  'mode': {
+    'allowed': ['debug', 'release'],
+    'default': 'release',
+    'help':    'the build configuration'
+  },
+  'mingw_cpprt': {
+    'allowed': ['static', 'shared'],
+    'default': 'static',
+    'help': 'the type of MinGW C++ runtime library to use'
+  },
+  'verbose': {
+    'allowed': ['yes', 'no'],
+    'default': 'no',
+    'help': 'more output from compiler and linker'
+  }
+}
+
+def FetchOptions():
+    options = {}
+    for (name, option) in OPTIONS_TEMPLATE.iteritems():
+        value = ARGUMENTS.get(name, option['default'])
+        if value not in option['allowed']:
+            print 'Error: \'%s\' not allowed for %s' % (value, name)
+            Exit()
+        else:
+            options[name] = value
+    return options
+
+def Build():
+    options = FetchOptions()
+
+    print 'Current configuration:'
+    print '    Tools:      %s' % (options['tools'])
+    print '    Build mode: %s' % (options['mode'])
+    
+    env = Environment(tools = [options['tools']])
+    
+    if options['tools'] == 'gcc':
+        env.ParseConfig('wx-config --cxxflags --libs all')
+    
+    if options['tools'] == 'mingw':
+        env.Append(CPPPATH = ['/dev/libs/mingw/wxWidgets/2.9.3/include',
+                              '/dev/libs/mingw/wxWidgets/2.9.3/lib/gcc_lib/mswu'],
+                   LIBPATH = ['/dev/libs/mingw/wxWidgets/2.9.3/lib/gcc_lib'],
+                   LIBS    = ['wxmsw29u_aui',
+                              'wxmsw29u_stc',
+                              'wxscintilla',
+                              'wxmsw29u_core',
+                              'wxbase29u',
+                              'wxmsw29u_adv',
+                              'wxpng',
+                              'wxzlib',
+                              'gdi32',
+                              'comdlg32',
+                              'winspool',
+                              'comctl32',
+                              'ole32',
+                              'oleaut32',
+                              'uuid'])
+    
+    if options['tools'] == 'mingw' and options['mingw_cpprt'] == 'shared':
+        env.Append(CPPDEFINES = ['_GLIBCXX_DLL'],
+                   LIBS       = ['stdc++_s'])
+
+    if options['mode'] == 'debug':
+        env.Append(CCFLAGS = ['-g', '-O0'],
+                   CPPDEFINES = ['_DEBUG'])
+    else:
+        env.Append(CCFLAGS = ['-O2'],
+                   CPPDEFINES = ['NDEBUG'])
+        
+    if options['verbose'] == 'no':
+        env.Append(CCCOMSTR       = "Compiling object $TARGET",
+                   CXXCOMSTR      = "Compiling object $TARGET",
+                   SHCCCOMSTR     = "Compiling shared object $TARGET",
+                   SHCXXCOMSTR    = "Compiling shared object $TARGET",
+                   LINKCOMSTR     = "Linking $TARGET",
+                   SHLINKCOMSTR   = "Linking shared $TARGET",
+                   LDMODULECOMSTR = "Building loadable module $TARGET",
+                   RANLIBCOMSTR   = "Indexing $TARGET",
+                   RCCOMSTR       = "Building resource file $TARGET")
+    
+    if (env['PLATFORM'] == 'win32'):
+        env.Append (LINKFLAGS = ['-Wl,-subsystem,windows'])
+
+    if (options['tools'] == 'mingw'):
+        res_env  = Environment(tools = [options['tools']])
+        res_file = res_env.RES('../vs2010/developer/developer.rc')
+        developer_src_files.append(res_file)
+    
+    developer = env.Program('developer', developer_src_files)
+
+Build()
