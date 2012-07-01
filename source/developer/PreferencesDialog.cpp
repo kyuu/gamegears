@@ -283,7 +283,7 @@ PreferencesDialog::saveValues()
     _preferences.TextEditor.Indent.ShowIndentationGuides = _showIndentationGuidesCtrl->GetValue();
 
     // text editor braces
-    _preferences.TextEditor.Braces.EnableBraceMatching   = _displayFoldersCtrl->GetValue();
+    _preferences.TextEditor.Braces.EnableBraceMatching   = _enableBraceMatchingCtrl->GetValue();
 
     _preferences.TextEditor.Braces.HighlightStyle.Bold   = _braceHighlightStyleBoldCtrl->GetValue();
     _preferences.TextEditor.Braces.HighlightStyle.Italic = _braceHighlightStyleItalicCtrl->GetValue();
