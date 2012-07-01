@@ -23,20 +23,10 @@ developer_src_files = Split("""
 """)
 
 OPTIONS_TEMPLATE = {
-  'tools': {
-    'allowed': ['gcc', 'mingw'],
-    'default': 'gcc',
-    'help':    'the compiler tools to use'
-  },
   'mode': {
     'allowed': ['debug', 'release'],
     'default': 'release',
     'help':    'the build configuration'
-  },
-  'mingw_cpprt': {
-    'allowed': ['static', 'shared'],
-    'default': 'static',
-    'help': 'the type of MinGW C++ runtime library to use'
   },
   'verbose': {
     'allowed': ['yes', 'no'],
@@ -59,46 +49,18 @@ def FetchOptions():
 def Build():
     options = FetchOptions()
 
-    print 'Current configuration:'
-    print '    Tools:      %s' % (options['tools'])
-    print '    Build mode: %s' % (options['mode'])
+    print 'Building GameGears in %s mode...' % (options['mode'])
     
-    env = Environment(tools = [options['tools']])
+    env = DefaultEnvironment()
+    env.ParseConfig('wx-config --cxxflags --libs all')
     
-    if options['tools'] == 'gcc':
-        env.ParseConfig('wx-config --cxxflags --libs all')
-    
-    if options['tools'] == 'mingw':
-        env.Append(CPPPATH = ['/dev/libs/mingw/wxWidgets/2.9.3/include',
-                              '/dev/libs/mingw/wxWidgets/2.9.3/lib/gcc_lib/mswu'],
-                   LIBPATH = ['/dev/libs/mingw/wxWidgets/2.9.3/lib/gcc_lib'],
-                   LIBS    = ['wxmsw29u_aui',
-                              'wxmsw29u_stc',
-                              'wxscintilla',
-                              'wxmsw29u_core',
-                              'wxbase29u',
-                              'wxmsw29u_adv',
-                              'wxpng',
-                              'wxzlib',
-                              'gdi32',
-                              'comdlg32',
-                              'winspool',
-                              'comctl32',
-                              'ole32',
-                              'oleaut32',
-                              'uuid'])
-    
-    if options['tools'] == 'mingw' and options['mingw_cpprt'] == 'shared':
-        env.Append(CPPDEFINES = ['_GLIBCXX_DLL'],
-                   LIBS       = ['stdc++_s'])
-
     if options['mode'] == 'debug':
         env.Append(CCFLAGS = ['-g', '-O0'],
                    CPPDEFINES = ['_DEBUG'])
     else:
         env.Append(CCFLAGS = ['-O2'],
                    CPPDEFINES = ['NDEBUG'])
-        
+
     if options['verbose'] == 'no':
         env.Append(CCCOMSTR       = "Compiling object $TARGET",
                    CXXCOMSTR      = "Compiling object $TARGET",
@@ -109,14 +71,6 @@ def Build():
                    LDMODULECOMSTR = "Building loadable module $TARGET",
                    RANLIBCOMSTR   = "Indexing $TARGET",
                    RCCOMSTR       = "Building resource file $TARGET")
-    
-    if (env['PLATFORM'] == 'win32'):
-        env.Append (LINKFLAGS = ['-Wl,-subsystem,windows'])
-
-    if (options['tools'] == 'mingw'):
-        res_env  = Environment(tools = [options['tools']])
-        res_file = res_env.RES('../vs2010/developer/developer.rc')
-        developer_src_files.append(res_file)
     
     developer = env.Program('developer', developer_src_files)
 
