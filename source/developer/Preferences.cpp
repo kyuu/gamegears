@@ -267,7 +267,7 @@ Preferences::loadDefaults()
     General.DockManagerState = "";
 
     // load text editor defaults
-    TextEditor.General.Font.FaceName  = "Courier New";
+    TextEditor.General.Font.FaceName  = "DejaVu Sans Mono";
     TextEditor.General.Font.PointSize = 10;
 
     TextEditor.General.InitialZoomLevel = 0;
