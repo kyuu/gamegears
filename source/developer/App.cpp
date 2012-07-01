@@ -27,7 +27,7 @@ bool
 App::OnInit()
 {
     // register PNG handler (for icon loading)
-    wxImage::AddHandler(new wxPNGHandler);
+    wxInitAllImageHandlers();
 
     // setup main window
     Developer* developer = new Developer();
