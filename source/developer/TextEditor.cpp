@@ -53,8 +53,8 @@ TextEditor::TextEditor(Developer* developer, wxWindow* parent, const wxString& f
 
     // set font
     wxFont font;
-    font.SetPointSize(prefs.TextEditor.General.Font.PointSize);
     font.SetFaceName(prefs.TextEditor.General.Font.FaceName);
+    font.SetPointSize(prefs.TextEditor.General.Font.PointSize);
     StyleSetFont(wxSTC_STYLE_DEFAULT, font);
 
     // clear all styles to defaults

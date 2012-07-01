@@ -103,8 +103,8 @@ PreferencesDialog::loadValues()
     // text editor general
     if (!_preferences.TextEditor.General.Font.FaceName.IsEmpty()) {
         wxFont font;
-        font.SetPointSize(_preferences.TextEditor.General.Font.PointSize);
         font.SetFaceName(_preferences.TextEditor.General.Font.FaceName);
+        font.SetPointSize(_preferences.TextEditor.General.Font.PointSize);
         _fontCtrl->SetSelectedFont(font);
     }
 
