@@ -1284,8 +1284,10 @@ Developer::onOpenRecentFile(wxCommandEvent& event)
 void
 Developer::onSaveFile(wxCommandEvent& event)
 {
-    wxWindow* fileEditor = _editorContainer->GetCurrentPage();
-    if (fileEditor) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
+        wxWindow* fileEditor = _editorContainer->GetCurrentPage();
+        assert(fileEditor);
+
         IFileEditorDelegator* delegator = (IFileEditorDelegator*)(fileEditor->GetClientData());
         assert(delegator);
 
@@ -1297,8 +1299,10 @@ Developer::onSaveFile(wxCommandEvent& event)
 void
 Developer::onSaveFileAs(wxCommandEvent& event)
 {
-    wxWindow* fileEditor = _editorContainer->GetCurrentPage();
-    if (fileEditor) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
+        wxWindow* fileEditor = _editorContainer->GetCurrentPage();
+        assert(fileEditor);
+
         IFileEditorDelegator* delegator = (IFileEditorDelegator*)(fileEditor->GetClientData());
         assert(delegator);
 
@@ -1327,8 +1331,10 @@ Developer::onSaveAllFiles(wxCommandEvent& event)
 void
 Developer::onCloseFile(wxCommandEvent& event)
 {
-    wxWindow* fileEditor = _editorContainer->GetCurrentPage();
-    if (fileEditor) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
+        wxWindow* fileEditor = _editorContainer->GetCurrentPage();
+        assert(fileEditor);
+
         // see if the file is modified
         IFileEditorDelegator* delegator = (IFileEditorDelegator*)(fileEditor->GetClientData());
         assert(delegator);
@@ -1439,8 +1445,10 @@ Developer::onShowOutput(wxCommandEvent& event)
 void
 Developer::onFileEditorCommand(wxCommandEvent& event)
 {
-    wxWindow* fileEditor = _editorContainer->GetCurrentPage();
-    if (fileEditor) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
+        wxWindow* fileEditor = _editorContainer->GetCurrentPage();
+        assert(fileEditor);
+
         IFileEditorDelegator* delegator = (IFileEditorDelegator*)(fileEditor->GetClientData());
         assert(delegator);
 
@@ -1554,8 +1562,10 @@ Developer::onUpdateUI_CloseProject(wxUpdateUIEvent& event)
 void
 Developer::onUpdateUI_SaveFile(wxUpdateUIEvent& event)
 {
-    wxWindow* fileEditor = _editorContainer->GetCurrentPage();
-    if (fileEditor) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
+        wxWindow* fileEditor = _editorContainer->GetCurrentPage();
+        assert(fileEditor);
+
         IFileEditorDelegator* delegator = (IFileEditorDelegator*)(fileEditor->GetClientData());
         assert(delegator);
 
@@ -1571,7 +1581,7 @@ Developer::onUpdateUI_SaveFile(wxUpdateUIEvent& event)
 void
 Developer::onUpdateUI_SaveFileAs(wxUpdateUIEvent& event)
 {
-    if (_editorContainer->GetCurrentPage()) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
         event.Enable(true);
     } else {
         event.Enable(false);
@@ -1602,7 +1612,7 @@ Developer::onUpdateUI_SaveAllFiles(wxUpdateUIEvent& event)
 void
 Developer::onUpdateUI_CloseFile(wxUpdateUIEvent& event)
 {
-    if (_editorContainer->GetCurrentPage()) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
         event.Enable(true);
     } else {
         event.Enable(false);
@@ -1624,8 +1634,10 @@ Developer::onUpdateUI_CloseAllFiles(wxUpdateUIEvent& event)
 void
 Developer::onUpdateUI_FileEditorCommand(wxUpdateUIEvent& event)
 {
-    wxWindow* fileEditor = _editorContainer->GetCurrentPage();
-    if (fileEditor) {
+    if (_editorContainer->GetPageCount() > 0 && _editorContainer->GetSelection() != wxNOT_FOUND) {
+        wxWindow* fileEditor = _editorContainer->GetCurrentPage();
+        assert(fileEditor);
+
         IFileEditorDelegator* delegator = (IFileEditorDelegator*)(fileEditor->GetClientData());
         assert(delegator);
 
