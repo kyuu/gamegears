@@ -48,28 +48,46 @@ TextEditor::TextEditor(Developer* developer, wxWindow* parent, const wxString& f
 
     const Preferences& prefs = _developer->getPreferences();
 
-    // set zoom level
+    // set initial zoom level
     SetZoom(prefs.TextEditor.General.InitialZoomLevel);
 
-    // set font
-    wxFont font;
-    font.SetFaceName(prefs.TextEditor.General.Font.FaceName);
-    font.SetPointSize(prefs.TextEditor.General.Font.PointSize);
-    StyleSetFont(wxSTC_STYLE_DEFAULT, font);
+    // set default style font
+    if (!prefs.TextEditor.General.Font.FaceName.IsEmpty()) {
+        wxFont font;
+        font.SetFaceName(prefs.TextEditor.General.Font.FaceName);
+        font.SetPointSize(prefs.TextEditor.General.Font.PointSize);
+        StyleSetFont(wxSTC_STYLE_DEFAULT, font);
+    }
+
+    // set default style colors
+    StyleSetForeground(wxSTC_STYLE_DEFAULT, prefs.TextEditor.General.DefaultStyle.Foreground);
+    StyleSetBackground(wxSTC_STYLE_DEFAULT, prefs.TextEditor.General.DefaultStyle.Background);
 
     // clear all styles to defaults
     StyleClearAll();
 
-    if (_scriptMode) {
-        // setup indentation
-        SetTabIndents(true);
-        SetTabWidth(prefs.TextEditor.Indent.TabSize);
-        SetUseTabs(prefs.TextEditor.Indent.ConvertTabsToSpaces == false);
+    // set caret width and color
+    SetCaretWidth     (prefs.TextEditor.General.Caret.Width);
+    SetCaretForeground(prefs.TextEditor.General.Caret.Color);
 
+    // set tab width
+    SetTabWidth(prefs.TextEditor.Indent.TabSize);
+
+    // the following settings only make sense in script mode
+    if (_scriptMode) {
+        // setup indent
+        SetTabIndents(true);
+        SetUseTabs(prefs.TextEditor.Indent.ConvertTabsToSpaces == false);
         SetIndent(prefs.TextEditor.Indent.IndentSize);
-        SetIndentationGuides(prefs.TextEditor.Indent.ShowIndentationGuides);
         SetBackSpaceUnIndents(prefs.TextEditor.Indent.BackspaceUnindents);
         _autoIndent = prefs.TextEditor.Indent.EnableAutoIndent;
+
+        // setup indent guides
+        if (prefs.TextEditor.Indent.ShowIndentationGuides) {
+            SetIndentationGuides(prefs.TextEditor.Indent.ShowIndentationGuides);
+            StyleSetForeground(wxSTC_STYLE_INDENTGUIDE, prefs.TextEditor.Indent.IndentationGuideStyle.Foreground);
+            StyleSetBackground(wxSTC_STYLE_INDENTGUIDE, prefs.TextEditor.Indent.IndentationGuideStyle.Background);
+        }
 
         // setup line numbers margin
         _displayLineNumbers = prefs.TextEditor.Margin.DisplayLineNumbers;
@@ -90,6 +108,9 @@ TextEditor::TextEditor(Developer* developer, wxWindow* parent, const wxString& f
             SetMarginWidth(MARGIN_FOLD, 16);
             SetMarginMask(MARGIN_FOLD, wxSTC_MASK_FOLDERS);
             SetMarginSensitive(MARGIN_FOLD, true);
+
+            SetFoldMarginHiColour(true, prefs.TextEditor.Margin.FolderMarginStyle.Foreground);
+            SetFoldMarginColour  (true, prefs.TextEditor.Margin.FolderMarginStyle.Background);
 
             SetProperty(wxT("fold"),         wxT("1"));
             SetProperty(wxT("fold.comment"), wxT("1"));
@@ -225,6 +246,12 @@ TextEditor::TextEditor(Developer* developer, wxWindow* parent, const wxString& f
             StyleSetBackground(wxSTC_C_STRING, prefs.TextEditor.Syntax.String.Style.Background);
             StyleSetBold      (wxSTC_C_STRING, prefs.TextEditor.Syntax.String.Style.Bold);
             StyleSetItalic    (wxSTC_C_STRING, prefs.TextEditor.Syntax.String.Style.Italic);
+
+            // set string EOL (incomplete string) style
+            StyleSetForeground(wxSTC_C_STRINGEOL, prefs.TextEditor.Syntax.StringEOL.Style.Foreground);
+            StyleSetBackground(wxSTC_C_STRINGEOL, prefs.TextEditor.Syntax.StringEOL.Style.Background);
+            StyleSetBold      (wxSTC_C_STRINGEOL, prefs.TextEditor.Syntax.StringEOL.Style.Bold);
+            StyleSetItalic    (wxSTC_C_STRINGEOL, prefs.TextEditor.Syntax.StringEOL.Style.Italic);
 
             // set identifier style
             StyleSetForeground(wxSTC_C_IDENTIFIER, prefs.TextEditor.Syntax.Identifier.Style.Foreground);

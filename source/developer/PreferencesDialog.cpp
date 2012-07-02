@@ -101,6 +101,12 @@ PreferencesDialog::loadValues()
     _textFileExtensionList->SetStrings(_preferences.General.FileTypeAssociation.Text);
 
     // text editor general
+    _defaultStyleForegroundCtrl->SetColour(_preferences.TextEditor.General.DefaultStyle.Foreground);
+    _defaultStyleBackgroundCtrl->SetColour(_preferences.TextEditor.General.DefaultStyle.Background);
+
+    _caretStyleWidthCtrl->SetValue(_preferences.TextEditor.General.Caret.Width);
+    _caretStyleColorCtrl->SetColour(_preferences.TextEditor.General.Caret.Color);
+
     if (!_preferences.TextEditor.General.Font.FaceName.IsEmpty()) {
         wxFont font;
         font.SetFaceName(_preferences.TextEditor.General.Font.FaceName);
@@ -124,6 +130,9 @@ PreferencesDialog::loadValues()
 
     _displayFoldersCtrl->SetValue(_preferences.TextEditor.Margin.DisplayFolders);
     _foldAllOnStartupCtrl->SetValue(_preferences.TextEditor.Margin.FoldAllOnStartup);
+
+    _folderMarginStyleForegroundCtrl->SetColour(_preferences.TextEditor.Margin.FolderMarginStyle.Foreground);
+    _folderMarginStyleBackgroundCtrl->SetColour(_preferences.TextEditor.Margin.FolderMarginStyle.Background);
 
     _folderHeaderStyleShapeCtrl->SetSelection(_preferences.TextEditor.Margin.FolderHeaderStyle.Shape);
     _folderHeaderStyleForegroundCtrl->SetColour(_preferences.TextEditor.Margin.FolderHeaderStyle.Foreground);
@@ -150,7 +159,11 @@ PreferencesDialog::loadValues()
 
     _enableAutoIndentCtrl->SetValue(_preferences.TextEditor.Indent.EnableAutoIndent);
     _backspaceUnindentsCtrl->SetValue(_preferences.TextEditor.Indent.BackspaceUnindents);
+
     _showIndentationGuidesCtrl->SetValue(_preferences.TextEditor.Indent.ShowIndentationGuides);
+
+    _indentationGuideStyleForegroundCtrl->SetColour(_preferences.TextEditor.Indent.IndentationGuideStyle.Foreground);
+    _indentationGuideStyleBackgroundCtrl->SetColour(_preferences.TextEditor.Indent.IndentationGuideStyle.Background);
 
     // text editor braces
     _enableBraceMatchingCtrl->SetValue(_preferences.TextEditor.Braces.EnableBraceMatching);
@@ -181,6 +194,12 @@ PreferencesDialog::loadValues()
 
     _stringStyleForegroundCtrl->SetColour(_preferences.TextEditor.Syntax.String.Style.Foreground);
     _stringStyleBackgroundCtrl->SetColour(_preferences.TextEditor.Syntax.String.Style.Background);
+
+    _stringEOLStyleBoldCtrl->SetValue(_preferences.TextEditor.Syntax.StringEOL.Style.Bold);
+    _stringEOLStyleItalicCtrl->SetValue(_preferences.TextEditor.Syntax.StringEOL.Style.Italic);
+
+    _stringEOLStyleForegroundCtrl->SetColour(_preferences.TextEditor.Syntax.StringEOL.Style.Foreground);
+    _stringEOLStyleBackgroundCtrl->SetColour(_preferences.TextEditor.Syntax.StringEOL.Style.Background);
 
     _identifierStyleBoldCtrl->SetValue(_preferences.TextEditor.Syntax.Identifier.Style.Bold);
     _identifierStyleItalicCtrl->SetValue(_preferences.TextEditor.Syntax.Identifier.Style.Italic);
@@ -238,6 +257,12 @@ PreferencesDialog::saveValues()
     _textFileExtensionList->GetStrings(_preferences.General.FileTypeAssociation.Text);
 
     // text editor general
+    _preferences.TextEditor.General.DefaultStyle.Foreground = _defaultStyleForegroundCtrl->GetColour();
+    _preferences.TextEditor.General.DefaultStyle.Background = _defaultStyleBackgroundCtrl->GetColour();
+
+    _preferences.TextEditor.General.Caret.Width = _caretStyleWidthCtrl->GetValue();
+    _preferences.TextEditor.General.Caret.Color = _caretStyleColorCtrl->GetColour();
+
     wxFont selectedFont = _fontCtrl->GetSelectedFont();
     _preferences.TextEditor.General.Font.PointSize = selectedFont.GetPointSize();
     _preferences.TextEditor.General.Font.FaceName  = selectedFont.GetFaceName();
@@ -258,6 +283,9 @@ PreferencesDialog::saveValues()
 
     _preferences.TextEditor.Margin.DisplayFolders   = _displayFoldersCtrl->GetValue();
     _preferences.TextEditor.Margin.FoldAllOnStartup = _foldAllOnStartupCtrl->GetValue();
+
+    _preferences.TextEditor.Margin.FolderMarginStyle.Foreground = _folderMarginStyleForegroundCtrl->GetColour();
+    _preferences.TextEditor.Margin.FolderMarginStyle.Background = _folderMarginStyleBackgroundCtrl->GetColour();
 
     _preferences.TextEditor.Margin.FolderHeaderStyle.Shape      = _folderHeaderStyleShapeCtrl->GetSelection();
     _preferences.TextEditor.Margin.FolderHeaderStyle.Foreground = _folderHeaderStyleForegroundCtrl->GetColour();
@@ -280,7 +308,11 @@ PreferencesDialog::saveValues()
 
     _preferences.TextEditor.Indent.EnableAutoIndent      = _enableAutoIndentCtrl->GetValue();
     _preferences.TextEditor.Indent.BackspaceUnindents    = _backspaceUnindentsCtrl->GetValue();
+
     _preferences.TextEditor.Indent.ShowIndentationGuides = _showIndentationGuidesCtrl->GetValue();
+
+    _preferences.TextEditor.Indent.IndentationGuideStyle.Foreground = _indentationGuideStyleForegroundCtrl->GetColour();
+    _preferences.TextEditor.Indent.IndentationGuideStyle.Background = _indentationGuideStyleBackgroundCtrl->GetColour();
 
     // text editor braces
     _preferences.TextEditor.Braces.EnableBraceMatching   = _enableBraceMatchingCtrl->GetValue();
@@ -311,6 +343,12 @@ PreferencesDialog::saveValues()
 
     _preferences.TextEditor.Syntax.String.Style.Foreground = _stringStyleForegroundCtrl->GetColour();
     _preferences.TextEditor.Syntax.String.Style.Background = _stringStyleBackgroundCtrl->GetColour();
+
+    _preferences.TextEditor.Syntax.StringEOL.Style.Bold   = _stringEOLStyleBoldCtrl->GetValue();
+    _preferences.TextEditor.Syntax.StringEOL.Style.Italic = _stringEOLStyleItalicCtrl->GetValue();
+
+    _preferences.TextEditor.Syntax.StringEOL.Style.Foreground = _stringEOLStyleForegroundCtrl->GetColour();
+    _preferences.TextEditor.Syntax.StringEOL.Style.Background = _stringEOLStyleBackgroundCtrl->GetColour();
 
     _preferences.TextEditor.Syntax.Identifier.Style.Bold   = _identifierStyleBoldCtrl->GetValue();
     _preferences.TextEditor.Syntax.Identifier.Style.Italic = _identifierStyleItalicCtrl->GetValue();
@@ -423,30 +461,60 @@ PreferencesDialog::createTextEditorGeneralPage(wxWindow* parentCtrl)
     wxPanel* panel = new wxPanel(parentCtrl, wxID_ANY);
 
     // create widgets
-    wxStaticBoxSizer* sbs1 = new wxStaticBoxSizer(wxHORIZONTAL, panel, wxT("Font"));
-    wxStaticBoxSizer* sbs2 = new wxStaticBoxSizer(wxHORIZONTAL, panel, wxT("Zooming"));
+    wxStaticBoxSizer* sbs1 = new wxStaticBoxSizer(wxHORIZONTAL, panel, wxT("Default style"));
+    wxStaticBoxSizer* sbs2 = new wxStaticBoxSizer(wxHORIZONTAL, panel, wxT("Caret style"));
+    wxStaticBoxSizer* sbs3 = new wxStaticBoxSizer(wxHORIZONTAL, panel, wxT("Font"));
+    wxStaticBoxSizer* sbs4 = new wxStaticBoxSizer(wxHORIZONTAL, panel, wxT("Zooming"));
 
-    wxStaticText* initialZoomLevelLabel = new wxStaticText(sbs2->GetStaticBox(), wxID_ANY, wxT("Initial zoom level:"));
+    _defaultStyleForegroundCtrl = new wxColourPickerCtrl(sbs1->GetStaticBox(), wxID_ANY);
+    _defaultStyleBackgroundCtrl = new wxColourPickerCtrl(sbs1->GetStaticBox(), wxID_ANY);
 
-    _fontCtrl = new wxFontPickerCtrl(sbs1->GetStaticBox(), wxID_ANY, wxNullFont, wxDefaultPosition, wxDefaultSize, wxFNTP_FONTDESC_AS_LABEL);
+    wxFlexGridSizer* defaultStyleColorBox = new wxFlexGridSizer(2, 2, 5, 5);
 
-    _initialZoomLevelCtrl = new wxSpinCtrl(sbs2->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, -10, 20);
+    defaultStyleColorBox->Add(new wxStaticText(sbs1->GetStaticBox(), wxID_ANY, wxT("Foreground:")));
+    defaultStyleColorBox->Add(_defaultStyleForegroundCtrl);
+
+    defaultStyleColorBox->Add(new wxStaticText(sbs1->GetStaticBox(), wxID_ANY, wxT("Background:")));
+    defaultStyleColorBox->Add(_defaultStyleBackgroundCtrl);
+
+    sbs1->Add(defaultStyleColorBox, 0, wxEXPAND | wxALL, 5);
+
+    _caretStyleWidthCtrl = new wxSpinCtrl(sbs2->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, 1, 3);
+
+    _caretStyleColorCtrl = new wxColourPickerCtrl(sbs2->GetStaticBox(), wxID_ANY);
+
+    wxFlexGridSizer* caretStyleBox = new wxFlexGridSizer(2, 2, 5, 5);
+
+    caretStyleBox->Add(new wxStaticText(sbs2->GetStaticBox(), wxID_ANY, wxT("Width:")));
+    caretStyleBox->Add(_caretStyleWidthCtrl);
+
+    caretStyleBox->Add(new wxStaticText(sbs2->GetStaticBox(), wxID_ANY, wxT("Color:")));
+    caretStyleBox->Add(_caretStyleColorCtrl);
+
+    sbs2->Add(caretStyleBox, 0, wxEXPAND | wxALL, 5);
+
+    _fontCtrl = new wxFontPickerCtrl(sbs3->GetStaticBox(), wxID_ANY, wxNullFont, wxDefaultPosition, wxDefaultSize, wxFNTP_FONTDESC_AS_LABEL);
+
+    sbs3->Add(_fontCtrl, 1, wxEXPAND | wxALL, 5);
+
+    _initialZoomLevelCtrl = new wxSpinCtrl(sbs4->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, -10, 20);
+
+    sbs4->Add(new wxStaticText(sbs4->GetStaticBox(), wxID_ANY, wxT("Initial zoom level:")), 0, wxALL, 5);
+    sbs4->Add(_initialZoomLevelCtrl, 0, wxALL, 5);
 
     //_enableAutoCompleteCtrl  = new wxCheckBox(panel, wxID_ANY, wxT("Enable auto-complete"));
     //_enableCallTipsCtrl      = new wxCheckBox(panel, wxID_ANY, wxT("Enable call tips"));
 
-    // create sizers
-    sbs1->Add(_fontCtrl, 1, wxEXPAND | wxALL, 5);
-
-    sbs2->Add(initialZoomLevelLabel, 0, wxALL, 5);
-    sbs2->Add(_initialZoomLevelCtrl, 0, wxALL, 5);
-
     wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
 
     panelSizer->Add(sbs1,                     0, wxEXPAND | wxALL, 5);
-    panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
     panelSizer->Add(sbs2,                     0, wxEXPAND | wxALL, 5);
-    //panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
+    panelSizer->Add(sbs3,                     0, wxEXPAND | wxALL, 5);
+    panelSizer->AddSpacer(5);
+    panelSizer->Add(sbs4,                     0, wxEXPAND | wxALL, 5);
+    //panelSizer->AddSpacer(5);
     //panelSizer->Add(_enableAutoCompleteCtrl,  0, wxEXPAND | wxALL, 5);
     //panelSizer->Add(_enableCallTipsCtrl,      0, wxEXPAND | wxALL, 5);
 
@@ -476,7 +544,7 @@ PreferencesDialog::createTextEditorMarginPage(wxWindow* parentCtrl)
 
     wxPanel* panel = new wxPanel(parentCtrl, wxID_ANY);
 
-    // line numbers margin widgets
+    // line number margin widgets
     _displayLineNumbersCtrl = new wxCheckBox(panel, wxID_ANY, wxT("Display line numbers"));
 
     wxStaticBoxSizer* lineNumberStyleBox = new wxStaticBoxSizer(wxVERTICAL, panel, wxT("Line number style"));
@@ -504,15 +572,30 @@ PreferencesDialog::createTextEditorMarginPage(wxWindow* parentCtrl)
     lineNumberStyleBox->Add(lineNumberStyleBoldItalicBox, 0, wxALL, 5);
     lineNumberStyleBox->Add(lineNumberStyleColorBox,      0, wxALL, 5);
 
-    // folders margin widgets
+    // folder margin widgets
     _displayFoldersCtrl   = new wxCheckBox(panel, wxID_ANY, wxT("Display folders"));
     _foldAllOnStartupCtrl = new wxCheckBox(panel, wxID_ANY, wxT("Fold all on startup"));
 
-    wxStaticBoxSizer* folderStyleBox = new wxStaticBoxSizer(wxVERTICAL, panel, wxT("Folder style"));
+    wxStaticBoxSizer* folderStylesBox = new wxStaticBoxSizer(wxVERTICAL, panel, wxT("Folder styles"));
 
-    wxListbook* folderStylePanels = new wxListbook(folderStyleBox->GetStaticBox(), wxID_ANY);
+    wxListbook* folderStylePanels = new wxListbook(folderStylesBox->GetStaticBox(), wxID_ANY);
 
-    folderStyleBox->Add(folderStylePanels, 1, wxEXPAND | wxALL, 5);
+    folderStylesBox->Add(folderStylePanels, 1, wxEXPAND | wxALL, 5);
+
+    wxPanel* folderMarginStylePanel = new wxPanel(folderStylePanels, wxID_ANY);
+
+    _folderMarginStyleForegroundCtrl = new wxColourPickerCtrl(folderMarginStylePanel, wxID_ANY);
+    _folderMarginStyleBackgroundCtrl = new wxColourPickerCtrl(folderMarginStylePanel, wxID_ANY);
+
+    wxFlexGridSizer* folderMarginStylePanelSizer = new wxFlexGridSizer(2, 2, 5, 5);
+
+    folderMarginStylePanelSizer->Add(new wxStaticText(folderMarginStylePanel, wxID_ANY, wxT("Foreground:")));
+    folderMarginStylePanelSizer->Add(_folderMarginStyleForegroundCtrl);
+
+    folderMarginStylePanelSizer->Add(new wxStaticText(folderMarginStylePanel, wxID_ANY, wxT("Background:")));
+    folderMarginStylePanelSizer->Add(_folderMarginStyleBackgroundCtrl);
+
+    folderMarginStylePanel->SetSizer(folderMarginStylePanelSizer);
 
     wxPanel* folderHeaderStylePanel = new wxPanel(folderStylePanels, wxID_ANY);
 
@@ -527,10 +610,10 @@ PreferencesDialog::createTextEditorMarginPage(wxWindow* parentCtrl)
     folderHeaderStylePanelSizer->Add(_folderHeaderStyleShapeCtrl);
 
     folderHeaderStylePanelSizer->Add(new wxStaticText(folderHeaderStylePanel, wxID_ANY, wxT("Foreground:")));
-    folderHeaderStylePanelSizer->Add(_folderHeaderStyleForegroundCtrl, 0, wxEXPAND);
+    folderHeaderStylePanelSizer->Add(_folderHeaderStyleForegroundCtrl);
 
     folderHeaderStylePanelSizer->Add(new wxStaticText(folderHeaderStylePanel, wxID_ANY, wxT("Background:")));
-    folderHeaderStylePanelSizer->Add(_folderHeaderStyleBackgroundCtrl, 0, wxEXPAND);
+    folderHeaderStylePanelSizer->Add(_folderHeaderStyleBackgroundCtrl);
 
     folderHeaderStylePanel->SetSizer(folderHeaderStylePanelSizer);
 
@@ -547,10 +630,10 @@ PreferencesDialog::createTextEditorMarginPage(wxWindow* parentCtrl)
     folderMidHeaderStylePanelSizer->Add(_folderMidHeaderStyleShapeCtrl);
 
     folderMidHeaderStylePanelSizer->Add(new wxStaticText(folderMidHeaderStylePanel, wxID_ANY, wxT("Foreground:")));
-    folderMidHeaderStylePanelSizer->Add(_folderMidHeaderStyleForegroundCtrl, 0, wxEXPAND);
+    folderMidHeaderStylePanelSizer->Add(_folderMidHeaderStyleForegroundCtrl);
 
     folderMidHeaderStylePanelSizer->Add(new wxStaticText(folderMidHeaderStylePanel, wxID_ANY, wxT("Background:")));
-    folderMidHeaderStylePanelSizer->Add(_folderMidHeaderStyleBackgroundCtrl, 0, wxEXPAND);
+    folderMidHeaderStylePanelSizer->Add(_folderMidHeaderStyleBackgroundCtrl);
 
     folderMidHeaderStylePanel->SetSizer(folderMidHeaderStylePanelSizer);
 
@@ -567,13 +650,14 @@ PreferencesDialog::createTextEditorMarginPage(wxWindow* parentCtrl)
     folderBodyStylePanelSizer->Add(_folderBodyStyleShapeCtrl);
 
     folderBodyStylePanelSizer->Add(new wxStaticText(folderBodyStylePanel, wxID_ANY, wxT("Foreground:")));
-    folderBodyStylePanelSizer->Add(_folderBodyStyleForegroundCtrl, 0, wxEXPAND);
+    folderBodyStylePanelSizer->Add(_folderBodyStyleForegroundCtrl);
 
     folderBodyStylePanelSizer->Add(new wxStaticText(folderBodyStylePanel, wxID_ANY, wxT("Background:")));
-    folderBodyStylePanelSizer->Add(_folderBodyStyleBackgroundCtrl, 0, wxEXPAND);
+    folderBodyStylePanelSizer->Add(_folderBodyStyleBackgroundCtrl);
 
     folderBodyStylePanel->SetSizer(folderBodyStylePanelSizer);
 
+    folderStylePanels->AddPage(folderMarginStylePanel,    wxT("Margin"));
     folderStylePanels->AddPage(folderHeaderStylePanel,    wxT("Header"));
     folderStylePanels->AddPage(folderMidHeaderStylePanel, wxT("Mid-header"));
     folderStylePanels->AddPage(folderBodyStylePanel,      wxT("Body"));
@@ -582,10 +666,10 @@ PreferencesDialog::createTextEditorMarginPage(wxWindow* parentCtrl)
 
     panelSizer->Add(_displayLineNumbersCtrl, 0,            wxALL, 5);
     panelSizer->Add(lineNumberStyleBox,      0, wxEXPAND | wxALL, 5);
-    panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
     panelSizer->Add(_displayFoldersCtrl,     0,            wxALL, 5);
     panelSizer->Add(_foldAllOnStartupCtrl,   0,            wxALL, 5);
-    panelSizer->Add(folderStyleBox,          1, wxEXPAND | wxALL, 5);
+    panelSizer->Add(folderStylesBox,         1, wxEXPAND | wxALL, 5);
 
     panel->SetSizer(panelSizer);
 
@@ -627,15 +711,32 @@ PreferencesDialog::createTextEditorIndentPage(wxWindow* parentCtrl)
     _backspaceUnindentsCtrl    = new wxCheckBox(indentBox->GetStaticBox(), wxID_ANY, wxT("Backspace unindents"));
     _showIndentationGuidesCtrl = new wxCheckBox(indentBox->GetStaticBox(), wxID_ANY, wxT("Show indentation guides"));
 
+    wxStaticBoxSizer* indentationGuideStyleBox = new wxStaticBoxSizer(wxVERTICAL, indentBox->GetStaticBox(), wxT("Indentation guide style"));
+
+    _indentationGuideStyleForegroundCtrl = new wxColourPickerCtrl(indentationGuideStyleBox->GetStaticBox(), wxID_ANY);
+    _indentationGuideStyleBackgroundCtrl = new wxColourPickerCtrl(indentationGuideStyleBox->GetStaticBox(), wxID_ANY);
+
+    wxFlexGridSizer* indentationGuideStyleColorBox = new wxFlexGridSizer(2, 2, 5, 5);
+
+    indentationGuideStyleColorBox->Add(new wxStaticText(indentationGuideStyleBox->GetStaticBox(), wxID_ANY, wxT("Foreground:")));
+    indentationGuideStyleColorBox->Add(_indentationGuideStyleForegroundCtrl);
+
+    indentationGuideStyleColorBox->Add(new wxStaticText(indentationGuideStyleBox->GetStaticBox(), wxID_ANY, wxT("Background:")));
+    indentationGuideStyleColorBox->Add(_indentationGuideStyleBackgroundCtrl);
+
+    indentationGuideStyleBox->Add(indentationGuideStyleColorBox, 0, wxALL, 5);
+
     indentBox->Add(indentSizeBox,              0, wxALL, 5);
     indentBox->Add(_enableAutoIndentCtrl,      0, wxALL, 5);
     indentBox->Add(_backspaceUnindentsCtrl,    0, wxALL, 5);
     indentBox->Add(_showIndentationGuidesCtrl, 0, wxALL, 5);
+    indentBox->AddSpacer(5);
+    indentBox->Add(indentationGuideStyleBox,   0, wxEXPAND | wxALL, 5);
 
     wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
 
     panelSizer->Add(tabBox,    0, wxEXPAND | wxALL, 5);
-    panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
     panelSizer->Add(indentBox, 0, wxEXPAND | wxALL, 5);
 
     panel->SetSizer(panelSizer);
@@ -704,9 +805,9 @@ PreferencesDialog::createTextEditorBracesPage(wxWindow* parentCtrl)
     wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
 
     panelSizer->Add(_enableBraceMatchingCtrl, 0, wxEXPAND | wxALL, 5);
-    panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
     panelSizer->Add(braceHighlightStyleBox,   0, wxEXPAND | wxALL, 5);
-    panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
     panelSizer->Add(braceBadlightStyleBox,    0, wxEXPAND | wxALL, 5);
 
     panel->SetSizer(panelSizer);
@@ -791,6 +892,40 @@ PreferencesDialog::createTextEditorSyntaxPage(wxWindow* parentCtrl)
     stringPanelSizer->Add(stringStyleBox, 0, wxEXPAND | wxALL, 5);
 
     stringPanel->SetSizer(stringPanelSizer);
+
+    // string EOL
+    wxPanel* stringEOLPanel = new wxPanel(panelContainer, wxID_ANY);
+
+    wxStaticBoxSizer* stringEOLStyleBox = new wxStaticBoxSizer(wxVERTICAL, stringEOLPanel, wxT("String EOL style"));
+
+    _stringEOLStyleBoldCtrl   = new wxCheckBox(stringEOLStyleBox->GetStaticBox(), wxID_ANY, wxT("Bold"));
+    _stringEOLStyleItalicCtrl = new wxCheckBox(stringEOLStyleBox->GetStaticBox(), wxID_ANY, wxT("Italic"));
+
+    wxBoxSizer* stringEOLStyleBoldItalicBox = new wxBoxSizer(wxHORIZONTAL);
+
+    stringEOLStyleBoldItalicBox->Add(_stringEOLStyleBoldCtrl);
+    stringEOLStyleBoldItalicBox->AddSpacer(10);
+    stringEOLStyleBoldItalicBox->Add(_stringEOLStyleItalicCtrl);
+
+    _stringEOLStyleForegroundCtrl = new wxColourPickerCtrl(stringEOLStyleBox->GetStaticBox(), wxID_ANY);
+    _stringEOLStyleBackgroundCtrl = new wxColourPickerCtrl(stringEOLStyleBox->GetStaticBox(), wxID_ANY);
+
+    wxFlexGridSizer* stringEOLStyleColorBox = new wxFlexGridSizer(2, 2, 5, 5);
+
+    stringEOLStyleColorBox->Add(new wxStaticText(stringEOLStyleBox->GetStaticBox(), wxID_ANY, wxT("Foreground:")));
+    stringEOLStyleColorBox->Add(_stringEOLStyleForegroundCtrl);
+
+    stringEOLStyleColorBox->Add(new wxStaticText(stringEOLStyleBox->GetStaticBox(), wxID_ANY, wxT("Background:")));
+    stringEOLStyleColorBox->Add(_stringEOLStyleBackgroundCtrl);
+
+    stringEOLStyleBox->Add(stringEOLStyleBoldItalicBox, 0, wxALL, 5);
+    stringEOLStyleBox->Add(stringEOLStyleColorBox,      0, wxALL, 5);
+
+    wxBoxSizer* stringEOLPanelSizer = new wxBoxSizer(wxVERTICAL);
+
+    stringEOLPanelSizer->Add(stringEOLStyleBox, 0, wxEXPAND | wxALL, 5);
+
+    stringEOLPanel->SetSizer(stringEOLPanelSizer);
 
     // identifier
     wxPanel* identifierPanel = new wxPanel(panelContainer, wxID_ANY);
@@ -1008,6 +1143,7 @@ PreferencesDialog::createTextEditorSyntaxPage(wxWindow* parentCtrl)
     panelContainer->AddPage(numberPanel,     wxT("Number"));
     panelContainer->AddPage(characterPanel,  wxT("Character"));
     panelContainer->AddPage(stringPanel,     wxT("String"));
+    panelContainer->AddPage(stringEOLPanel,  wxT("String EOL"));
     panelContainer->AddPage(commentPanel,    wxT("Comment"));
     panelContainer->AddPage(operatorPanel,   wxT("Operator"));
     panelContainer->AddPage(keyword1Panel,   wxT("Keyword 1"));
@@ -1016,7 +1152,7 @@ PreferencesDialog::createTextEditorSyntaxPage(wxWindow* parentCtrl)
     wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
 
     panelSizer->Add(_enableSyntaxHighlightingCtrl, 0,            wxALL, 5);
-    panelSizer->AddSpacer(10);
+    panelSizer->AddSpacer(5);
     panelSizer->Add(panelContainer,                1, wxEXPAND | wxALL, 5);
 
     panel->SetSizer(panelSizer);

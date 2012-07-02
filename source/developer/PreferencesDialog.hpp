@@ -72,6 +72,12 @@ private:
     wxEditableListBox* _textFileExtensionList;
 
     // text editor general
+    wxColourPickerCtrl* _defaultStyleForegroundCtrl;
+    wxColourPickerCtrl* _defaultStyleBackgroundCtrl;
+
+    wxSpinCtrl*         _caretStyleWidthCtrl;
+    wxColourPickerCtrl* _caretStyleColorCtrl;
+
     wxFontPickerCtrl* _fontCtrl;
 
     wxSpinCtrl* _initialZoomLevelCtrl;
@@ -90,6 +96,9 @@ private:
 
     wxCheckBox* _displayFoldersCtrl;
     wxCheckBox* _foldAllOnStartupCtrl;
+
+    wxColourPickerCtrl* _folderMarginStyleForegroundCtrl;
+    wxColourPickerCtrl* _folderMarginStyleBackgroundCtrl;
 
     wxChoice*           _folderHeaderStyleShapeCtrl;
     wxColourPickerCtrl* _folderHeaderStyleForegroundCtrl;
@@ -110,7 +119,11 @@ private:
     wxSpinCtrl* _indentSizeCtrl;
     wxCheckBox* _enableAutoIndentCtrl;
     wxCheckBox* _backspaceUnindentsCtrl;
+
     wxCheckBox* _showIndentationGuidesCtrl;
+
+    wxColourPickerCtrl* _indentationGuideStyleForegroundCtrl;
+    wxColourPickerCtrl* _indentationGuideStyleBackgroundCtrl;
 
     // text editor braces
     wxCheckBox* _enableBraceMatchingCtrl;
@@ -141,6 +154,12 @@ private:
 
     wxColourPickerCtrl* _stringStyleForegroundCtrl;
     wxColourPickerCtrl* _stringStyleBackgroundCtrl;
+
+    wxCheckBox* _stringEOLStyleBoldCtrl;
+    wxCheckBox* _stringEOLStyleItalicCtrl;
+
+    wxColourPickerCtrl* _stringEOLStyleForegroundCtrl;
+    wxColourPickerCtrl* _stringEOLStyleBackgroundCtrl;
 
     wxCheckBox* _identifierStyleBoldCtrl;
     wxCheckBox* _identifierStyleItalicCtrl;

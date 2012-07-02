@@ -140,6 +140,12 @@ Preferences::operator=(const Preferences& that)
 
     General.DockManagerState = that.General.DockManagerState;
 
+    TextEditor.General.DefaultStyle.Foreground = that.TextEditor.General.DefaultStyle.Foreground;
+    TextEditor.General.DefaultStyle.Background = that.TextEditor.General.DefaultStyle.Background;
+
+    TextEditor.General.Caret.Width = that.TextEditor.General.Caret.Width;
+    TextEditor.General.Caret.Color = that.TextEditor.General.Caret.Color;
+
     TextEditor.General.Font.FaceName  = that.TextEditor.General.Font.FaceName;
     TextEditor.General.Font.PointSize = that.TextEditor.General.Font.PointSize;
 
@@ -156,6 +162,8 @@ Preferences::operator=(const Preferences& that)
 
     TextEditor.Margin.DisplayFolders                  = that.TextEditor.Margin.DisplayFolders;
     TextEditor.Margin.FoldAllOnStartup                = that.TextEditor.Margin.FoldAllOnStartup;
+    TextEditor.Margin.FolderMarginStyle.Foreground    = that.TextEditor.Margin.FolderMarginStyle.Foreground;
+    TextEditor.Margin.FolderMarginStyle.Background    = that.TextEditor.Margin.FolderMarginStyle.Background;
     TextEditor.Margin.FolderHeaderStyle.Shape         = that.TextEditor.Margin.FolderHeaderStyle.Shape;
     TextEditor.Margin.FolderHeaderStyle.Foreground    = that.TextEditor.Margin.FolderHeaderStyle.Foreground;
     TextEditor.Margin.FolderHeaderStyle.Background    = that.TextEditor.Margin.FolderHeaderStyle.Background;
@@ -172,6 +180,8 @@ Preferences::operator=(const Preferences& that)
     TextEditor.Indent.EnableAutoIndent      = that.TextEditor.Indent.EnableAutoIndent;
     TextEditor.Indent.BackspaceUnindents    = that.TextEditor.Indent.BackspaceUnindents;
     TextEditor.Indent.ShowIndentationGuides = that.TextEditor.Indent.ShowIndentationGuides;
+    TextEditor.Indent.IndentationGuideStyle.Foreground = that.TextEditor.Indent.IndentationGuideStyle.Foreground;
+    TextEditor.Indent.IndentationGuideStyle.Background = that.TextEditor.Indent.IndentationGuideStyle.Background;
 
     TextEditor.Braces.EnableBraceMatching       = that.TextEditor.Braces.EnableBraceMatching;
     TextEditor.Braces.HighlightStyle.Bold       = that.TextEditor.Braces.HighlightStyle.Bold;
@@ -194,6 +204,11 @@ Preferences::operator=(const Preferences& that)
     TextEditor.Syntax.String.Style.Italic         = that.TextEditor.Syntax.String.Style.Italic;
     TextEditor.Syntax.String.Style.Foreground     = that.TextEditor.Syntax.String.Style.Foreground;
     TextEditor.Syntax.String.Style.Background     = that.TextEditor.Syntax.String.Style.Background;
+
+    TextEditor.Syntax.StringEOL.Style.Bold           = that.TextEditor.Syntax.StringEOL.Style.Bold;
+    TextEditor.Syntax.StringEOL.Style.Italic         = that.TextEditor.Syntax.StringEOL.Style.Italic;
+    TextEditor.Syntax.StringEOL.Style.Foreground     = that.TextEditor.Syntax.StringEOL.Style.Foreground;
+    TextEditor.Syntax.StringEOL.Style.Background     = that.TextEditor.Syntax.StringEOL.Style.Background;
 
     TextEditor.Syntax.Identifier.Style.Bold       = that.TextEditor.Syntax.Identifier.Style.Bold;
     TextEditor.Syntax.Identifier.Style.Italic     = that.TextEditor.Syntax.Identifier.Style.Italic;
@@ -267,6 +282,12 @@ Preferences::loadDefaults()
     General.DockManagerState = "";
 
     // load text editor defaults
+    TextEditor.General.DefaultStyle.Foreground = wxColour(  0,   0,   0);
+    TextEditor.General.DefaultStyle.Background = wxColour(255, 255, 255);
+
+    TextEditor.General.Caret.Width = 1;
+    TextEditor.General.Caret.Color = wxColour(0, 0, 0);
+
     TextEditor.General.Font.FaceName  = "DejaVu Sans Mono";
     TextEditor.General.Font.PointSize = 10;
 
@@ -283,6 +304,8 @@ Preferences::loadDefaults()
 
     TextEditor.Margin.DisplayFolders                  = true;
     TextEditor.Margin.FoldAllOnStartup                = false;
+    TextEditor.Margin.FolderMarginStyle.Foreground    = wxColour(175, 175, 175);
+    TextEditor.Margin.FolderMarginStyle.Background    = wxColour(255, 255, 255);
     TextEditor.Margin.FolderHeaderStyle.Shape         = TE_FOLDER_HEADER_STYLE_ARROW;
     TextEditor.Margin.FolderHeaderStyle.Foreground    = wxColour(100, 100, 100);
     TextEditor.Margin.FolderHeaderStyle.Background    = wxColour(100, 100, 100);
@@ -299,6 +322,8 @@ Preferences::loadDefaults()
     TextEditor.Indent.EnableAutoIndent      = true;
     TextEditor.Indent.BackspaceUnindents    = true;
     TextEditor.Indent.ShowIndentationGuides = false;
+    TextEditor.Indent.IndentationGuideStyle.Foreground = wxColour(  0,   0,   0);
+    TextEditor.Indent.IndentationGuideStyle.Background = wxColour(255, 255, 255);
 
     TextEditor.Braces.EnableBraceMatching       = true;
     TextEditor.Braces.HighlightStyle.Bold       = true;
@@ -321,6 +346,11 @@ Preferences::loadDefaults()
     TextEditor.Syntax.String.Style.Italic     = false;
     TextEditor.Syntax.String.Style.Foreground = wxColour(  0, 128, 128);
     TextEditor.Syntax.String.Style.Background = wxColour(255, 255, 255);
+
+    TextEditor.Syntax.StringEOL.Style.Bold       = false;
+    TextEditor.Syntax.StringEOL.Style.Italic     = false;
+    TextEditor.Syntax.StringEOL.Style.Foreground = wxColour(255,   0,   0);
+    TextEditor.Syntax.StringEOL.Style.Background = wxColour(255, 255, 255);
 
     TextEditor.Syntax.Identifier.Style.Bold       = false;
     TextEditor.Syntax.Identifier.Style.Italic     = false;
@@ -447,6 +477,12 @@ Preferences::loadFromFile(const std::string& fileName)
     General.DockManagerState = prefs["General"].get("DockManagerState", General.DockManagerState.ToStdString()).asString();
 
     // load text editor preferences
+    TextEditor.General.DefaultStyle.Foreground = get_color(prefs["TextEditor"]["General"]["DefaultStyle"]["Foreground"], TextEditor.General.DefaultStyle.Foreground);
+    TextEditor.General.DefaultStyle.Background = get_color(prefs["TextEditor"]["General"]["DefaultStyle"]["Background"], TextEditor.General.DefaultStyle.Background);
+
+    TextEditor.General.Caret.Width =           prefs["TextEditor"]["General"]["Caret"].get("Width", TextEditor.General.Caret.Width).asInt();
+    TextEditor.General.Caret.Color = get_color(prefs["TextEditor"]["General"]["Caret"]["Color"],    TextEditor.General.Caret.Color);
+
     TextEditor.General.Font.FaceName  = prefs["TextEditor"]["General"]["Font"].get("FaceName",  TextEditor.General.Font.FaceName.ToStdString()).asString();
     TextEditor.General.Font.PointSize = prefs["TextEditor"]["General"]["Font"].get("PointSize", TextEditor.General.Font.PointSize             ).asInt();
 
@@ -463,6 +499,8 @@ Preferences::loadFromFile(const std::string& fileName)
 
     TextEditor.Margin.DisplayFolders                   =           prefs["TextEditor"]["Margin"].get("DisplayFolders",                  TextEditor.Margin.DisplayFolders).asBool();
     TextEditor.Margin.FoldAllOnStartup                 =           prefs["TextEditor"]["Margin"].get("FoldAllOnStartup",                TextEditor.Margin.FoldAllOnStartup).asBool();
+    TextEditor.Margin.FolderMarginStyle.Foreground     = get_color(prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Foreground"],    TextEditor.Margin.FolderMarginStyle.Foreground);
+    TextEditor.Margin.FolderMarginStyle.Background     = get_color(prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Background"],    TextEditor.Margin.FolderMarginStyle.Background);
     TextEditor.Margin.FolderHeaderStyle.Shape          =           prefs["TextEditor"]["Margin"]["FolderHeaderStyle"].get("Shape",      TextEditor.Margin.FolderHeaderStyle.Shape).asInt();
     TextEditor.Margin.FolderHeaderStyle.Foreground     = get_color(prefs["TextEditor"]["Margin"]["FolderHeaderStyle"]["Foreground"],    TextEditor.Margin.FolderHeaderStyle.Foreground);
     TextEditor.Margin.FolderHeaderStyle.Background     = get_color(prefs["TextEditor"]["Margin"]["FolderHeaderStyle"]["Background"],    TextEditor.Margin.FolderHeaderStyle.Background);
@@ -479,6 +517,8 @@ Preferences::loadFromFile(const std::string& fileName)
     TextEditor.Indent.EnableAutoIndent      = prefs["TextEditor"]["Indent"].get("EnableAutoIndent",      TextEditor.Indent.EnableAutoIndent     ).asBool();
     TextEditor.Indent.BackspaceUnindents    = prefs["TextEditor"]["Indent"].get("BackspaceUnindents",    TextEditor.Indent.BackspaceUnindents   ).asBool();
     TextEditor.Indent.ShowIndentationGuides = prefs["TextEditor"]["Indent"].get("ShowIndentationGuides", TextEditor.Indent.ShowIndentationGuides).asBool();
+    TextEditor.Indent.IndentationGuideStyle.Foreground = get_color(prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Foreground"],  TextEditor.Indent.IndentationGuideStyle.Foreground);
+    TextEditor.Indent.IndentationGuideStyle.Background = get_color(prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Background"],  TextEditor.Indent.IndentationGuideStyle.Background);
 
     TextEditor.Braces.EnableBraceMatching       =           prefs["TextEditor"]["Braces"].get("EnableBraceMatching", TextEditor.Braces.EnableBraceMatching).asBool();
     TextEditor.Braces.HighlightStyle.Bold       =           prefs["TextEditor"]["Braces"]["HighlightStyle"].get("Bold",    TextEditor.Braces.HighlightStyle.Bold  ).asBool();
@@ -499,6 +539,11 @@ Preferences::loadFromFile(const std::string& fileName)
     TextEditor.Syntax.String.Style.Italic     =           prefs["TextEditor"]["Syntax"]["String"]["Style"].get("Italic",  TextEditor.Syntax.String.Style.Italic).asBool();
     TextEditor.Syntax.String.Style.Foreground = get_color(prefs["TextEditor"]["Syntax"]["String"]["Style"]["Foreground"], TextEditor.Syntax.String.Style.Foreground);
     TextEditor.Syntax.String.Style.Background = get_color(prefs["TextEditor"]["Syntax"]["String"]["Style"]["Background"], TextEditor.Syntax.String.Style.Background);
+
+    TextEditor.Syntax.StringEOL.Style.Bold       =           prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"].get("Bold",    TextEditor.Syntax.StringEOL.Style.Bold  ).asBool();
+    TextEditor.Syntax.StringEOL.Style.Italic     =           prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"].get("Italic",  TextEditor.Syntax.StringEOL.Style.Italic).asBool();
+    TextEditor.Syntax.StringEOL.Style.Foreground = get_color(prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Foreground"], TextEditor.Syntax.StringEOL.Style.Foreground);
+    TextEditor.Syntax.StringEOL.Style.Background = get_color(prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Background"], TextEditor.Syntax.StringEOL.Style.Background);
 
     TextEditor.Syntax.Identifier.Style.Bold       =           prefs["TextEditor"]["Syntax"]["Identifier"]["Style"].get("Bold",    TextEditor.Syntax.Identifier.Style.Bold  ).asBool();
     TextEditor.Syntax.Identifier.Style.Italic     =           prefs["TextEditor"]["Syntax"]["Identifier"]["Style"].get("Italic",  TextEditor.Syntax.Identifier.Style.Italic).asBool();
@@ -600,6 +645,18 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["General"]["DockManagerState"] = General.DockManagerState.ToStdString();
 
     // write text editor preferences
+    prefs["TextEditor"]["General"]["DefaultStyle"]["Foreground"]["Red"]   = TextEditor.General.DefaultStyle.Foreground.Red();
+    prefs["TextEditor"]["General"]["DefaultStyle"]["Foreground"]["Green"] = TextEditor.General.DefaultStyle.Foreground.Green();
+    prefs["TextEditor"]["General"]["DefaultStyle"]["Foreground"]["Blue"]  = TextEditor.General.DefaultStyle.Foreground.Blue();
+    prefs["TextEditor"]["General"]["DefaultStyle"]["Background"]["Red"]   = TextEditor.General.DefaultStyle.Background.Red();
+    prefs["TextEditor"]["General"]["DefaultStyle"]["Background"]["Green"] = TextEditor.General.DefaultStyle.Background.Green();
+    prefs["TextEditor"]["General"]["DefaultStyle"]["Background"]["Blue"]  = TextEditor.General.DefaultStyle.Background.Blue();
+
+    prefs["TextEditor"]["General"]["Caret"]["Width"]          = TextEditor.General.Caret.Width;
+    prefs["TextEditor"]["General"]["Caret"]["Color"]["Red"]   = TextEditor.General.Caret.Color.Red();
+    prefs["TextEditor"]["General"]["Caret"]["Color"]["Green"] = TextEditor.General.Caret.Color.Green();
+    prefs["TextEditor"]["General"]["Caret"]["Color"]["Blue"]  = TextEditor.General.Caret.Color.Blue();
+
     prefs["TextEditor"]["General"]["Font"]["FaceName"]  = TextEditor.General.Font.FaceName.ToStdString();
     prefs["TextEditor"]["General"]["Font"]["PointSize"] = TextEditor.General.Font.PointSize;
 
@@ -620,6 +677,13 @@ Preferences::saveToFile(const std::string& fileName)
 
     prefs["TextEditor"]["Margin"]["DisplayFolders"]   = TextEditor.Margin.DisplayFolders;
     prefs["TextEditor"]["Margin"]["FoldAllOnStartup"] = TextEditor.Margin.FoldAllOnStartup;
+
+    prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Foreground"]["Red"]      = TextEditor.Margin.FolderMarginStyle.Foreground.Red();
+    prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Foreground"]["Green"]    = TextEditor.Margin.FolderMarginStyle.Foreground.Green();
+    prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Foreground"]["Blue"]     = TextEditor.Margin.FolderMarginStyle.Foreground.Blue();
+    prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Background"]["Red"]      = TextEditor.Margin.FolderMarginStyle.Background.Red();
+    prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Background"]["Green"]    = TextEditor.Margin.FolderMarginStyle.Background.Green();
+    prefs["TextEditor"]["Margin"]["FolderMarginStyle"]["Background"]["Blue"]     = TextEditor.Margin.FolderMarginStyle.Background.Blue();
 
     prefs["TextEditor"]["Margin"]["FolderHeaderStyle"]["Shape"]                  = TextEditor.Margin.FolderHeaderStyle.Shape;
     prefs["TextEditor"]["Margin"]["FolderHeaderStyle"]["Foreground"]["Red"]      = TextEditor.Margin.FolderHeaderStyle.Foreground.Red();
@@ -651,6 +715,12 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["TextEditor"]["Indent"]["EnableAutoIndent"]      = TextEditor.Indent.EnableAutoIndent;
     prefs["TextEditor"]["Indent"]["BackspaceUnindents"]    = TextEditor.Indent.BackspaceUnindents;
     prefs["TextEditor"]["Indent"]["ShowIndentationGuides"] = TextEditor.Indent.ShowIndentationGuides;
+    prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Foreground"]["Red"]   = TextEditor.Indent.IndentationGuideStyle.Foreground.Red();
+    prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Foreground"]["Green"] = TextEditor.Indent.IndentationGuideStyle.Foreground.Green();
+    prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Foreground"]["Blue"]  = TextEditor.Indent.IndentationGuideStyle.Foreground.Blue();
+    prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Background"]["Red"]   = TextEditor.Indent.IndentationGuideStyle.Background.Red();
+    prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Background"]["Green"] = TextEditor.Indent.IndentationGuideStyle.Background.Green();
+    prefs["TextEditor"]["Indent"]["IndentationGuideStyle"]["Background"]["Blue"]  = TextEditor.Indent.IndentationGuideStyle.Background.Blue();
 
     prefs["TextEditor"]["Braces"]["EnableBraceMatching"]                   = TextEditor.Braces.EnableBraceMatching;
     prefs["TextEditor"]["Braces"]["HighlightStyle"]["Bold"]                = TextEditor.Braces.HighlightStyle.Bold;
@@ -687,6 +757,15 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["TextEditor"]["Syntax"]["String"]["Style"]["Background"]["Red"]   = TextEditor.Syntax.String.Style.Background.Red();
     prefs["TextEditor"]["Syntax"]["String"]["Style"]["Background"]["Green"] = TextEditor.Syntax.String.Style.Background.Green();
     prefs["TextEditor"]["Syntax"]["String"]["Style"]["Background"]["Blue"]  = TextEditor.Syntax.String.Style.Background.Blue();
+
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Bold"]                = TextEditor.Syntax.StringEOL.Style.Bold;
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Italic"]              = TextEditor.Syntax.StringEOL.Style.Italic;
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Foreground"]["Red"]   = TextEditor.Syntax.StringEOL.Style.Foreground.Red();
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Foreground"]["Green"] = TextEditor.Syntax.StringEOL.Style.Foreground.Green();
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Foreground"]["Blue"]  = TextEditor.Syntax.StringEOL.Style.Foreground.Blue();
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Background"]["Red"]   = TextEditor.Syntax.StringEOL.Style.Background.Red();
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Background"]["Green"] = TextEditor.Syntax.StringEOL.Style.Background.Green();
+    prefs["TextEditor"]["Syntax"]["StringEOL"]["Style"]["Background"]["Blue"]  = TextEditor.Syntax.StringEOL.Style.Background.Blue();
 
     prefs["TextEditor"]["Syntax"]["Identifier"]["Style"]["Bold"]                = TextEditor.Syntax.Identifier.Style.Bold;
     prefs["TextEditor"]["Syntax"]["Identifier"]["Style"]["Italic"]              = TextEditor.Syntax.Identifier.Style.Italic;

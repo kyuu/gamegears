@@ -80,6 +80,18 @@ public:
     struct {
         struct {
             struct {
+                wxColour Foreground;
+                wxColour Background;
+
+            } DefaultStyle;
+
+            struct {
+                int      Width;
+                wxColour Color;
+
+            } Caret;
+
+            struct {
                 wxString FaceName;
                 int PointSize;
 
@@ -105,6 +117,12 @@ public:
 
             bool DisplayFolders;
             bool FoldAllOnStartup;
+
+            struct {
+                wxColour Foreground;
+                wxColour Background;
+
+            } FolderMarginStyle;
 
             struct {
                 int      Shape;
@@ -137,6 +155,12 @@ public:
             bool EnableAutoIndent;
             bool BackspaceUnindents;
             bool ShowIndentationGuides;
+
+            struct {
+                wxColour Foreground;
+                wxColour Background;
+
+            } IndentationGuideStyle;
 
         } Indent;
 
@@ -185,6 +209,17 @@ public:
                 } Style;
 
             } String;
+
+            struct {
+                struct {
+                    bool Bold;
+                    bool Italic;
+                    wxColour Foreground;
+                    wxColour Background;
+
+                } Style;
+
+            } StringEOL;
 
             struct {
                 struct {
