@@ -1,5 +1,13 @@
 YYYY.MM.DD
 
+2012.07.02
+  - Added more text editor configurations.
+  - Released GameGears v0.2.0.
+
+2012.07.01
+  - Added SCons project.
+  - Fixed some typos and bugs.
+
 2012.06.29
   - Changed the default value for the 'fold all on startup' option to 'false'.
   - Released GameGears v0.1.1.
