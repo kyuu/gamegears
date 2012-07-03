@@ -7,204 +7,224 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE0E0DFF15A33CE300CF7E56 /* AddNewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD015A33CE300CF7E56 /* AddNewFileDialog.cpp */; };
-		CE0E0E0015A33CE300CF7E56 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD215A33CE300CF7E56 /* App.cpp */; };
-		CE0E0E0115A33CE300CF7E56 /* Developer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD415A33CE300CF7E56 /* Developer.cpp */; };
-		CE0E0E0215A33CE300CF7E56 /* FileExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD715A33CE300CF7E56 /* FileExplorer.cpp */; };
-		CE0E0E0315A33CE300CF7E56 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DDD15A33CE300CF7E56 /* jsoncpp.cpp */; };
-		CE0E0E0415A33CE300CF7E56 /* MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DDE15A33CE300CF7E56 /* MenuBar.cpp */; };
-		CE0E0E0515A33CE300CF7E56 /* NewDirectoryDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE015A33CE300CF7E56 /* NewDirectoryDialog.cpp */; };
-		CE0E0E0615A33CE300CF7E56 /* NewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE215A33CE300CF7E56 /* NewFileDialog.cpp */; };
-		CE0E0E0715A33CE300CF7E56 /* NewProjectDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE415A33CE300CF7E56 /* NewProjectDialog.cpp */; };
-		CE0E0E0815A33CE300CF7E56 /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE615A33CE300CF7E56 /* Output.cpp */; };
-		CE0E0E0915A33CE300CF7E56 /* PaneToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE815A33CE300CF7E56 /* PaneToolBar.cpp */; };
-		CE0E0E0A15A33CE300CF7E56 /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DEA15A33CE300CF7E56 /* Preferences.cpp */; };
-		CE0E0E0B15A33CE300CF7E56 /* PreferencesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DEC15A33CE300CF7E56 /* PreferencesDialog.cpp */; };
-		CE0E0E0C15A33CE300CF7E56 /* ProjectProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DEE15A33CE300CF7E56 /* ProjectProperties.cpp */; };
-		CE0E0E0D15A33CE300CF7E56 /* ProjectPropertiesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF015A33CE300CF7E56 /* ProjectPropertiesDialog.cpp */; };
-		CE0E0E0E15A33CE300CF7E56 /* ProjectToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF215A33CE300CF7E56 /* ProjectToolBar.cpp */; };
-		CE0E0E0F15A33CE300CF7E56 /* SaveChangesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF415A33CE300CF7E56 /* SaveChangesDialog.cpp */; };
-		CE0E0E1015A33CE300CF7E56 /* StandardToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF615A33CE300CF7E56 /* StandardToolBar.cpp */; };
-		CE0E0E1115A33CE300CF7E56 /* StatusBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF815A33CE300CF7E56 /* StatusBar.cpp */; };
-		CE0E0E1215A33CE300CF7E56 /* TextEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DFA15A33CE300CF7E56 /* TextEditor.cpp */; };
-		CE0E0E1315A33CE300CF7E56 /* TextToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DFC15A33CE300CF7E56 /* TextToolBar.cpp */; };
-		CE0EC84F15A1874A002BC57A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0EC84E15A1874A002BC57A /* Cocoa.framework */; };
+		CE56F15915A34F21002E4CCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE56F15815A34F21002E4CCE /* Cocoa.framework */; };
+		CE56F1EF15A35A9E002E4CCE /* AddNewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C015A35A9E002E4CCE /* AddNewFileDialog.cpp */; };
+		CE56F1F015A35A9E002E4CCE /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C215A35A9E002E4CCE /* App.cpp */; };
+		CE56F1F115A35A9E002E4CCE /* Developer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C415A35A9E002E4CCE /* Developer.cpp */; };
+		CE56F1F215A35A9E002E4CCE /* FileExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C715A35A9E002E4CCE /* FileExplorer.cpp */; };
+		CE56F1F315A35A9E002E4CCE /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1CD15A35A9E002E4CCE /* jsoncpp.cpp */; };
+		CE56F1F415A35A9E002E4CCE /* MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1CE15A35A9E002E4CCE /* MenuBar.cpp */; };
+		CE56F1F515A35A9E002E4CCE /* NewDirectoryDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D015A35A9E002E4CCE /* NewDirectoryDialog.cpp */; };
+		CE56F1F615A35A9E002E4CCE /* NewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D215A35A9E002E4CCE /* NewFileDialog.cpp */; };
+		CE56F1F715A35A9E002E4CCE /* NewProjectDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D415A35A9E002E4CCE /* NewProjectDialog.cpp */; };
+		CE56F1F815A35A9E002E4CCE /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D615A35A9E002E4CCE /* Output.cpp */; };
+		CE56F1F915A35A9E002E4CCE /* PaneToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D815A35A9E002E4CCE /* PaneToolBar.cpp */; };
+		CE56F1FA15A35A9E002E4CCE /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1DA15A35A9E002E4CCE /* Preferences.cpp */; };
+		CE56F1FB15A35A9E002E4CCE /* PreferencesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1DC15A35A9E002E4CCE /* PreferencesDialog.cpp */; };
+		CE56F1FC15A35A9E002E4CCE /* ProjectProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1DE15A35A9E002E4CCE /* ProjectProperties.cpp */; };
+		CE56F1FD15A35A9E002E4CCE /* ProjectPropertiesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1E015A35A9E002E4CCE /* ProjectPropertiesDialog.cpp */; };
+		CE56F1FE15A35A9E002E4CCE /* ProjectToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1E215A35A9E002E4CCE /* ProjectToolBar.cpp */; };
+		CE56F1FF15A35A9E002E4CCE /* SaveChangesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1E415A35A9E002E4CCE /* SaveChangesDialog.cpp */; };
+		CE56F20015A35A9E002E4CCE /* StandardToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1E615A35A9E002E4CCE /* StandardToolBar.cpp */; };
+		CE56F20115A35A9E002E4CCE /* StatusBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1E815A35A9E002E4CCE /* StatusBar.cpp */; };
+		CE56F20215A35A9E002E4CCE /* TextEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1EA15A35A9E002E4CCE /* TextEditor.cpp */; };
+		CE56F20315A35A9E002E4CCE /* TextToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1EC15A35A9E002E4CCE /* TextToolBar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE0E0DD015A33CE300CF7E56 /* AddNewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddNewFileDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DD115A33CE300CF7E56 /* AddNewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AddNewFileDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DD215A33CE300CF7E56 /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
-		CE0E0DD315A33CE300CF7E56 /* commands.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commands.hpp; sourceTree = "<group>"; };
-		CE0E0DD415A33CE300CF7E56 /* Developer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Developer.cpp; sourceTree = "<group>"; };
-		CE0E0DD515A33CE300CF7E56 /* Developer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Developer.hpp; sourceTree = "<group>"; };
-		CE0E0DD615A33CE300CF7E56 /* FileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileEditorDelegator.hpp; sourceTree = "<group>"; };
-		CE0E0DD715A33CE300CF7E56 /* FileExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileExplorer.cpp; sourceTree = "<group>"; };
-		CE0E0DD815A33CE300CF7E56 /* FileExplorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileExplorer.hpp; sourceTree = "<group>"; };
-		CE0E0DD915A33CE300CF7E56 /* IFileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IFileEditorDelegator.hpp; sourceTree = "<group>"; };
-		CE0E0DDB15A33CE300CF7E56 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
-		CE0E0DDC15A33CE300CF7E56 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		CE0E0DDD15A33CE300CF7E56 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
-		CE0E0DDE15A33CE300CF7E56 /* MenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuBar.cpp; sourceTree = "<group>"; };
-		CE0E0DDF15A33CE300CF7E56 /* MenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuBar.hpp; sourceTree = "<group>"; };
-		CE0E0DE015A33CE300CF7E56 /* NewDirectoryDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewDirectoryDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DE115A33CE300CF7E56 /* NewDirectoryDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewDirectoryDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DE215A33CE300CF7E56 /* NewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewFileDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DE315A33CE300CF7E56 /* NewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewFileDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DE415A33CE300CF7E56 /* NewProjectDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewProjectDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DE515A33CE300CF7E56 /* NewProjectDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewProjectDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DE615A33CE300CF7E56 /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Output.cpp; sourceTree = "<group>"; };
-		CE0E0DE715A33CE300CF7E56 /* Output.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Output.hpp; sourceTree = "<group>"; };
-		CE0E0DE815A33CE300CF7E56 /* PaneToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PaneToolBar.cpp; sourceTree = "<group>"; };
-		CE0E0DE915A33CE300CF7E56 /* PaneToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PaneToolBar.hpp; sourceTree = "<group>"; };
-		CE0E0DEA15A33CE300CF7E56 /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Preferences.cpp; sourceTree = "<group>"; };
-		CE0E0DEB15A33CE300CF7E56 /* Preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Preferences.hpp; sourceTree = "<group>"; };
-		CE0E0DEC15A33CE300CF7E56 /* PreferencesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreferencesDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DED15A33CE300CF7E56 /* PreferencesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PreferencesDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DEE15A33CE300CF7E56 /* ProjectProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectProperties.cpp; sourceTree = "<group>"; };
-		CE0E0DEF15A33CE300CF7E56 /* ProjectProperties.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectProperties.hpp; sourceTree = "<group>"; };
-		CE0E0DF015A33CE300CF7E56 /* ProjectPropertiesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectPropertiesDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DF115A33CE300CF7E56 /* ProjectPropertiesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectPropertiesDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DF215A33CE300CF7E56 /* ProjectToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectToolBar.cpp; sourceTree = "<group>"; };
-		CE0E0DF315A33CE300CF7E56 /* ProjectToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectToolBar.hpp; sourceTree = "<group>"; };
-		CE0E0DF415A33CE300CF7E56 /* SaveChangesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveChangesDialog.cpp; sourceTree = "<group>"; };
-		CE0E0DF515A33CE300CF7E56 /* SaveChangesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SaveChangesDialog.hpp; sourceTree = "<group>"; };
-		CE0E0DF615A33CE300CF7E56 /* StandardToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardToolBar.cpp; sourceTree = "<group>"; };
-		CE0E0DF715A33CE300CF7E56 /* StandardToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardToolBar.hpp; sourceTree = "<group>"; };
-		CE0E0DF815A33CE300CF7E56 /* StatusBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatusBar.cpp; sourceTree = "<group>"; };
-		CE0E0DF915A33CE300CF7E56 /* StatusBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatusBar.hpp; sourceTree = "<group>"; };
-		CE0E0DFA15A33CE300CF7E56 /* TextEditor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextEditor.cpp; sourceTree = "<group>"; };
-		CE0E0DFB15A33CE300CF7E56 /* TextEditor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextEditor.hpp; sourceTree = "<group>"; };
-		CE0E0DFC15A33CE300CF7E56 /* TextToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextToolBar.cpp; sourceTree = "<group>"; };
-		CE0E0DFD15A33CE300CF7E56 /* TextToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextToolBar.hpp; sourceTree = "<group>"; };
-		CE0E0DFE15A33CE300CF7E56 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
-		CE0EC84A15A1874A002BC57A /* gamegears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamegears.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0EC84E15A1874A002BC57A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		CE0EC85115A1874A002BC57A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		CE0EC85215A1874A002BC57A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		CE0EC85315A1874A002BC57A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE56F15415A34F21002E4CCE /* gamegears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamegears.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE56F15815A34F21002E4CCE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CE56F15B15A34F21002E4CCE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CE56F15C15A34F21002E4CCE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CE56F15D15A34F21002E4CCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE56F16015A34F21002E4CCE /* gamegears-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "gamegears-Info.plist"; sourceTree = "<group>"; };
+		CE56F16615A34F21002E4CCE /* gamegears-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gamegears-Prefix.pch"; sourceTree = "<group>"; };
+		CE56F1C015A35A9E002E4CCE /* AddNewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddNewFileDialog.cpp; sourceTree = "<group>"; };
+		CE56F1C115A35A9E002E4CCE /* AddNewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AddNewFileDialog.hpp; sourceTree = "<group>"; };
+		CE56F1C215A35A9E002E4CCE /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
+		CE56F1C315A35A9E002E4CCE /* commands.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commands.hpp; sourceTree = "<group>"; };
+		CE56F1C415A35A9E002E4CCE /* Developer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Developer.cpp; sourceTree = "<group>"; };
+		CE56F1C515A35A9E002E4CCE /* Developer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Developer.hpp; sourceTree = "<group>"; };
+		CE56F1C615A35A9E002E4CCE /* FileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileEditorDelegator.hpp; sourceTree = "<group>"; };
+		CE56F1C715A35A9E002E4CCE /* FileExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileExplorer.cpp; sourceTree = "<group>"; };
+		CE56F1C815A35A9E002E4CCE /* FileExplorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileExplorer.hpp; sourceTree = "<group>"; };
+		CE56F1C915A35A9E002E4CCE /* IFileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IFileEditorDelegator.hpp; sourceTree = "<group>"; };
+		CE56F1CB15A35A9E002E4CCE /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		CE56F1CC15A35A9E002E4CCE /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		CE56F1CD15A35A9E002E4CCE /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
+		CE56F1CE15A35A9E002E4CCE /* MenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuBar.cpp; sourceTree = "<group>"; };
+		CE56F1CF15A35A9E002E4CCE /* MenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuBar.hpp; sourceTree = "<group>"; };
+		CE56F1D015A35A9E002E4CCE /* NewDirectoryDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewDirectoryDialog.cpp; sourceTree = "<group>"; };
+		CE56F1D115A35A9E002E4CCE /* NewDirectoryDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewDirectoryDialog.hpp; sourceTree = "<group>"; };
+		CE56F1D215A35A9E002E4CCE /* NewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewFileDialog.cpp; sourceTree = "<group>"; };
+		CE56F1D315A35A9E002E4CCE /* NewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewFileDialog.hpp; sourceTree = "<group>"; };
+		CE56F1D415A35A9E002E4CCE /* NewProjectDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewProjectDialog.cpp; sourceTree = "<group>"; };
+		CE56F1D515A35A9E002E4CCE /* NewProjectDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewProjectDialog.hpp; sourceTree = "<group>"; };
+		CE56F1D615A35A9E002E4CCE /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Output.cpp; sourceTree = "<group>"; };
+		CE56F1D715A35A9E002E4CCE /* Output.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Output.hpp; sourceTree = "<group>"; };
+		CE56F1D815A35A9E002E4CCE /* PaneToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PaneToolBar.cpp; sourceTree = "<group>"; };
+		CE56F1D915A35A9E002E4CCE /* PaneToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PaneToolBar.hpp; sourceTree = "<group>"; };
+		CE56F1DA15A35A9E002E4CCE /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Preferences.cpp; sourceTree = "<group>"; };
+		CE56F1DB15A35A9E002E4CCE /* Preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Preferences.hpp; sourceTree = "<group>"; };
+		CE56F1DC15A35A9E002E4CCE /* PreferencesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreferencesDialog.cpp; sourceTree = "<group>"; };
+		CE56F1DD15A35A9E002E4CCE /* PreferencesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PreferencesDialog.hpp; sourceTree = "<group>"; };
+		CE56F1DE15A35A9E002E4CCE /* ProjectProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectProperties.cpp; sourceTree = "<group>"; };
+		CE56F1DF15A35A9E002E4CCE /* ProjectProperties.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectProperties.hpp; sourceTree = "<group>"; };
+		CE56F1E015A35A9E002E4CCE /* ProjectPropertiesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectPropertiesDialog.cpp; sourceTree = "<group>"; };
+		CE56F1E115A35A9E002E4CCE /* ProjectPropertiesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectPropertiesDialog.hpp; sourceTree = "<group>"; };
+		CE56F1E215A35A9E002E4CCE /* ProjectToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectToolBar.cpp; sourceTree = "<group>"; };
+		CE56F1E315A35A9E002E4CCE /* ProjectToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectToolBar.hpp; sourceTree = "<group>"; };
+		CE56F1E415A35A9E002E4CCE /* SaveChangesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveChangesDialog.cpp; sourceTree = "<group>"; };
+		CE56F1E515A35A9E002E4CCE /* SaveChangesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SaveChangesDialog.hpp; sourceTree = "<group>"; };
+		CE56F1E615A35A9E002E4CCE /* StandardToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardToolBar.cpp; sourceTree = "<group>"; };
+		CE56F1E715A35A9E002E4CCE /* StandardToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardToolBar.hpp; sourceTree = "<group>"; };
+		CE56F1E815A35A9E002E4CCE /* StatusBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatusBar.cpp; sourceTree = "<group>"; };
+		CE56F1E915A35A9E002E4CCE /* StatusBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatusBar.hpp; sourceTree = "<group>"; };
+		CE56F1EA15A35A9E002E4CCE /* TextEditor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextEditor.cpp; sourceTree = "<group>"; };
+		CE56F1EB15A35A9E002E4CCE /* TextEditor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextEditor.hpp; sourceTree = "<group>"; };
+		CE56F1EC15A35A9E002E4CCE /* TextToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextToolBar.cpp; sourceTree = "<group>"; };
+		CE56F1ED15A35A9E002E4CCE /* TextToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextToolBar.hpp; sourceTree = "<group>"; };
+		CE56F1EE15A35A9E002E4CCE /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE0EC84715A1874A002BC57A /* Frameworks */ = {
+		CE56F15115A34F21002E4CCE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0EC84F15A1874A002BC57A /* Cocoa.framework in Frameworks */,
+				CE56F15915A34F21002E4CCE /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE0E0DCF15A33CE300CF7E56 /* developer */ = {
+		CE56F14915A34F21002E4CCE = {
 			isa = PBXGroup;
 			children = (
-				CE0E0DD015A33CE300CF7E56 /* AddNewFileDialog.cpp */,
-				CE0E0DD115A33CE300CF7E56 /* AddNewFileDialog.hpp */,
-				CE0E0DD215A33CE300CF7E56 /* App.cpp */,
-				CE0E0DD315A33CE300CF7E56 /* commands.hpp */,
-				CE0E0DD415A33CE300CF7E56 /* Developer.cpp */,
-				CE0E0DD515A33CE300CF7E56 /* Developer.hpp */,
-				CE0E0DD615A33CE300CF7E56 /* FileEditorDelegator.hpp */,
-				CE0E0DD715A33CE300CF7E56 /* FileExplorer.cpp */,
-				CE0E0DD815A33CE300CF7E56 /* FileExplorer.hpp */,
-				CE0E0DD915A33CE300CF7E56 /* IFileEditorDelegator.hpp */,
-				CE0E0DDA15A33CE300CF7E56 /* json */,
-				CE0E0DDD15A33CE300CF7E56 /* jsoncpp.cpp */,
-				CE0E0DDE15A33CE300CF7E56 /* MenuBar.cpp */,
-				CE0E0DDF15A33CE300CF7E56 /* MenuBar.hpp */,
-				CE0E0DE015A33CE300CF7E56 /* NewDirectoryDialog.cpp */,
-				CE0E0DE115A33CE300CF7E56 /* NewDirectoryDialog.hpp */,
-				CE0E0DE215A33CE300CF7E56 /* NewFileDialog.cpp */,
-				CE0E0DE315A33CE300CF7E56 /* NewFileDialog.hpp */,
-				CE0E0DE415A33CE300CF7E56 /* NewProjectDialog.cpp */,
-				CE0E0DE515A33CE300CF7E56 /* NewProjectDialog.hpp */,
-				CE0E0DE615A33CE300CF7E56 /* Output.cpp */,
-				CE0E0DE715A33CE300CF7E56 /* Output.hpp */,
-				CE0E0DE815A33CE300CF7E56 /* PaneToolBar.cpp */,
-				CE0E0DE915A33CE300CF7E56 /* PaneToolBar.hpp */,
-				CE0E0DEA15A33CE300CF7E56 /* Preferences.cpp */,
-				CE0E0DEB15A33CE300CF7E56 /* Preferences.hpp */,
-				CE0E0DEC15A33CE300CF7E56 /* PreferencesDialog.cpp */,
-				CE0E0DED15A33CE300CF7E56 /* PreferencesDialog.hpp */,
-				CE0E0DEE15A33CE300CF7E56 /* ProjectProperties.cpp */,
-				CE0E0DEF15A33CE300CF7E56 /* ProjectProperties.hpp */,
-				CE0E0DF015A33CE300CF7E56 /* ProjectPropertiesDialog.cpp */,
-				CE0E0DF115A33CE300CF7E56 /* ProjectPropertiesDialog.hpp */,
-				CE0E0DF215A33CE300CF7E56 /* ProjectToolBar.cpp */,
-				CE0E0DF315A33CE300CF7E56 /* ProjectToolBar.hpp */,
-				CE0E0DF415A33CE300CF7E56 /* SaveChangesDialog.cpp */,
-				CE0E0DF515A33CE300CF7E56 /* SaveChangesDialog.hpp */,
-				CE0E0DF615A33CE300CF7E56 /* StandardToolBar.cpp */,
-				CE0E0DF715A33CE300CF7E56 /* StandardToolBar.hpp */,
-				CE0E0DF815A33CE300CF7E56 /* StatusBar.cpp */,
-				CE0E0DF915A33CE300CF7E56 /* StatusBar.hpp */,
-				CE0E0DFA15A33CE300CF7E56 /* TextEditor.cpp */,
-				CE0E0DFB15A33CE300CF7E56 /* TextEditor.hpp */,
-				CE0E0DFC15A33CE300CF7E56 /* TextToolBar.cpp */,
-				CE0E0DFD15A33CE300CF7E56 /* TextToolBar.hpp */,
-				CE0E0DFE15A33CE300CF7E56 /* version.hpp */,
-			);
-			name = developer;
-			path = ../../source/developer;
-			sourceTree = "<group>";
-		};
-		CE0E0DDA15A33CE300CF7E56 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				CE0E0DDB15A33CE300CF7E56 /* json-forwards.h */,
-				CE0E0DDC15A33CE300CF7E56 /* json.h */,
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
-		CE0EC83F15A18747002BC57A = {
-			isa = PBXGroup;
-			children = (
-				CE0E0DCF15A33CE300CF7E56 /* developer */,
-				CE0EC84D15A1874A002BC57A /* Frameworks */,
-				CE0EC84B15A1874A002BC57A /* Products */,
+				CE56F15E15A34F21002E4CCE /* gamegears */,
+				CE56F15715A34F21002E4CCE /* Frameworks */,
+				CE56F15515A34F21002E4CCE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CE0EC84B15A1874A002BC57A /* Products */ = {
+		CE56F15515A34F21002E4CCE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE0EC84A15A1874A002BC57A /* gamegears.app */,
+				CE56F15415A34F21002E4CCE /* gamegears.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE0EC84D15A1874A002BC57A /* Frameworks */ = {
+		CE56F15715A34F21002E4CCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CE0EC84E15A1874A002BC57A /* Cocoa.framework */,
-				CE0EC85015A1874A002BC57A /* Other Frameworks */,
+				CE56F15815A34F21002E4CCE /* Cocoa.framework */,
+				CE56F15A15A34F21002E4CCE /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE0EC85015A1874A002BC57A /* Other Frameworks */ = {
+		CE56F15A15A34F21002E4CCE /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CE0EC85115A1874A002BC57A /* AppKit.framework */,
-				CE0EC85215A1874A002BC57A /* CoreData.framework */,
-				CE0EC85315A1874A002BC57A /* Foundation.framework */,
+				CE56F15B15A34F21002E4CCE /* AppKit.framework */,
+				CE56F15C15A34F21002E4CCE /* CoreData.framework */,
+				CE56F15D15A34F21002E4CCE /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CE56F15E15A34F21002E4CCE /* gamegears */ = {
+			isa = PBXGroup;
+			children = (
+				CE56F1BF15A35A9E002E4CCE /* developer */,
+				CE56F15F15A34F21002E4CCE /* Supporting Files */,
+			);
+			path = gamegears;
+			sourceTree = "<group>";
+		};
+		CE56F15F15A34F21002E4CCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE56F16015A34F21002E4CCE /* gamegears-Info.plist */,
+				CE56F16615A34F21002E4CCE /* gamegears-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE56F1BF15A35A9E002E4CCE /* developer */ = {
+			isa = PBXGroup;
+			children = (
+				CE56F1C015A35A9E002E4CCE /* AddNewFileDialog.cpp */,
+				CE56F1C115A35A9E002E4CCE /* AddNewFileDialog.hpp */,
+				CE56F1C215A35A9E002E4CCE /* App.cpp */,
+				CE56F1C315A35A9E002E4CCE /* commands.hpp */,
+				CE56F1C415A35A9E002E4CCE /* Developer.cpp */,
+				CE56F1C515A35A9E002E4CCE /* Developer.hpp */,
+				CE56F1C615A35A9E002E4CCE /* FileEditorDelegator.hpp */,
+				CE56F1C715A35A9E002E4CCE /* FileExplorer.cpp */,
+				CE56F1C815A35A9E002E4CCE /* FileExplorer.hpp */,
+				CE56F1C915A35A9E002E4CCE /* IFileEditorDelegator.hpp */,
+				CE56F1CA15A35A9E002E4CCE /* json */,
+				CE56F1CD15A35A9E002E4CCE /* jsoncpp.cpp */,
+				CE56F1CE15A35A9E002E4CCE /* MenuBar.cpp */,
+				CE56F1CF15A35A9E002E4CCE /* MenuBar.hpp */,
+				CE56F1D015A35A9E002E4CCE /* NewDirectoryDialog.cpp */,
+				CE56F1D115A35A9E002E4CCE /* NewDirectoryDialog.hpp */,
+				CE56F1D215A35A9E002E4CCE /* NewFileDialog.cpp */,
+				CE56F1D315A35A9E002E4CCE /* NewFileDialog.hpp */,
+				CE56F1D415A35A9E002E4CCE /* NewProjectDialog.cpp */,
+				CE56F1D515A35A9E002E4CCE /* NewProjectDialog.hpp */,
+				CE56F1D615A35A9E002E4CCE /* Output.cpp */,
+				CE56F1D715A35A9E002E4CCE /* Output.hpp */,
+				CE56F1D815A35A9E002E4CCE /* PaneToolBar.cpp */,
+				CE56F1D915A35A9E002E4CCE /* PaneToolBar.hpp */,
+				CE56F1DA15A35A9E002E4CCE /* Preferences.cpp */,
+				CE56F1DB15A35A9E002E4CCE /* Preferences.hpp */,
+				CE56F1DC15A35A9E002E4CCE /* PreferencesDialog.cpp */,
+				CE56F1DD15A35A9E002E4CCE /* PreferencesDialog.hpp */,
+				CE56F1DE15A35A9E002E4CCE /* ProjectProperties.cpp */,
+				CE56F1DF15A35A9E002E4CCE /* ProjectProperties.hpp */,
+				CE56F1E015A35A9E002E4CCE /* ProjectPropertiesDialog.cpp */,
+				CE56F1E115A35A9E002E4CCE /* ProjectPropertiesDialog.hpp */,
+				CE56F1E215A35A9E002E4CCE /* ProjectToolBar.cpp */,
+				CE56F1E315A35A9E002E4CCE /* ProjectToolBar.hpp */,
+				CE56F1E415A35A9E002E4CCE /* SaveChangesDialog.cpp */,
+				CE56F1E515A35A9E002E4CCE /* SaveChangesDialog.hpp */,
+				CE56F1E615A35A9E002E4CCE /* StandardToolBar.cpp */,
+				CE56F1E715A35A9E002E4CCE /* StandardToolBar.hpp */,
+				CE56F1E815A35A9E002E4CCE /* StatusBar.cpp */,
+				CE56F1E915A35A9E002E4CCE /* StatusBar.hpp */,
+				CE56F1EA15A35A9E002E4CCE /* TextEditor.cpp */,
+				CE56F1EB15A35A9E002E4CCE /* TextEditor.hpp */,
+				CE56F1EC15A35A9E002E4CCE /* TextToolBar.cpp */,
+				CE56F1ED15A35A9E002E4CCE /* TextToolBar.hpp */,
+				CE56F1EE15A35A9E002E4CCE /* version.hpp */,
+			);
+			name = developer;
+			path = ../../../source/developer;
+			sourceTree = "<group>";
+		};
+		CE56F1CA15A35A9E002E4CCE /* json */ = {
+			isa = PBXGroup;
+			children = (
+				CE56F1CB15A35A9E002E4CCE /* json-forwards.h */,
+				CE56F1CC15A35A9E002E4CCE /* json.h */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE0EC84915A1874A002BC57A /* gamegears */ = {
+		CE56F15315A34F21002E4CCE /* gamegears */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE0EC86815A1874B002BC57A /* Build configuration list for PBXNativeTarget "gamegears" */;
+			buildConfigurationList = CE56F17215A34F22002E4CCE /* Build configuration list for PBXNativeTarget "gamegears" */;
 			buildPhases = (
-				CE0EC84615A1874A002BC57A /* Sources */,
-				CE0EC84715A1874A002BC57A /* Frameworks */,
-				CE0EC84815A1874A002BC57A /* Resources */,
+				CE56F15015A34F21002E4CCE /* Sources */,
+				CE56F15115A34F21002E4CCE /* Frameworks */,
+				CE56F15215A34F21002E4CCE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -212,36 +232,36 @@
 			);
 			name = gamegears;
 			productName = gamegears;
-			productReference = CE0EC84A15A1874A002BC57A /* gamegears.app */;
+			productReference = CE56F15415A34F21002E4CCE /* gamegears.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CE0EC84115A18747002BC57A /* Project object */ = {
+		CE56F14B15A34F21002E4CCE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = CE0EC84415A18747002BC57A /* Build configuration list for PBXProject "gamegears" */;
+			buildConfigurationList = CE56F14E15A34F21002E4CCE /* Build configuration list for PBXProject "gamegears" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = CE0EC83F15A18747002BC57A;
-			productRefGroup = CE0EC84B15A1874A002BC57A /* Products */;
+			mainGroup = CE56F14915A34F21002E4CCE;
+			productRefGroup = CE56F15515A34F21002E4CCE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE0EC84915A1874A002BC57A /* gamegears */,
+				CE56F15315A34F21002E4CCE /* gamegears */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CE0EC84815A1874A002BC57A /* Resources */ = {
+		CE56F15215A34F21002E4CCE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,38 +271,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CE0EC84615A1874A002BC57A /* Sources */ = {
+		CE56F15015A34F21002E4CCE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0E0DFF15A33CE300CF7E56 /* AddNewFileDialog.cpp in Sources */,
-				CE0E0E0015A33CE300CF7E56 /* App.cpp in Sources */,
-				CE0E0E0115A33CE300CF7E56 /* Developer.cpp in Sources */,
-				CE0E0E0215A33CE300CF7E56 /* FileExplorer.cpp in Sources */,
-				CE0E0E0315A33CE300CF7E56 /* jsoncpp.cpp in Sources */,
-				CE0E0E0415A33CE300CF7E56 /* MenuBar.cpp in Sources */,
-				CE0E0E0515A33CE300CF7E56 /* NewDirectoryDialog.cpp in Sources */,
-				CE0E0E0615A33CE300CF7E56 /* NewFileDialog.cpp in Sources */,
-				CE0E0E0715A33CE300CF7E56 /* NewProjectDialog.cpp in Sources */,
-				CE0E0E0815A33CE300CF7E56 /* Output.cpp in Sources */,
-				CE0E0E0915A33CE300CF7E56 /* PaneToolBar.cpp in Sources */,
-				CE0E0E0A15A33CE300CF7E56 /* Preferences.cpp in Sources */,
-				CE0E0E0B15A33CE300CF7E56 /* PreferencesDialog.cpp in Sources */,
-				CE0E0E0C15A33CE300CF7E56 /* ProjectProperties.cpp in Sources */,
-				CE0E0E0D15A33CE300CF7E56 /* ProjectPropertiesDialog.cpp in Sources */,
-				CE0E0E0E15A33CE300CF7E56 /* ProjectToolBar.cpp in Sources */,
-				CE0E0E0F15A33CE300CF7E56 /* SaveChangesDialog.cpp in Sources */,
-				CE0E0E1015A33CE300CF7E56 /* StandardToolBar.cpp in Sources */,
-				CE0E0E1115A33CE300CF7E56 /* StatusBar.cpp in Sources */,
-				CE0E0E1215A33CE300CF7E56 /* TextEditor.cpp in Sources */,
-				CE0E0E1315A33CE300CF7E56 /* TextToolBar.cpp in Sources */,
+				CE56F1EF15A35A9E002E4CCE /* AddNewFileDialog.cpp in Sources */,
+				CE56F1F015A35A9E002E4CCE /* App.cpp in Sources */,
+				CE56F1F115A35A9E002E4CCE /* Developer.cpp in Sources */,
+				CE56F1F215A35A9E002E4CCE /* FileExplorer.cpp in Sources */,
+				CE56F1F315A35A9E002E4CCE /* jsoncpp.cpp in Sources */,
+				CE56F1F415A35A9E002E4CCE /* MenuBar.cpp in Sources */,
+				CE56F1F515A35A9E002E4CCE /* NewDirectoryDialog.cpp in Sources */,
+				CE56F1F615A35A9E002E4CCE /* NewFileDialog.cpp in Sources */,
+				CE56F1F715A35A9E002E4CCE /* NewProjectDialog.cpp in Sources */,
+				CE56F1F815A35A9E002E4CCE /* Output.cpp in Sources */,
+				CE56F1F915A35A9E002E4CCE /* PaneToolBar.cpp in Sources */,
+				CE56F1FA15A35A9E002E4CCE /* Preferences.cpp in Sources */,
+				CE56F1FB15A35A9E002E4CCE /* PreferencesDialog.cpp in Sources */,
+				CE56F1FC15A35A9E002E4CCE /* ProjectProperties.cpp in Sources */,
+				CE56F1FD15A35A9E002E4CCE /* ProjectPropertiesDialog.cpp in Sources */,
+				CE56F1FE15A35A9E002E4CCE /* ProjectToolBar.cpp in Sources */,
+				CE56F1FF15A35A9E002E4CCE /* SaveChangesDialog.cpp in Sources */,
+				CE56F20015A35A9E002E4CCE /* StandardToolBar.cpp in Sources */,
+				CE56F20115A35A9E002E4CCE /* StatusBar.cpp in Sources */,
+				CE56F20215A35A9E002E4CCE /* TextEditor.cpp in Sources */,
+				CE56F20315A35A9E002E4CCE /* TextToolBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		CE0EC86615A1874B002BC57A /* Debug */ = {
+		CE56F17015A34F22002E4CCE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -299,8 +319,8 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -308,7 +328,7 @@
 			};
 			name = Debug;
 		};
-		CE0EC86715A1874B002BC57A /* Release */ = {
+		CE56F17115A34F22002E4CCE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -319,77 +339,31 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		CE0EC86915A1874B002BC57A /* Debug */ = {
+		CE56F17315A34F22002E4CCE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gamegears/gamegears-Prefix.pch";
 				INFOPLIST_FILE = "gamegears/gamegears-Info.plist";
-				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
-					"-L/Users/User/desktop/wxwidgets/build-release/lib",
-					"-framework",
-					IOKit,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					System,
-					"-framework",
-					OpenGL,
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_xrc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_webview-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_stc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_richtext-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_ribbon-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_propgrid-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_aui-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_gl-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_qa-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_net-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_html-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_adv-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_core-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_xml-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu-2.9.a",
-					"-lwxscintilla-2.9",
-					"-framework",
-					OpenGL,
-					"-framework",
-					AGL,
-					"-framework",
-					WebKit,
-					"-lexpat",
-					"-lwxregexu-2.9",
-					"-lwxtiff-2.9",
-					"-lwxjpeg-2.9",
-					"-lwxpng-2.9",
-					"-lz",
-					"-lpthread",
-					"-liconv",
-				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
-					"-I/Users/User/desktop/wxwidgets/build-release/lib/wx/include/osx_cocoa-unicode-static-2.9",
+					"-I/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/wx/include/osx_cocoa-unicode-static-2.9",
 					"-I/Users/User/desktop/wxwidgets/include",
 					"-D_FILE_OFFSET_BITS=64",
-					"-DwxDEBUG_LEVEL=0",
 					"-D__WXMAC__",
 					"-D__WXOSX__",
 					"-D__WXOSX_COCOA__",
 				);
 				OTHER_LDFLAGS = (
-					"-L/Users/User/desktop/wxwidgets/build-release/lib",
+					"-L/Users/User/desktop/wxwidgets/build-cocoa-debug/lib",
 					"-framework",
 					IOKit,
 					"-framework",
@@ -402,21 +376,21 @@
 					System,
 					"-framework",
 					OpenGL,
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_xrc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_webview-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_stc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_richtext-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_ribbon-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_propgrid-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_aui-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_gl-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_qa-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_net-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_html-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_adv-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_core-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_xml-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_xrc-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_webview-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_stc-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_richtext-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_ribbon-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_propgrid-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_aui-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_gl-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_qa-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_baseu_net-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_html-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_adv-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_osx_cocoau_core-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_baseu_xml-2.9.a",
+					"/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/libwx_baseu-2.9.a",
 					"-lwxscintilla-2.9",
 					"-framework",
 					OpenGL,
@@ -434,207 +408,26 @@
 					"-liconv",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WARNING_LDFLAGS = (
-					"-L/Users/User/desktop/wxwidgets/build-release/lib",
-					"-framework",
-					IOKit,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					System,
-					"-framework",
-					OpenGL,
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_xrc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_webview-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_stc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_richtext-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_ribbon-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_propgrid-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_aui-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_gl-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_qa-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_net-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_html-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_adv-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_core-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_xml-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu-2.9.a",
-					"-lwxscintilla-2.9",
-					"-framework",
-					OpenGL,
-					"-framework",
-					AGL,
-					"-framework",
-					WebKit,
-					"-lexpat",
-					"-lwxregexu-2.9",
-					"-lwxtiff-2.9",
-					"-lwxjpeg-2.9",
-					"-lwxpng-2.9",
-					"-lz",
-					"-lpthread",
-					"-liconv",
-				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		CE0EC86A15A1874B002BC57A /* Release */ = {
+		CE56F17415A34F22002E4CCE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gamegears/gamegears-Prefix.pch";
-				INFOPLIST_FILE = "gamegears/gamegears-Info.plist";
-				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
-					"-L/Users/User/desktop/wxwidgets/build-release/lib",
-					"-framework",
-					IOKit,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					System,
-					"-framework",
-					OpenGL,
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_xrc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_webview-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_stc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_richtext-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_ribbon-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_propgrid-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_aui-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_gl-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_qa-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_net-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_html-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_adv-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_core-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_xml-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu-2.9.a",
-					"-lwxscintilla-2.9",
-					"-framework",
-					OpenGL,
-					"-framework",
-					AGL,
-					"-framework",
-					WebKit,
-					"-lexpat",
-					"-lwxregexu-2.9",
-					"-lwxtiff-2.9",
-					"-lwxjpeg-2.9",
-					"-lwxpng-2.9",
-					"-lz",
-					"-lpthread",
-					"-liconv",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
+				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(OTHER_CFLAGS)",
-					"-I/Users/User/desktop/wxwidgets/build-release/lib/wx/include/osx_cocoa-unicode-static-2.9",
+					"-I/Users/User/desktop/wxwidgets/build-cocoa-debug/lib/wx/include/osx_cocoa-unicode-static-2.9",
 					"-I/Users/User/desktop/wxwidgets/include",
 					"-D_FILE_OFFSET_BITS=64",
-					"-DwxDEBUG_LEVEL=0",
 					"-D__WXMAC__",
 					"-D__WXOSX__",
 					"-D__WXOSX_COCOA__",
 				);
-				OTHER_LDFLAGS = (
-					"-L/Users/User/desktop/wxwidgets/build-release/lib",
-					"-framework",
-					IOKit,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					System,
-					"-framework",
-					OpenGL,
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_xrc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_webview-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_stc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_richtext-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_ribbon-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_propgrid-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_aui-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_gl-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_qa-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_net-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_html-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_adv-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_core-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_xml-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu-2.9.a",
-					"-lwxscintilla-2.9",
-					"-framework",
-					OpenGL,
-					"-framework",
-					AGL,
-					"-framework",
-					WebKit,
-					"-lexpat",
-					"-lwxregexu-2.9",
-					"-lwxtiff-2.9",
-					"-lwxjpeg-2.9",
-					"-lwxpng-2.9",
-					"-lz",
-					"-lpthread",
-					"-liconv",
-				);
+				INFOPLIST_FILE = "gamegears/gamegears-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WARNING_LDFLAGS = (
-					"-L/Users/User/desktop/wxwidgets/build-release/lib",
-					"-framework",
-					IOKit,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					AudioToolbox,
-					"-framework",
-					System,
-					"-framework",
-					OpenGL,
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_xrc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_webview-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_stc-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_richtext-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_ribbon-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_propgrid-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_aui-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_gl-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_qa-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_net-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_html-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_adv-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_osx_cocoau_core-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu_xml-2.9.a",
-					"/Users/User/desktop/wxwidgets/build-release/lib/libwx_baseu-2.9.a",
-					"-lwxscintilla-2.9",
-					"-framework",
-					OpenGL,
-					"-framework",
-					AGL,
-					"-framework",
-					WebKit,
-					"-lexpat",
-					"-lwxregexu-2.9",
-					"-lwxtiff-2.9",
-					"-lwxjpeg-2.9",
-					"-lwxpng-2.9",
-					"-lz",
-					"-lpthread",
-					"-liconv",
-				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -642,25 +435,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE0EC84415A18747002BC57A /* Build configuration list for PBXProject "gamegears" */ = {
+		CE56F14E15A34F21002E4CCE /* Build configuration list for PBXProject "gamegears" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE0EC86615A1874B002BC57A /* Debug */,
-				CE0EC86715A1874B002BC57A /* Release */,
+				CE56F17015A34F22002E4CCE /* Debug */,
+				CE56F17115A34F22002E4CCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE0EC86815A1874B002BC57A /* Build configuration list for PBXNativeTarget "gamegears" */ = {
+		CE56F17215A34F22002E4CCE /* Build configuration list for PBXNativeTarget "gamegears" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE0EC86915A1874B002BC57A /* Debug */,
-				CE0EC86A15A1874B002BC57A /* Release */,
+				CE56F17315A34F22002E4CCE /* Debug */,
+				CE56F17415A34F22002E4CCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CE0EC84115A18747002BC57A /* Project object */;
+	rootObject = CE56F14B15A34F21002E4CCE /* Project object */;
 }
