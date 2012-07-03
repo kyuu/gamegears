@@ -7,82 +7,82 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0E0DFF15A33CE300CF7E56 /* AddNewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD015A33CE300CF7E56 /* AddNewFileDialog.cpp */; };
+		CE0E0E0015A33CE300CF7E56 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD215A33CE300CF7E56 /* App.cpp */; };
+		CE0E0E0115A33CE300CF7E56 /* Developer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD415A33CE300CF7E56 /* Developer.cpp */; };
+		CE0E0E0215A33CE300CF7E56 /* FileExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DD715A33CE300CF7E56 /* FileExplorer.cpp */; };
+		CE0E0E0315A33CE300CF7E56 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DDD15A33CE300CF7E56 /* jsoncpp.cpp */; };
+		CE0E0E0415A33CE300CF7E56 /* MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DDE15A33CE300CF7E56 /* MenuBar.cpp */; };
+		CE0E0E0515A33CE300CF7E56 /* NewDirectoryDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE015A33CE300CF7E56 /* NewDirectoryDialog.cpp */; };
+		CE0E0E0615A33CE300CF7E56 /* NewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE215A33CE300CF7E56 /* NewFileDialog.cpp */; };
+		CE0E0E0715A33CE300CF7E56 /* NewProjectDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE415A33CE300CF7E56 /* NewProjectDialog.cpp */; };
+		CE0E0E0815A33CE300CF7E56 /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE615A33CE300CF7E56 /* Output.cpp */; };
+		CE0E0E0915A33CE300CF7E56 /* PaneToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DE815A33CE300CF7E56 /* PaneToolBar.cpp */; };
+		CE0E0E0A15A33CE300CF7E56 /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DEA15A33CE300CF7E56 /* Preferences.cpp */; };
+		CE0E0E0B15A33CE300CF7E56 /* PreferencesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DEC15A33CE300CF7E56 /* PreferencesDialog.cpp */; };
+		CE0E0E0C15A33CE300CF7E56 /* ProjectProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DEE15A33CE300CF7E56 /* ProjectProperties.cpp */; };
+		CE0E0E0D15A33CE300CF7E56 /* ProjectPropertiesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF015A33CE300CF7E56 /* ProjectPropertiesDialog.cpp */; };
+		CE0E0E0E15A33CE300CF7E56 /* ProjectToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF215A33CE300CF7E56 /* ProjectToolBar.cpp */; };
+		CE0E0E0F15A33CE300CF7E56 /* SaveChangesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF415A33CE300CF7E56 /* SaveChangesDialog.cpp */; };
+		CE0E0E1015A33CE300CF7E56 /* StandardToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF615A33CE300CF7E56 /* StandardToolBar.cpp */; };
+		CE0E0E1115A33CE300CF7E56 /* StatusBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DF815A33CE300CF7E56 /* StatusBar.cpp */; };
+		CE0E0E1215A33CE300CF7E56 /* TextEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DFA15A33CE300CF7E56 /* TextEditor.cpp */; };
+		CE0E0E1315A33CE300CF7E56 /* TextToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0E0DFC15A33CE300CF7E56 /* TextToolBar.cpp */; };
 		CE0EC84F15A1874A002BC57A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0EC84E15A1874A002BC57A /* Cocoa.framework */; };
-		CE0EC97415A19493002BC57A /* AddNewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC94515A19493002BC57A /* AddNewFileDialog.cpp */; };
-		CE0EC97515A19493002BC57A /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC94715A19493002BC57A /* App.cpp */; };
-		CE0EC97615A19493002BC57A /* Developer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC94915A19493002BC57A /* Developer.cpp */; };
-		CE0EC97715A19493002BC57A /* FileExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC94C15A19493002BC57A /* FileExplorer.cpp */; };
-		CE0EC97815A19493002BC57A /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95215A19493002BC57A /* jsoncpp.cpp */; };
-		CE0EC97915A19493002BC57A /* MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95315A19493002BC57A /* MenuBar.cpp */; };
-		CE0EC97A15A19493002BC57A /* NewDirectoryDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95515A19493002BC57A /* NewDirectoryDialog.cpp */; };
-		CE0EC97B15A19493002BC57A /* NewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95715A19493002BC57A /* NewFileDialog.cpp */; };
-		CE0EC97C15A19493002BC57A /* NewProjectDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95915A19493002BC57A /* NewProjectDialog.cpp */; };
-		CE0EC97D15A19493002BC57A /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95B15A19493002BC57A /* Output.cpp */; };
-		CE0EC97E15A19493002BC57A /* PaneToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95D15A19493002BC57A /* PaneToolBar.cpp */; };
-		CE0EC97F15A19493002BC57A /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC95F15A19493002BC57A /* Preferences.cpp */; };
-		CE0EC98015A19493002BC57A /* PreferencesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96115A19493002BC57A /* PreferencesDialog.cpp */; };
-		CE0EC98115A19493002BC57A /* ProjectProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96315A19493002BC57A /* ProjectProperties.cpp */; };
-		CE0EC98215A19493002BC57A /* ProjectPropertiesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96515A19493002BC57A /* ProjectPropertiesDialog.cpp */; };
-		CE0EC98315A19493002BC57A /* ProjectToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96715A19493002BC57A /* ProjectToolBar.cpp */; };
-		CE0EC98415A19493002BC57A /* SaveChangesDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96915A19493002BC57A /* SaveChangesDialog.cpp */; };
-		CE0EC98515A19493002BC57A /* StandardToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96B15A19493002BC57A /* StandardToolBar.cpp */; };
-		CE0EC98615A19493002BC57A /* StatusBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96D15A19493002BC57A /* StatusBar.cpp */; };
-		CE0EC98715A19493002BC57A /* TextEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC96F15A19493002BC57A /* TextEditor.cpp */; };
-		CE0EC98815A19493002BC57A /* TextToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE0EC97115A19493002BC57A /* TextToolBar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0E0DD015A33CE300CF7E56 /* AddNewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddNewFileDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DD115A33CE300CF7E56 /* AddNewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AddNewFileDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DD215A33CE300CF7E56 /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
+		CE0E0DD315A33CE300CF7E56 /* commands.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commands.hpp; sourceTree = "<group>"; };
+		CE0E0DD415A33CE300CF7E56 /* Developer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Developer.cpp; sourceTree = "<group>"; };
+		CE0E0DD515A33CE300CF7E56 /* Developer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Developer.hpp; sourceTree = "<group>"; };
+		CE0E0DD615A33CE300CF7E56 /* FileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileEditorDelegator.hpp; sourceTree = "<group>"; };
+		CE0E0DD715A33CE300CF7E56 /* FileExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileExplorer.cpp; sourceTree = "<group>"; };
+		CE0E0DD815A33CE300CF7E56 /* FileExplorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileExplorer.hpp; sourceTree = "<group>"; };
+		CE0E0DD915A33CE300CF7E56 /* IFileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IFileEditorDelegator.hpp; sourceTree = "<group>"; };
+		CE0E0DDB15A33CE300CF7E56 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		CE0E0DDC15A33CE300CF7E56 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		CE0E0DDD15A33CE300CF7E56 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
+		CE0E0DDE15A33CE300CF7E56 /* MenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuBar.cpp; sourceTree = "<group>"; };
+		CE0E0DDF15A33CE300CF7E56 /* MenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuBar.hpp; sourceTree = "<group>"; };
+		CE0E0DE015A33CE300CF7E56 /* NewDirectoryDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewDirectoryDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DE115A33CE300CF7E56 /* NewDirectoryDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewDirectoryDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DE215A33CE300CF7E56 /* NewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewFileDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DE315A33CE300CF7E56 /* NewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewFileDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DE415A33CE300CF7E56 /* NewProjectDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewProjectDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DE515A33CE300CF7E56 /* NewProjectDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewProjectDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DE615A33CE300CF7E56 /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Output.cpp; sourceTree = "<group>"; };
+		CE0E0DE715A33CE300CF7E56 /* Output.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Output.hpp; sourceTree = "<group>"; };
+		CE0E0DE815A33CE300CF7E56 /* PaneToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PaneToolBar.cpp; sourceTree = "<group>"; };
+		CE0E0DE915A33CE300CF7E56 /* PaneToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PaneToolBar.hpp; sourceTree = "<group>"; };
+		CE0E0DEA15A33CE300CF7E56 /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Preferences.cpp; sourceTree = "<group>"; };
+		CE0E0DEB15A33CE300CF7E56 /* Preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Preferences.hpp; sourceTree = "<group>"; };
+		CE0E0DEC15A33CE300CF7E56 /* PreferencesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreferencesDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DED15A33CE300CF7E56 /* PreferencesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PreferencesDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DEE15A33CE300CF7E56 /* ProjectProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectProperties.cpp; sourceTree = "<group>"; };
+		CE0E0DEF15A33CE300CF7E56 /* ProjectProperties.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectProperties.hpp; sourceTree = "<group>"; };
+		CE0E0DF015A33CE300CF7E56 /* ProjectPropertiesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectPropertiesDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DF115A33CE300CF7E56 /* ProjectPropertiesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectPropertiesDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DF215A33CE300CF7E56 /* ProjectToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectToolBar.cpp; sourceTree = "<group>"; };
+		CE0E0DF315A33CE300CF7E56 /* ProjectToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectToolBar.hpp; sourceTree = "<group>"; };
+		CE0E0DF415A33CE300CF7E56 /* SaveChangesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveChangesDialog.cpp; sourceTree = "<group>"; };
+		CE0E0DF515A33CE300CF7E56 /* SaveChangesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SaveChangesDialog.hpp; sourceTree = "<group>"; };
+		CE0E0DF615A33CE300CF7E56 /* StandardToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardToolBar.cpp; sourceTree = "<group>"; };
+		CE0E0DF715A33CE300CF7E56 /* StandardToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardToolBar.hpp; sourceTree = "<group>"; };
+		CE0E0DF815A33CE300CF7E56 /* StatusBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatusBar.cpp; sourceTree = "<group>"; };
+		CE0E0DF915A33CE300CF7E56 /* StatusBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatusBar.hpp; sourceTree = "<group>"; };
+		CE0E0DFA15A33CE300CF7E56 /* TextEditor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextEditor.cpp; sourceTree = "<group>"; };
+		CE0E0DFB15A33CE300CF7E56 /* TextEditor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextEditor.hpp; sourceTree = "<group>"; };
+		CE0E0DFC15A33CE300CF7E56 /* TextToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextToolBar.cpp; sourceTree = "<group>"; };
+		CE0E0DFD15A33CE300CF7E56 /* TextToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextToolBar.hpp; sourceTree = "<group>"; };
+		CE0E0DFE15A33CE300CF7E56 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		CE0EC84A15A1874A002BC57A /* gamegears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamegears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0EC84E15A1874A002BC57A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CE0EC85115A1874A002BC57A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		CE0EC85215A1874A002BC57A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE0EC85315A1874A002BC57A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CE0EC94515A19493002BC57A /* AddNewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddNewFileDialog.cpp; sourceTree = "<group>"; };
-		CE0EC94615A19493002BC57A /* AddNewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AddNewFileDialog.hpp; sourceTree = "<group>"; };
-		CE0EC94715A19493002BC57A /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
-		CE0EC94815A19493002BC57A /* commands.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commands.hpp; sourceTree = "<group>"; };
-		CE0EC94915A19493002BC57A /* Developer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Developer.cpp; sourceTree = "<group>"; };
-		CE0EC94A15A19493002BC57A /* Developer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Developer.hpp; sourceTree = "<group>"; };
-		CE0EC94B15A19493002BC57A /* FileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileEditorDelegator.hpp; sourceTree = "<group>"; };
-		CE0EC94C15A19493002BC57A /* FileExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileExplorer.cpp; sourceTree = "<group>"; };
-		CE0EC94D15A19493002BC57A /* FileExplorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileExplorer.hpp; sourceTree = "<group>"; };
-		CE0EC94E15A19493002BC57A /* IFileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IFileEditorDelegator.hpp; sourceTree = "<group>"; };
-		CE0EC95015A19493002BC57A /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
-		CE0EC95115A19493002BC57A /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		CE0EC95215A19493002BC57A /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
-		CE0EC95315A19493002BC57A /* MenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuBar.cpp; sourceTree = "<group>"; };
-		CE0EC95415A19493002BC57A /* MenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuBar.hpp; sourceTree = "<group>"; };
-		CE0EC95515A19493002BC57A /* NewDirectoryDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewDirectoryDialog.cpp; sourceTree = "<group>"; };
-		CE0EC95615A19493002BC57A /* NewDirectoryDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewDirectoryDialog.hpp; sourceTree = "<group>"; };
-		CE0EC95715A19493002BC57A /* NewFileDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewFileDialog.cpp; sourceTree = "<group>"; };
-		CE0EC95815A19493002BC57A /* NewFileDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewFileDialog.hpp; sourceTree = "<group>"; };
-		CE0EC95915A19493002BC57A /* NewProjectDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewProjectDialog.cpp; sourceTree = "<group>"; };
-		CE0EC95A15A19493002BC57A /* NewProjectDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NewProjectDialog.hpp; sourceTree = "<group>"; };
-		CE0EC95B15A19493002BC57A /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Output.cpp; sourceTree = "<group>"; };
-		CE0EC95C15A19493002BC57A /* Output.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Output.hpp; sourceTree = "<group>"; };
-		CE0EC95D15A19493002BC57A /* PaneToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PaneToolBar.cpp; sourceTree = "<group>"; };
-		CE0EC95E15A19493002BC57A /* PaneToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PaneToolBar.hpp; sourceTree = "<group>"; };
-		CE0EC95F15A19493002BC57A /* Preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Preferences.cpp; sourceTree = "<group>"; };
-		CE0EC96015A19493002BC57A /* Preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Preferences.hpp; sourceTree = "<group>"; };
-		CE0EC96115A19493002BC57A /* PreferencesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreferencesDialog.cpp; sourceTree = "<group>"; };
-		CE0EC96215A19493002BC57A /* PreferencesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PreferencesDialog.hpp; sourceTree = "<group>"; };
-		CE0EC96315A19493002BC57A /* ProjectProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectProperties.cpp; sourceTree = "<group>"; };
-		CE0EC96415A19493002BC57A /* ProjectProperties.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectProperties.hpp; sourceTree = "<group>"; };
-		CE0EC96515A19493002BC57A /* ProjectPropertiesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectPropertiesDialog.cpp; sourceTree = "<group>"; };
-		CE0EC96615A19493002BC57A /* ProjectPropertiesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectPropertiesDialog.hpp; sourceTree = "<group>"; };
-		CE0EC96715A19493002BC57A /* ProjectToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectToolBar.cpp; sourceTree = "<group>"; };
-		CE0EC96815A19493002BC57A /* ProjectToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProjectToolBar.hpp; sourceTree = "<group>"; };
-		CE0EC96915A19493002BC57A /* SaveChangesDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveChangesDialog.cpp; sourceTree = "<group>"; };
-		CE0EC96A15A19493002BC57A /* SaveChangesDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SaveChangesDialog.hpp; sourceTree = "<group>"; };
-		CE0EC96B15A19493002BC57A /* StandardToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardToolBar.cpp; sourceTree = "<group>"; };
-		CE0EC96C15A19493002BC57A /* StandardToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StandardToolBar.hpp; sourceTree = "<group>"; };
-		CE0EC96D15A19493002BC57A /* StatusBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatusBar.cpp; sourceTree = "<group>"; };
-		CE0EC96E15A19493002BC57A /* StatusBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StatusBar.hpp; sourceTree = "<group>"; };
-		CE0EC96F15A19493002BC57A /* TextEditor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextEditor.cpp; sourceTree = "<group>"; };
-		CE0EC97015A19493002BC57A /* TextEditor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextEditor.hpp; sourceTree = "<group>"; };
-		CE0EC97115A19493002BC57A /* TextToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextToolBar.cpp; sourceTree = "<group>"; };
-		CE0EC97215A19493002BC57A /* TextToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextToolBar.hpp; sourceTree = "<group>"; };
-		CE0EC97315A19493002BC57A /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +97,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE0E0DCF15A33CE300CF7E56 /* developer */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E0DD015A33CE300CF7E56 /* AddNewFileDialog.cpp */,
+				CE0E0DD115A33CE300CF7E56 /* AddNewFileDialog.hpp */,
+				CE0E0DD215A33CE300CF7E56 /* App.cpp */,
+				CE0E0DD315A33CE300CF7E56 /* commands.hpp */,
+				CE0E0DD415A33CE300CF7E56 /* Developer.cpp */,
+				CE0E0DD515A33CE300CF7E56 /* Developer.hpp */,
+				CE0E0DD615A33CE300CF7E56 /* FileEditorDelegator.hpp */,
+				CE0E0DD715A33CE300CF7E56 /* FileExplorer.cpp */,
+				CE0E0DD815A33CE300CF7E56 /* FileExplorer.hpp */,
+				CE0E0DD915A33CE300CF7E56 /* IFileEditorDelegator.hpp */,
+				CE0E0DDA15A33CE300CF7E56 /* json */,
+				CE0E0DDD15A33CE300CF7E56 /* jsoncpp.cpp */,
+				CE0E0DDE15A33CE300CF7E56 /* MenuBar.cpp */,
+				CE0E0DDF15A33CE300CF7E56 /* MenuBar.hpp */,
+				CE0E0DE015A33CE300CF7E56 /* NewDirectoryDialog.cpp */,
+				CE0E0DE115A33CE300CF7E56 /* NewDirectoryDialog.hpp */,
+				CE0E0DE215A33CE300CF7E56 /* NewFileDialog.cpp */,
+				CE0E0DE315A33CE300CF7E56 /* NewFileDialog.hpp */,
+				CE0E0DE415A33CE300CF7E56 /* NewProjectDialog.cpp */,
+				CE0E0DE515A33CE300CF7E56 /* NewProjectDialog.hpp */,
+				CE0E0DE615A33CE300CF7E56 /* Output.cpp */,
+				CE0E0DE715A33CE300CF7E56 /* Output.hpp */,
+				CE0E0DE815A33CE300CF7E56 /* PaneToolBar.cpp */,
+				CE0E0DE915A33CE300CF7E56 /* PaneToolBar.hpp */,
+				CE0E0DEA15A33CE300CF7E56 /* Preferences.cpp */,
+				CE0E0DEB15A33CE300CF7E56 /* Preferences.hpp */,
+				CE0E0DEC15A33CE300CF7E56 /* PreferencesDialog.cpp */,
+				CE0E0DED15A33CE300CF7E56 /* PreferencesDialog.hpp */,
+				CE0E0DEE15A33CE300CF7E56 /* ProjectProperties.cpp */,
+				CE0E0DEF15A33CE300CF7E56 /* ProjectProperties.hpp */,
+				CE0E0DF015A33CE300CF7E56 /* ProjectPropertiesDialog.cpp */,
+				CE0E0DF115A33CE300CF7E56 /* ProjectPropertiesDialog.hpp */,
+				CE0E0DF215A33CE300CF7E56 /* ProjectToolBar.cpp */,
+				CE0E0DF315A33CE300CF7E56 /* ProjectToolBar.hpp */,
+				CE0E0DF415A33CE300CF7E56 /* SaveChangesDialog.cpp */,
+				CE0E0DF515A33CE300CF7E56 /* SaveChangesDialog.hpp */,
+				CE0E0DF615A33CE300CF7E56 /* StandardToolBar.cpp */,
+				CE0E0DF715A33CE300CF7E56 /* StandardToolBar.hpp */,
+				CE0E0DF815A33CE300CF7E56 /* StatusBar.cpp */,
+				CE0E0DF915A33CE300CF7E56 /* StatusBar.hpp */,
+				CE0E0DFA15A33CE300CF7E56 /* TextEditor.cpp */,
+				CE0E0DFB15A33CE300CF7E56 /* TextEditor.hpp */,
+				CE0E0DFC15A33CE300CF7E56 /* TextToolBar.cpp */,
+				CE0E0DFD15A33CE300CF7E56 /* TextToolBar.hpp */,
+				CE0E0DFE15A33CE300CF7E56 /* version.hpp */,
+			);
+			name = developer;
+			path = ../../source/developer;
+			sourceTree = "<group>";
+		};
+		CE0E0DDA15A33CE300CF7E56 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E0DDB15A33CE300CF7E56 /* json-forwards.h */,
+				CE0E0DDC15A33CE300CF7E56 /* json.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
 		CE0EC83F15A18747002BC57A = {
 			isa = PBXGroup;
 			children = (
-				CE0EC85415A1874A002BC57A /* gamegears */,
+				CE0E0DCF15A33CE300CF7E56 /* developer */,
 				CE0EC84D15A1874A002BC57A /* Frameworks */,
 				CE0EC84B15A1874A002BC57A /* Products */,
 			);
@@ -131,76 +193,6 @@
 				CE0EC85315A1874A002BC57A /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		CE0EC85415A1874A002BC57A /* gamegears */ = {
-			isa = PBXGroup;
-			children = (
-				CE0EC94415A19493002BC57A /* developer */,
-			);
-			path = gamegears;
-			sourceTree = "<group>";
-		};
-		CE0EC94415A19493002BC57A /* developer */ = {
-			isa = PBXGroup;
-			children = (
-				CE0EC94515A19493002BC57A /* AddNewFileDialog.cpp */,
-				CE0EC94615A19493002BC57A /* AddNewFileDialog.hpp */,
-				CE0EC94715A19493002BC57A /* App.cpp */,
-				CE0EC94815A19493002BC57A /* commands.hpp */,
-				CE0EC94915A19493002BC57A /* Developer.cpp */,
-				CE0EC94A15A19493002BC57A /* Developer.hpp */,
-				CE0EC94B15A19493002BC57A /* FileEditorDelegator.hpp */,
-				CE0EC94C15A19493002BC57A /* FileExplorer.cpp */,
-				CE0EC94D15A19493002BC57A /* FileExplorer.hpp */,
-				CE0EC94E15A19493002BC57A /* IFileEditorDelegator.hpp */,
-				CE0EC94F15A19493002BC57A /* json */,
-				CE0EC95215A19493002BC57A /* jsoncpp.cpp */,
-				CE0EC95315A19493002BC57A /* MenuBar.cpp */,
-				CE0EC95415A19493002BC57A /* MenuBar.hpp */,
-				CE0EC95515A19493002BC57A /* NewDirectoryDialog.cpp */,
-				CE0EC95615A19493002BC57A /* NewDirectoryDialog.hpp */,
-				CE0EC95715A19493002BC57A /* NewFileDialog.cpp */,
-				CE0EC95815A19493002BC57A /* NewFileDialog.hpp */,
-				CE0EC95915A19493002BC57A /* NewProjectDialog.cpp */,
-				CE0EC95A15A19493002BC57A /* NewProjectDialog.hpp */,
-				CE0EC95B15A19493002BC57A /* Output.cpp */,
-				CE0EC95C15A19493002BC57A /* Output.hpp */,
-				CE0EC95D15A19493002BC57A /* PaneToolBar.cpp */,
-				CE0EC95E15A19493002BC57A /* PaneToolBar.hpp */,
-				CE0EC95F15A19493002BC57A /* Preferences.cpp */,
-				CE0EC96015A19493002BC57A /* Preferences.hpp */,
-				CE0EC96115A19493002BC57A /* PreferencesDialog.cpp */,
-				CE0EC96215A19493002BC57A /* PreferencesDialog.hpp */,
-				CE0EC96315A19493002BC57A /* ProjectProperties.cpp */,
-				CE0EC96415A19493002BC57A /* ProjectProperties.hpp */,
-				CE0EC96515A19493002BC57A /* ProjectPropertiesDialog.cpp */,
-				CE0EC96615A19493002BC57A /* ProjectPropertiesDialog.hpp */,
-				CE0EC96715A19493002BC57A /* ProjectToolBar.cpp */,
-				CE0EC96815A19493002BC57A /* ProjectToolBar.hpp */,
-				CE0EC96915A19493002BC57A /* SaveChangesDialog.cpp */,
-				CE0EC96A15A19493002BC57A /* SaveChangesDialog.hpp */,
-				CE0EC96B15A19493002BC57A /* StandardToolBar.cpp */,
-				CE0EC96C15A19493002BC57A /* StandardToolBar.hpp */,
-				CE0EC96D15A19493002BC57A /* StatusBar.cpp */,
-				CE0EC96E15A19493002BC57A /* StatusBar.hpp */,
-				CE0EC96F15A19493002BC57A /* TextEditor.cpp */,
-				CE0EC97015A19493002BC57A /* TextEditor.hpp */,
-				CE0EC97115A19493002BC57A /* TextToolBar.cpp */,
-				CE0EC97215A19493002BC57A /* TextToolBar.hpp */,
-				CE0EC97315A19493002BC57A /* version.hpp */,
-			);
-			name = developer;
-			path = ../../../source/developer;
-			sourceTree = "<group>";
-		};
-		CE0EC94F15A19493002BC57A /* json */ = {
-			isa = PBXGroup;
-			children = (
-				CE0EC95015A19493002BC57A /* json-forwards.h */,
-				CE0EC95115A19493002BC57A /* json.h */,
-			);
-			path = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,27 +255,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0EC97415A19493002BC57A /* AddNewFileDialog.cpp in Sources */,
-				CE0EC97515A19493002BC57A /* App.cpp in Sources */,
-				CE0EC97615A19493002BC57A /* Developer.cpp in Sources */,
-				CE0EC97715A19493002BC57A /* FileExplorer.cpp in Sources */,
-				CE0EC97815A19493002BC57A /* jsoncpp.cpp in Sources */,
-				CE0EC97915A19493002BC57A /* MenuBar.cpp in Sources */,
-				CE0EC97A15A19493002BC57A /* NewDirectoryDialog.cpp in Sources */,
-				CE0EC97B15A19493002BC57A /* NewFileDialog.cpp in Sources */,
-				CE0EC97C15A19493002BC57A /* NewProjectDialog.cpp in Sources */,
-				CE0EC97D15A19493002BC57A /* Output.cpp in Sources */,
-				CE0EC97E15A19493002BC57A /* PaneToolBar.cpp in Sources */,
-				CE0EC97F15A19493002BC57A /* Preferences.cpp in Sources */,
-				CE0EC98015A19493002BC57A /* PreferencesDialog.cpp in Sources */,
-				CE0EC98115A19493002BC57A /* ProjectProperties.cpp in Sources */,
-				CE0EC98215A19493002BC57A /* ProjectPropertiesDialog.cpp in Sources */,
-				CE0EC98315A19493002BC57A /* ProjectToolBar.cpp in Sources */,
-				CE0EC98415A19493002BC57A /* SaveChangesDialog.cpp in Sources */,
-				CE0EC98515A19493002BC57A /* StandardToolBar.cpp in Sources */,
-				CE0EC98615A19493002BC57A /* StatusBar.cpp in Sources */,
-				CE0EC98715A19493002BC57A /* TextEditor.cpp in Sources */,
-				CE0EC98815A19493002BC57A /* TextToolBar.cpp in Sources */,
+				CE0E0DFF15A33CE300CF7E56 /* AddNewFileDialog.cpp in Sources */,
+				CE0E0E0015A33CE300CF7E56 /* App.cpp in Sources */,
+				CE0E0E0115A33CE300CF7E56 /* Developer.cpp in Sources */,
+				CE0E0E0215A33CE300CF7E56 /* FileExplorer.cpp in Sources */,
+				CE0E0E0315A33CE300CF7E56 /* jsoncpp.cpp in Sources */,
+				CE0E0E0415A33CE300CF7E56 /* MenuBar.cpp in Sources */,
+				CE0E0E0515A33CE300CF7E56 /* NewDirectoryDialog.cpp in Sources */,
+				CE0E0E0615A33CE300CF7E56 /* NewFileDialog.cpp in Sources */,
+				CE0E0E0715A33CE300CF7E56 /* NewProjectDialog.cpp in Sources */,
+				CE0E0E0815A33CE300CF7E56 /* Output.cpp in Sources */,
+				CE0E0E0915A33CE300CF7E56 /* PaneToolBar.cpp in Sources */,
+				CE0E0E0A15A33CE300CF7E56 /* Preferences.cpp in Sources */,
+				CE0E0E0B15A33CE300CF7E56 /* PreferencesDialog.cpp in Sources */,
+				CE0E0E0C15A33CE300CF7E56 /* ProjectProperties.cpp in Sources */,
+				CE0E0E0D15A33CE300CF7E56 /* ProjectPropertiesDialog.cpp in Sources */,
+				CE0E0E0E15A33CE300CF7E56 /* ProjectToolBar.cpp in Sources */,
+				CE0E0E0F15A33CE300CF7E56 /* SaveChangesDialog.cpp in Sources */,
+				CE0E0E1015A33CE300CF7E56 /* StandardToolBar.cpp in Sources */,
+				CE0E0E1115A33CE300CF7E56 /* StatusBar.cpp in Sources */,
+				CE0E0E1215A33CE300CF7E56 /* TextEditor.cpp in Sources */,
+				CE0E0E1315A33CE300CF7E56 /* TextToolBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
