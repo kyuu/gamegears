@@ -288,7 +288,7 @@ Preferences::loadDefaults()
     TextEditor.General.Caret.Width = 1;
     TextEditor.General.Caret.Color = wxColour(0, 0, 0);
 
-    TextEditor.General.Font.FaceName  = "DejaVu Sans Mono";
+    TextEditor.General.Font.FaceName  = ""; // there is no font face which exists on all platforms
     TextEditor.General.Font.PointSize = 10;
 
     TextEditor.General.InitialZoomLevel = 0;

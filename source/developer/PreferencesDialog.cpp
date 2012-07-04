@@ -107,10 +107,10 @@ PreferencesDialog::loadValues()
     _caretStyleWidthCtrl->SetValue(_preferences.TextEditor.General.Caret.Width);
     _caretStyleColorCtrl->SetColour(_preferences.TextEditor.General.Caret.Color);
 
-    if (!_preferences.TextEditor.General.Font.FaceName.IsEmpty()) {
-        wxFont font;
-        font.SetFaceName(_preferences.TextEditor.General.Font.FaceName);
-        font.SetPointSize(_preferences.TextEditor.General.Font.PointSize);
+    wxFont font;
+    font.SetFaceName(_preferences.TextEditor.General.Font.FaceName);
+    font.SetPointSize(_preferences.TextEditor.General.Font.PointSize);
+    if (font.IsOk()) {
         _fontCtrl->SetSelectedFont(font);
     }
 
