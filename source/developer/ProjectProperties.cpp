@@ -17,7 +17,7 @@
 
 #include <fstream>
 #include <wx/wx.h>
-#include "json/json.h"
+#include "../third-party/json/json.h"
 #include "ProjectProperties.hpp"
 
 

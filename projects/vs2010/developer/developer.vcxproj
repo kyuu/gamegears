@@ -18,7 +18,6 @@
     <ClCompile Include="..\..\..\source\developer\App.cpp" />
     <ClCompile Include="..\..\..\source\developer\Developer.cpp" />
     <ClCompile Include="..\..\..\source\developer\FileExplorer.cpp" />
-    <ClCompile Include="..\..\..\source\developer\jsoncpp.cpp" />
     <ClCompile Include="..\..\..\source\developer\MenuBar.cpp" />
     <ClCompile Include="..\..\..\source\developer\NewDirectoryDialog.cpp" />
     <ClCompile Include="..\..\..\source\developer\NewFileDialog.cpp" />
@@ -35,6 +34,7 @@
     <ClCompile Include="..\..\..\source\developer\StatusBar.cpp" />
     <ClCompile Include="..\..\..\source\developer\TextEditor.cpp" />
     <ClCompile Include="..\..\..\source\developer\TextToolBar.cpp" />
+    <ClCompile Include="..\..\..\source\third-party\json\jsoncpp.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DD0804A0-E2FF-44AC-BC01-6C6787648D5A}</ProjectGuid>
