@@ -12,7 +12,6 @@
 		CE56F1F015A35A9E002E4CCE /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C215A35A9E002E4CCE /* App.cpp */; };
 		CE56F1F115A35A9E002E4CCE /* Developer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C415A35A9E002E4CCE /* Developer.cpp */; };
 		CE56F1F215A35A9E002E4CCE /* FileExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1C715A35A9E002E4CCE /* FileExplorer.cpp */; };
-		CE56F1F315A35A9E002E4CCE /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1CD15A35A9E002E4CCE /* jsoncpp.cpp */; };
 		CE56F1F415A35A9E002E4CCE /* MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1CE15A35A9E002E4CCE /* MenuBar.cpp */; };
 		CE56F1F515A35A9E002E4CCE /* NewDirectoryDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D015A35A9E002E4CCE /* NewDirectoryDialog.cpp */; };
 		CE56F1F615A35A9E002E4CCE /* NewFileDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1D215A35A9E002E4CCE /* NewFileDialog.cpp */; };
@@ -29,6 +28,7 @@
 		CE56F20115A35A9E002E4CCE /* StatusBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1E815A35A9E002E4CCE /* StatusBar.cpp */; };
 		CE56F20215A35A9E002E4CCE /* TextEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1EA15A35A9E002E4CCE /* TextEditor.cpp */; };
 		CE56F20315A35A9E002E4CCE /* TextToolBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE56F1EC15A35A9E002E4CCE /* TextToolBar.cpp */; };
+		CE7AC4C315A3F96600083084 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7AC4C215A3F96600083084 /* jsoncpp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,9 +49,6 @@
 		CE56F1C715A35A9E002E4CCE /* FileExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileExplorer.cpp; sourceTree = "<group>"; };
 		CE56F1C815A35A9E002E4CCE /* FileExplorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileExplorer.hpp; sourceTree = "<group>"; };
 		CE56F1C915A35A9E002E4CCE /* IFileEditorDelegator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IFileEditorDelegator.hpp; sourceTree = "<group>"; };
-		CE56F1CB15A35A9E002E4CCE /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
-		CE56F1CC15A35A9E002E4CCE /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		CE56F1CD15A35A9E002E4CCE /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
 		CE56F1CE15A35A9E002E4CCE /* MenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuBar.cpp; sourceTree = "<group>"; };
 		CE56F1CF15A35A9E002E4CCE /* MenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuBar.hpp; sourceTree = "<group>"; };
 		CE56F1D015A35A9E002E4CCE /* NewDirectoryDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewDirectoryDialog.cpp; sourceTree = "<group>"; };
@@ -85,6 +82,9 @@
 		CE56F1EC15A35A9E002E4CCE /* TextToolBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextToolBar.cpp; sourceTree = "<group>"; };
 		CE56F1ED15A35A9E002E4CCE /* TextToolBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextToolBar.hpp; sourceTree = "<group>"; };
 		CE56F1EE15A35A9E002E4CCE /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
+		CE7AC4C015A3F96600083084 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		CE7AC4C115A3F96600083084 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		CE7AC4C215A3F96600083084 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +138,7 @@
 		CE56F15E15A34F21002E4CCE /* gamegears */ = {
 			isa = PBXGroup;
 			children = (
+				CE7AC4BE15A3F96600083084 /* third-party */,
 				CE56F1BF15A35A9E002E4CCE /* developer */,
 				CE56F15F15A34F21002E4CCE /* Supporting Files */,
 			);
@@ -166,8 +167,6 @@
 				CE56F1C715A35A9E002E4CCE /* FileExplorer.cpp */,
 				CE56F1C815A35A9E002E4CCE /* FileExplorer.hpp */,
 				CE56F1C915A35A9E002E4CCE /* IFileEditorDelegator.hpp */,
-				CE56F1CA15A35A9E002E4CCE /* json */,
-				CE56F1CD15A35A9E002E4CCE /* jsoncpp.cpp */,
 				CE56F1CE15A35A9E002E4CCE /* MenuBar.cpp */,
 				CE56F1CF15A35A9E002E4CCE /* MenuBar.hpp */,
 				CE56F1D015A35A9E002E4CCE /* NewDirectoryDialog.cpp */,
@@ -206,11 +205,21 @@
 			path = ../../../source/developer;
 			sourceTree = "<group>";
 		};
-		CE56F1CA15A35A9E002E4CCE /* json */ = {
+		CE7AC4BE15A3F96600083084 /* third-party */ = {
 			isa = PBXGroup;
 			children = (
-				CE56F1CB15A35A9E002E4CCE /* json-forwards.h */,
-				CE56F1CC15A35A9E002E4CCE /* json.h */,
+				CE7AC4BF15A3F96600083084 /* json */,
+			);
+			name = "third-party";
+			path = "../../../source/third-party";
+			sourceTree = "<group>";
+		};
+		CE7AC4BF15A3F96600083084 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				CE7AC4C015A3F96600083084 /* json-forwards.h */,
+				CE7AC4C115A3F96600083084 /* json.h */,
+				CE7AC4C215A3F96600083084 /* jsoncpp.cpp */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -279,7 +288,6 @@
 				CE56F1F015A35A9E002E4CCE /* App.cpp in Sources */,
 				CE56F1F115A35A9E002E4CCE /* Developer.cpp in Sources */,
 				CE56F1F215A35A9E002E4CCE /* FileExplorer.cpp in Sources */,
-				CE56F1F315A35A9E002E4CCE /* jsoncpp.cpp in Sources */,
 				CE56F1F415A35A9E002E4CCE /* MenuBar.cpp in Sources */,
 				CE56F1F515A35A9E002E4CCE /* NewDirectoryDialog.cpp in Sources */,
 				CE56F1F615A35A9E002E4CCE /* NewFileDialog.cpp in Sources */,
@@ -296,6 +304,7 @@
 				CE56F20115A35A9E002E4CCE /* StatusBar.cpp in Sources */,
 				CE56F20215A35A9E002E4CCE /* TextEditor.cpp in Sources */,
 				CE56F20315A35A9E002E4CCE /* TextToolBar.cpp in Sources */,
+				CE7AC4C315A3F96600083084 /* jsoncpp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
