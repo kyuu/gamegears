@@ -52,11 +52,15 @@ TextEditor::TextEditor(Developer* developer, wxWindow* parent, const wxString& f
     SetZoom(prefs.TextEditor.General.InitialZoomLevel);
 
     // set default style font
-    wxFont font;
-    font.SetFaceName(_preferences.TextEditor.General.Font.FaceName);
-    font.SetPointSize(_preferences.TextEditor.General.Font.PointSize);
-    if (font.IsOk()) {
-        StyleSetFont(wxSTC_STYLE_DEFAULT, font);
+    wxFont* font = wxTheFontList->FindOrCreateFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+    if (wxFontEnumerator::IsValidFacename(prefs.TextEditor.General.Font.FaceName)) {
+        font->SetFaceName(prefs.TextEditor.General.Font.FaceName);
+    }
+    if (prefs.TextEditor.General.Font.PointSize > 0 && prefs.TextEditor.General.Font.PointSize <= 72) {
+        font->SetPointSize(prefs.TextEditor.General.Font.PointSize);
+    }
+    if (font->IsOk()) {
+        StyleSetFont(wxSTC_STYLE_DEFAULT, *font);
     }
 
     // set default style colors

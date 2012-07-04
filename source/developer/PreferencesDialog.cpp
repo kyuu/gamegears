@@ -107,11 +107,15 @@ PreferencesDialog::loadValues()
     _caretStyleWidthCtrl->SetValue(_preferences.TextEditor.General.Caret.Width);
     _caretStyleColorCtrl->SetColour(_preferences.TextEditor.General.Caret.Color);
 
-    wxFont font;
-    font.SetFaceName(_preferences.TextEditor.General.Font.FaceName);
-    font.SetPointSize(_preferences.TextEditor.General.Font.PointSize);
-    if (font.IsOk()) {
-        _fontCtrl->SetSelectedFont(font);
+    wxFont* font = wxTheFontList->FindOrCreateFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+    if (wxFontEnumerator::IsValidFacename(_preferences.TextEditor.General.Font.FaceName)) {
+        font->SetFaceName(_preferences.TextEditor.General.Font.FaceName);
+    }
+    if (_preferences.TextEditor.General.Font.PointSize > 0 && _preferences.TextEditor.General.Font.PointSize <= 72) {
+        font->SetPointSize(_preferences.TextEditor.General.Font.PointSize);
+    }
+    if (font->IsOk()) {
+        _fontCtrl->SetSelectedFont(*font);
     }
 
     _initialZoomLevelCtrl->SetValue(_preferences.TextEditor.General.InitialZoomLevel);
