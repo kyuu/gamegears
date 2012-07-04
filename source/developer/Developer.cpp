@@ -722,7 +722,6 @@ Developer::createWildcardString()
     wildcard += projectWildcard;
     wildcard += ")|";
     wildcard += projectWildcard;
-    wildcard += "|";
 
     return wildcard;
 }
