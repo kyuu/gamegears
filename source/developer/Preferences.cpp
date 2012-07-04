@@ -422,7 +422,7 @@ Preferences::loadFromFile(const std::string& fileName)
     General.FileTypeAssociation.Project.Clear();
     val = prefs["General"]["FileTypeAssociation"]["Project"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < val.size(); i++) {
             if (val[i].isString()) {
                 General.FileTypeAssociation.Project.Add(val[i].asString());
             }
@@ -432,7 +432,7 @@ Preferences::loadFromFile(const std::string& fileName)
     General.FileTypeAssociation.Script.Clear();
     val = prefs["General"]["FileTypeAssociation"]["Script"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < val.size(); i++) {
             if (val[i].isString()) {
                 General.FileTypeAssociation.Script.Add(val[i].asString());
             }
@@ -442,7 +442,7 @@ Preferences::loadFromFile(const std::string& fileName)
     General.FileTypeAssociation.Text.Clear();
     val = prefs["General"]["FileTypeAssociation"]["Text"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < val.size(); i++) {
             if (val[i].isString()) {
                 General.FileTypeAssociation.Text.Add(val[i].asString());
             }
@@ -457,7 +457,7 @@ Preferences::loadFromFile(const std::string& fileName)
     General.RecentFiles.Clear();
     val = prefs["General"]["RecentFiles"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < 10 && i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < 10 && i < val.size(); i++) {
             if (val[i].isString()) {
                 General.RecentFiles.Add(val[i].asString());
             }
@@ -467,7 +467,7 @@ Preferences::loadFromFile(const std::string& fileName)
     General.RecentProjects.Clear();
     val = prefs["General"]["RecentProjects"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < 10 &&  i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < 10 &&  i < val.size(); i++) {
             if (val[i].isString()) {
                 General.RecentProjects.Add(val[i].asString());
             }
@@ -573,7 +573,7 @@ Preferences::loadFromFile(const std::string& fileName)
     TextEditor.Syntax.Keyword1.List.Clear();
     val = prefs["TextEditor"]["Syntax"]["Keyword1"]["List"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < val.size(); i++) {
             if (val[i].isString()) {
                 TextEditor.Syntax.Keyword1.List.Add(val[i].asString());
             }
@@ -588,7 +588,7 @@ Preferences::loadFromFile(const std::string& fileName)
     TextEditor.Syntax.Keyword2.List.Clear();
     val = prefs["TextEditor"]["Syntax"]["Keyword2"]["List"];
     if (val.isArray() && val.size() > 0) {
-        for (size_t i = 0; i < val.size(); i++) {
+        for (Json::ArrayIndex i = 0; i < val.size(); i++) {
             if (val[i].isString()) {
                 TextEditor.Syntax.Keyword2.List.Add(val[i].asString());
             }
@@ -613,17 +613,17 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["General"]["Window"]["Maximized"]   = General.Window.Maximized;
 
     prefs["General"]["FileTypeAssociation"]["Project"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < General.FileTypeAssociation.Project.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < General.FileTypeAssociation.Project.size(); i++) {
         prefs["General"]["FileTypeAssociation"]["Project"][i] = General.FileTypeAssociation.Project[i].ToStdString();
     }
 
     prefs["General"]["FileTypeAssociation"]["Script"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < General.FileTypeAssociation.Script.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < General.FileTypeAssociation.Script.size(); i++) {
         prefs["General"]["FileTypeAssociation"]["Script"][i] = General.FileTypeAssociation.Script[i].ToStdString();
     }
 
     prefs["General"]["FileTypeAssociation"]["Text"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < General.FileTypeAssociation.Text.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < General.FileTypeAssociation.Text.size(); i++) {
         prefs["General"]["FileTypeAssociation"]["Text"][i] = General.FileTypeAssociation.Text[i].ToStdString();
     }
 
@@ -633,12 +633,12 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["General"]["OpenLastProjectOnStartup"] = General.OpenLastProjectOnStartup;
 
     prefs["General"]["RecentFiles"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < General.RecentFiles.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < General.RecentFiles.size(); i++) {
         prefs["General"]["RecentFiles"][i] = General.RecentFiles[i].ToStdString();
     }
 
     prefs["General"]["RecentProjects"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < General.RecentProjects.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < General.RecentProjects.size(); i++) {
         prefs["General"]["RecentProjects"][i] = General.RecentProjects[i].ToStdString();
     }
 
@@ -813,7 +813,7 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["TextEditor"]["Syntax"]["Keyword1"]["Style"]["Background"]["Blue"]  = TextEditor.Syntax.Keyword1.Style.Background.Blue();
 
     prefs["TextEditor"]["Syntax"]["Keyword1"]["List"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < TextEditor.Syntax.Keyword1.List.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < TextEditor.Syntax.Keyword1.List.size(); i++) {
         prefs["TextEditor"]["Syntax"]["Keyword1"]["List"][i] = TextEditor.Syntax.Keyword1.List[i].ToStdString();
     }
 
@@ -827,7 +827,7 @@ Preferences::saveToFile(const std::string& fileName)
     prefs["TextEditor"]["Syntax"]["Keyword2"]["Style"]["Background"]["Blue"]  = TextEditor.Syntax.Keyword2.Style.Background.Blue();
 
     prefs["TextEditor"]["Syntax"]["Keyword2"]["List"] = Json::Value(Json::arrayValue);
-    for (size_t i = 0; i < TextEditor.Syntax.Keyword2.List.size(); i++) {
+    for (Json::ArrayIndex i = 0; i < TextEditor.Syntax.Keyword2.List.size(); i++) {
         prefs["TextEditor"]["Syntax"]["Keyword2"]["List"][i] = TextEditor.Syntax.Keyword2.List[i].ToStdString();
     }
 
