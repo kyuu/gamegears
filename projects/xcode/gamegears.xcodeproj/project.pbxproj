@@ -422,6 +422,7 @@
 					"-liconv",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = build;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -490,6 +491,7 @@
 					"-liconv",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = build;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
