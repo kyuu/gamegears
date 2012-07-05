@@ -31,7 +31,7 @@ class Developer;
 class FileExplorer : public wxTreeCtrl {
 public:
     enum {
-        ICON_REFRESH = 1,
+        ICON_REFRESH = 0,
         ICON_NEW_DIRECTORY,
         ICON_NEW_FILE,
         ICON_DELETE,
