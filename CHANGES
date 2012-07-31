@@ -3,6 +3,7 @@ YYYY.MM.DD
 2012.07.31
   - Renamed CHANGELOG to CHANGES.
   - Made 'go to line' center on current line.
+  - Made auto-indent move the caret before the first non-indent character, instead of before the end of the line.
 
 2012.07.02
   - Added more text editor configurations.
