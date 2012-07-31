@@ -2,6 +2,7 @@ YYYY.MM.DD
 
 2012.07.31
   - Renamed CHANGELOG to CHANGES.
+  - Made 'go to line' center on current line.
 
 2012.07.02
   - Added more text editor configurations.
