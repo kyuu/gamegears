@@ -826,7 +826,19 @@ TextEditor::doCommand(int cmd)
                     errorDialog.ShowModal();
                     return;
                 }
+
+                // go to line
                 GotoLine(line - 1);
+
+                // try to center on the line, if possible
+                int lineCount = GetLineCount();
+                int numVisibleLines = LinesOnScreen();
+                if (lineCount > numVisibleLines) {
+                    int centeredLine = (int)line - 1;
+                    int firstVisibleLine = GetFirstVisibleLine();
+                    int lastVisibleLine = firstVisibleLine + numVisibleLines - 1;
+                    LineScroll(0, (centeredLine - firstVisibleLine) / 2 + (centeredLine - lastVisibleLine) / 2);
+                }
             }
             break;
     }
