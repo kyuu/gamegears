@@ -476,7 +476,7 @@ TextEditor::onCharAdded(wxStyledTextEvent& event)
                 }
             }
             SetLineIndentation(currentLine, lineIndent);
-            GotoPos(GetLineEndPosition(currentLine));
+            GotoPos(GetLineIndentPosition(currentLine));
 /*
         } else if (_showCallTips && (charAdded == '(')) {
             int p = currentPos - 1;
