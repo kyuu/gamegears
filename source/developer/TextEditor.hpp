@@ -31,11 +31,6 @@ class Developer;
 
 class TextEditor : public wxStyledTextCtrl {
 public:
-    enum Mode {
-        TE_SCRIPT_MODE = 0,
-        TE_TEXT_MODE,
-    };
-
     TextEditor(Developer* developer, wxWindow* parent, const wxString& fileName, bool scriptMode = false);
     ~TextEditor();
 

@@ -1,9 +1,12 @@
+json_src_files = Split("""
+    ../../source/third-party/json/jsoncpp.cpp
+""")
+
 developer_src_files = Split("""
     ../../source/developer/AddNewFileDialog.cpp
     ../../source/developer/App.cpp
     ../../source/developer/Developer.cpp
     ../../source/developer/FileExplorer.cpp
-    ../../source/developer/jsoncpp.cpp
     ../../source/developer/MenuBar.cpp
     ../../source/developer/NewDirectoryDialog.cpp
     ../../source/developer/NewProjectDialog.cpp
@@ -72,6 +75,6 @@ def Build():
                    RANLIBCOMSTR   = "Indexing $TARGET",
                    RCCOMSTR       = "Building resource file $TARGET")
     
-    developer = env.Program('developer', developer_src_files)
+    developer = env.Program('developer', developer_src_files + json_src_files)
 
 Build()

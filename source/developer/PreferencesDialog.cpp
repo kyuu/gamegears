@@ -483,7 +483,7 @@ PreferencesDialog::createTextEditorGeneralPage(wxWindow* parentCtrl)
 
     sbs1->Add(defaultStyleColorBox, 0, wxEXPAND | wxALL, 5);
 
-    _caretStyleWidthCtrl = new wxSpinCtrl(sbs2->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, 1, 3);
+    _caretStyleWidthCtrl = new wxSpinCtrl(sbs2->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxTE_CENTER, 1, 3);
 
     _caretStyleColorCtrl = new wxColourPickerCtrl(sbs2->GetStaticBox(), wxID_ANY);
 
@@ -501,7 +501,7 @@ PreferencesDialog::createTextEditorGeneralPage(wxWindow* parentCtrl)
 
     sbs3->Add(_fontCtrl, 1, wxEXPAND | wxALL, 5);
 
-    _initialZoomLevelCtrl = new wxSpinCtrl(sbs4->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, -10, 20);
+    _initialZoomLevelCtrl = new wxSpinCtrl(sbs4->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxTE_CENTER, -10, 20);
 
     sbs4->Add(new wxStaticText(sbs4->GetStaticBox(), wxID_ANY, wxT("Initial zoom level:")), 0, wxALL, 5);
     sbs4->Add(_initialZoomLevelCtrl, 0, wxALL, 5);
@@ -688,7 +688,7 @@ PreferencesDialog::createTextEditorIndentPage(wxWindow* parentCtrl)
 
     wxStaticBoxSizer* tabBox = new wxStaticBoxSizer(wxVERTICAL, panel, wxT("Tab"));
 
-    _tabSizeCtrl = new wxSpinCtrl(tabBox->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, 1, 100);
+    _tabSizeCtrl = new wxSpinCtrl(tabBox->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxTE_CENTER, 1, 100);
 
     wxBoxSizer* tabSizeBox = new wxBoxSizer(wxHORIZONTAL);
 
@@ -703,7 +703,7 @@ PreferencesDialog::createTextEditorIndentPage(wxWindow* parentCtrl)
 
     wxStaticBoxSizer* indentBox = new wxStaticBoxSizer(wxVERTICAL, panel, wxT("Indentation"));
 
-    _indentSizeCtrl = new wxSpinCtrl(indentBox->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_CENTRE, 1, 100);
+    _indentSizeCtrl = new wxSpinCtrl(indentBox->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxTE_CENTER, 1, 100);
 
     wxBoxSizer* indentSizeBox = new wxBoxSizer(wxHORIZONTAL);
 
